@@ -1,0 +1,2685 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SC/ST Cell — UCOST's SEED-DST funded initiative for Scheduled Caste and Scheduled Tribe community empowerment through science and technology across all 13 districts of Uttarakhand, India.">
+  <meta name="keywords" content="UCOST, SC ST Cell, DST SEED, Uttarakhand, Scheduled Caste, Scheduled Tribe, Science Technology, Dehradun">
+  <meta name="author" content="UCOST — Uttarakhand State Council for Science and Technology">
+  <meta property="og:title" content="SC/ST Cell | UCOST Dehradun">
+  <meta property="og:description" content="SEED-DST funded SC/ST Cell project targeting communities across all 13 districts of Uttarakhand.">
+  <title>SC/ST Cell | UCOST — Uttarakhand State Council for Science &amp; Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================
+       DESIGN SYSTEM — CSS CUSTOM PROPERTIES
+    ========================================= */
+    :root {
+      --ucost-blue:       #0B3D6E;
+      --ucost-blue-mid:   #144F8A;
+      --ucost-blue-light: #1E6FB5;
+      --ucost-blue-dark:  #082C50;
+      --saffron-accent:   #FF9933;
+      --saffron-light:    #FFF3E0;
+      --green-accent:     #128807;
+      --green-light:      #E8F5E3;
+      --bg-base:          #F7F8FA;
+      --bg-card:          #FFFFFF;
+      --text-primary:     #1A1A1A;
+      --text-secondary:   #5A5A5A;
+      --text-muted:       #8A8A8A;
+      --border-color:     #E5E7EB;
+      --border-strong:    #D0D5DD;
+      --shadow-rest:      0 1px 3px rgba(0,0,0,0.08);
+      --shadow-hover:     0 4px 16px rgba(0,0,0,0.12);
+      --shadow-card:      0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
+      --radius-card:      10px;
+      --radius-sm:        6px;
+      --radius-xs:        4px;
+      --max-width:        1280px;
+      --nav-h:            52px;
+      --sidebar-w:        284px;
+      --transition:       150ms ease-out;
+    }
+
+    /* =========================================
+       RESET & GLOBAL BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+      font-size: 14px;
+      line-height: 22px;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body.fs-small { font-size: 13px; }
+    body.fs-large  { font-size: 16px; }
+    a { color: var(--ucost-blue-light); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--ucost-blue); }
+    a:focus-visible { outline: 2px solid var(--saffron-accent); outline-offset: 3px; border-radius: 3px; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    address { font-style: normal; }
+
+    /* =========================================
+       SKIP TO CONTENT (ACCESSIBILITY)
+    ========================================= */
+    .skip-link {
+      position: absolute;
+      z-index: 9999;
+      top: -200%;
+      left: 20px;
+      background: var(--ucost-blue);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 0; color: #fff; }
+
+    /* =========================================
+       TOP UTILITY BAR
+    ========================================= */
+    .utility-bar {
+      background: var(--ucost-blue-dark);
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+      line-height: 1;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .utility-bar .inner {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .util-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .util-left img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+      flex-shrink: 0;
+    }
+    .util-left .gov-name {
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .util-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.18);
+      flex-shrink: 0;
+    }
+    .util-right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .util-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      border-radius: 3px;
+      transition: background var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+    .util-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .util-btn svg { width: 12px; height: 12px; }
+    /* Font size toggle cluster */
+    .font-cluster {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .font-cluster button {
+      padding: 3px 8px;
+      color: rgba(255,255,255,0.68);
+      font-size: 11px;
+      font-family: inherit;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      transition: background var(--transition), color var(--transition);
+    }
+    .font-cluster button:last-child { border-right: none; }
+    .font-cluster button:hover, .font-cluster button.active {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+    }
+    /* Language toggle */
+    .lang-cluster {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .lang-cluster button {
+      padding: 3px 9px;
+      color: rgba(255,255,255,0.68);
+      font-size: 11px;
+      font-family: inherit;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-cluster button:last-child { border-right: none; }
+    .lang-cluster button.active,
+    .lang-cluster button:hover { background: rgba(255,255,255,0.16); color: #fff; }
+
+    /* =========================================
+       SITE HEADER BAND
+    ========================================= */
+    .site-header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.055);
+    }
+    .site-header .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    /* Brand / Logo cluster */
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 1;
+      min-width: 0;
+    }
+    .header-brand .logo-primary {
+      height: 52px;
+      width: auto;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ucost-blue);
+      line-height: 1.25;
+      white-space: nowrap;
+    }
+    .brand-name-hi {
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .brand-tagline {
+      font-size: 11px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    /* Header right: DST logo + search */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+    .header-right .partner-logo {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.82;
+    }
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .search-wrap:focus-within {
+      border-color: var(--ucost-blue-light);
+      box-shadow: 0 0 0 3px rgba(30,111,181,0.12);
+    }
+    .search-wrap input {
+      border: none;
+      background: none;
+      padding: 7px 14px;
+      font-size: 13px;
+      width: 175px;
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+    .search-wrap input::placeholder { color: var(--text-muted); }
+    .search-wrap input:focus { outline: none; }
+    .search-wrap button {
+      padding: 7px 13px;
+      color: var(--ucost-blue);
+      display: flex;
+      align-items: center;
+      transition: color var(--transition);
+    }
+    .search-wrap button:hover { color: var(--ucost-blue-light); }
+    .search-wrap button svg { width: 16px; height: 16px; }
+
+    /* =========================================
+       PRIMARY NAVIGATION (STICKY)
+    ========================================= */
+    .primary-nav {
+      background: var(--ucost-blue);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      transition: box-shadow 0.2s ease;
+    }
+    .primary-nav.scrolled { box-shadow: 0 3px 16px rgba(0,0,0,0.22); }
+    .primary-nav .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: stretch;
+      height: var(--nav-h);
+      transition: height var(--transition);
+      position: relative;
+    }
+    .primary-nav.scrolled .inner { height: 42px; }
+    .nav-list {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      gap: 0;
+    }
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .nav-item > a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: 100%;
+      padding: 0 15px;
+      color: rgba(255,255,255,0.84);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+      position: relative;
+    }
+    .nav-item > a > svg { width: 12px; height: 12px; }
+    .nav-item > a:hover {
+      background: rgba(255,255,255,0.10);
+      color: #fff;
+    }
+    .nav-item > a.active {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .nav-item > a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 3px;
+      background: var(--saffron-accent);
+      border-radius: 3px 3px 0 0;
+    }
+    /* Active page indicator dot */
+    .nav-item > a.active::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--saffron-accent);
+      border-radius: 50%;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    /* Dropdown */
+    .nav-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 210px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-top: 3px solid var(--saffron-accent);
+      border-radius: 0 0 var(--radius-card) var(--radius-card);
+      box-shadow: var(--shadow-hover);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+      z-index: 300;
+    }
+    .nav-item:hover .nav-dropdown,
+    .nav-item:focus-within .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-dropdown a:last-child { border-bottom: none; border-radius: 0 0 var(--radius-card) var(--radius-card); }
+    .nav-dropdown a:hover { background: var(--bg-base); color: var(--ucost-blue); }
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      color: #fff;
+      margin-left: auto;
+      border-radius: var(--radius-xs);
+      transition: background var(--transition);
+    }
+    .nav-hamburger:hover { background: rgba(255,255,255,0.1); }
+    .nav-hamburger svg { width: 22px; height: 22px; }
+
+    /* =========================================
+       BREADCRUMB
+    ========================================= */
+    .breadcrumb {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .breadcrumb .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .breadcrumb a { color: var(--ucost-blue-light); }
+    .breadcrumb a:hover { color: var(--ucost-blue); }
+    .breadcrumb .sep { color: var(--border-strong); font-size: 14px; }
+    .breadcrumb .bc-current { color: var(--text-secondary); font-weight: 500; }
+    .breadcrumb svg { width: 13px; height: 13px; color: var(--text-muted); }
+
+    /* =========================================
+       HERO BANNER — YouTube Video Background
+    ========================================= */
+    .hero-banner {
+      position: relative;
+      height: 540px;
+      background: var(--ucost-blue-dark);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    /* ── Hero background image (YouTube thumbnail) ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+    /* ── Animated play button ── */
+    .hero-play-btn {
+      position: absolute;
+      top: 50%;
+      right: 12%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+      animation: heroFadeUp 1.1s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+    }
+    .hero-play-btn:hover .play-ring { transform: scale(1.10); }
+    .play-ring {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 250ms cubic-bezier(0.34,1.56,0.64,1);
+    }
+    /* Ripple rings */
+    .play-ring::before, .play-ring::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,153,51,0.35);
+      animation: ripple 2.2s ease-out infinite;
+    }
+    .play-ring::after { animation-delay: 1.1s; }
+    @keyframes ripple {
+      0%   { transform: scale(0.85); opacity: 0.7; }
+      100% { transform: scale(1.4);  opacity: 0; }
+    }
+    .play-ring svg { width: 34px; height: 34px; color: #fff; margin-left: 4px; }
+    .hero-play-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    }
+    .hero-play-sublabel {
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      margin-top: -8px;
+    }
+    /* ── Full-screen Video Modal ── */
+    .video-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: modalIn 250ms ease;
+    }
+    .video-modal[hidden] { display: none; }
+    @keyframes modalIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .vm-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(3,12,26,0.92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+    .vm-box {
+      position: relative;
+      z-index: 1;
+      width: min(94vw, 1120px);
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+      animation: modalBoxIn 280ms cubic-bezier(0.22,1,0.36,1);
+    }
+    @keyframes modalBoxIn {
+      from { transform: scale(0.88); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+    .vm-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .vm-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 20px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 180ms ease;
+    }
+    .vm-close:hover { background: rgba(255,255,255,0.25); }
+    .vm-title {
+      position: absolute;
+      top: -44px;
+      left: 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 50px);
+      line-height: 38px;
+    }
+    /* Gradient overlay — cinematic vignette */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to right,
+          rgba(5,28,55,0.93) 0%,
+          rgba(8,44,80,0.80) 35%,
+          rgba(8,44,80,0.30) 62%,
+          rgba(8,44,80,0.05) 100%
+        ),
+        linear-gradient(to top,
+          rgba(5,28,55,0.88) 0%,
+          transparent 40%
+        ),
+        linear-gradient(to bottom,
+          rgba(5,28,55,0.30) 0%,
+          transparent 20%
+        );
+    }
+    /* Mute / unmute button */
+    .hero-mute-btn {
+      position: absolute;
+      bottom: 22px;
+      right: 26px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.85);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 6px 13px 6px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 200ms, border-color 200ms, color 200ms, transform 200ms;
+    }
+    .hero-mute-btn:hover {
+      background: rgba(255,255,255,0.20);
+      border-color: rgba(255,255,255,0.45);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .hero-mute-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    /* Tourism badge */
+    .hero-tourism-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,153,51,0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,153,51,0.40);
+      color: var(--saffron-accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .hero-tourism-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--saffron-accent);
+      box-shadow: 0 0 6px var(--saffron-accent);
+      animation: blink 1.6s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 28px 44px;
+      animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--saffron-accent);
+      margin-bottom: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: var(--saffron-accent);
+    }
+    .hero-banner h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    }
+    .hero-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.82);
+      max-width: 580px;
+      line-height: 1.65;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.25);
+    }
+    /* Scroll hint arrow */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: rgba(255,255,255,0.50);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: floatDown 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-scroll-hint svg { width: 20px; height: 20px; }
+    @keyframes floatDown {
+      0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+      50%       { transform: translateX(-50%) translateY(5px); opacity: 1; }
+    }
+
+    /* =========================================
+       PAGE LAYOUT — MAIN + SIDEBAR GRID
+    ========================================= */
+    .page-layout {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 22px 24px 36px;
+      display: grid;
+      grid-template-columns: 1fr var(--sidebar-w);
+      gap: 22px;
+      align-items: start;
+    }
+    .main-content { min-width: 0; }
+
+    /* =========================================
+       SECTION WRAPPER + TITLES
+    ========================================= */
+    .section { }
+    .section + .section { margin-top: 18px; }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ucost-blue);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .section-heading svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--ucost-blue-light); }
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    /* =========================================
+       CARD BASE STYLE
+    ========================================= */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      transition: box-shadow var(--transition);
+    }
+    .card:hover { box-shadow: var(--shadow-hover); }
+
+    /* =========================================
+       SECTION A — PROJECT FACT SHEET
+    ========================================= */
+    .fact-sheet { overflow: hidden; }
+    .fact-sheet-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: linear-gradient(90deg, var(--ucost-blue) 0%, var(--ucost-blue-mid) 100%);
+      border-radius: var(--radius-card) var(--radius-card) 0 0;
+    }
+    .fact-badge {
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+    .fact-sheet-top h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.4;
+    }
+    .fact-rows {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 0;
+    }
+    .fact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .fact-row.full   { grid-column: 1 / -1; border-right: none; }
+    .fact-row.half-l  { border-right: 1px solid var(--border-color); }
+    .fact-icon {
+      width: 34px;
+      height: 34px;
+      background: rgba(11,61,110,0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .fact-icon svg { width: 16px; height: 16px; color: var(--ucost-blue); }
+    .fact-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .fact-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+    .fact-value strong { font-weight: 700; color: var(--ucost-blue); }
+
+    /* =========================================
+       SECTION A2 — MOSAIC STRIP
+    ========================================= */
+    .mosaic-strip {
+      height: 195px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 4px;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      position: relative;
+    }
+    .mosaic-tile {
+      position: relative;
+      overflow: hidden;
+    }
+    .mosaic-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 320ms ease-out;
+      will-change: transform;
+    }
+    .mosaic-tile:hover img { transform: scale(1.035); }
+    .mosaic-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 8px 10px 7px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      transition: opacity 200ms ease-out;
+    }
+    .mosaic-tile:hover .mosaic-caption { opacity: 1; }
+    /* Grid placements */
+    .mosaic-tile:nth-child(1) { grid-column: 1; grid-row: 1 / 3; } /* mountains — wide */
+    .mosaic-tile:nth-child(2) { grid-column: 2; grid-row: 1; }     /* chopta temple */
+    .mosaic-tile:nth-child(3) { grid-column: 3; grid-row: 1; }     /* culture */
+    .mosaic-tile:nth-child(4) { grid-column: 4; grid-row: 1; }     /* temple 1 */
+    .mosaic-tile:nth-child(5) { grid-column: 2; grid-row: 2; }     /* culture 1 */
+    .mosaic-tile:nth-child(6) { grid-column: 3 / 5; grid-row: 2; } /* nanital — spans 2 cols */
+    /* Floating label */
+    .mosaic-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 4;
+      background: rgba(8,44,80,0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 20px;
+      pointer-events: none;
+    }
+
+    /* =========================================
+       SECTION D — PROJECT OVERVIEW + STAT RINGS
+    ========================================= */
+    .overview-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      overflow: hidden;
+    }
+    .overview-body {
+      padding: 20px 22px;
+      border-right: 1px solid var(--border-color);
+    }
+    .overview-body p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 22px;
+      text-align: justify;
+    }
+    .overview-body .highlight {
+      color: var(--ucost-blue);
+      font-weight: 700;
+    }
+    /* Stat rings panel */
+    .stat-panel {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      min-width: 216px;
+    }
+    .stat-panel-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      width: 100%;
+    }
+    .rings-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .ring-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    .ring-svg {
+      width: 86px;
+      height: 86px;
+    }
+    .ring-track { fill: none; stroke: #E9ECF0; stroke-width: 8; }
+    .ring-fill {
+      fill: none;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+      stroke-dasharray: 0 264;
+      transition: stroke-dasharray 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .ring-fill.sc { stroke: var(--ucost-blue-light); }
+    .ring-fill.st { stroke: var(--green-accent); }
+    .ring-pct {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      fill: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+    .ring-lbl {
+      font-family: 'Inter', sans-serif;
+      font-size: 8.5px;
+      fill: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+    .ring-meta { text-align: center; }
+    .ring-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+    }
+    .ring-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .census-note {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      padding-top: 4px;
+      border-top: 1px solid var(--border-color);
+      width: 100%;
+    }
+
+    /* =========================================
+       SECTIONS B+C — COORDINATORS + TEAM
+    ========================================= */
+    .team-row {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 16px;
+    }
+    /* Coordinators panel */
+    .coord-card { padding: 18px 20px; }
+    .panel-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ucost-blue);
+      border-left: 3px solid var(--saffron-accent);
+      padding-left: 9px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .coord-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 11px 0;
+    }
+    .coord-item + .coord-item { border-top: 1px solid var(--border-color); }
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ucost-blue) 0%, var(--ucost-blue-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+      letter-spacing: -0.5px;
+    }
+    .coord-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .coord-role { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+    .coord-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--saffron-light);
+      color: #b36000;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 5px;
+      letter-spacing: 0.02em;
+    }
+    /* Team panel */
+    .team-card { padding: 18px 20px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .member-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 8px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-align: center;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .member-tile:hover {
+      border-color: var(--ucost-blue-light);
+      box-shadow: 0 2px 8px rgba(11,61,110,0.1);
+      transform: translateY(-1px);
+    }
+    .member-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #DDE8F8 0%, #BCCFE8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ucost-blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .member-name { font-size: 12px; font-weight: 600; color: var(--text-primary); line-height: 1.3; }
+    .member-role { font-size: 10px; color: var(--text-muted); line-height: 1.3; }
+
+    /* =========================================
+       SECTION DIVIDER (mountains bg strip)
+    ========================================= */
+    .divider-strip {
+      position: relative;
+      height: 50px;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      margin: 4px 0;
+    }
+    .divider-strip img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+    .divider-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8,44,80,0.80);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .divider-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* =========================================
+       SECTIONS E/F/G — TABBED CARD
+    ========================================= */
+    .tabbed-card { overflow: hidden; }
+    .tab-bar {
+      display: flex;
+      background: #F0F3F8;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .tab-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      position: relative;
+      transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+    .tab-btn svg { width: 15px; height: 15px; }
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--saffron-accent);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .tab-btn.active {
+      color: var(--ucost-blue);
+      font-weight: 600;
+      background: var(--bg-card);
+    }
+    .tab-btn.active::after { transform: scaleX(1); }
+    .tab-btn:hover:not(.active) { color: var(--text-secondary); background: rgba(11,61,110,0.04); }
+    .tab-panel {
+      display: none;
+      padding: 20px 22px;
+      animation: fadeTabIn 180ms ease-out;
+    }
+    .tab-panel.active { display: block; }
+    @keyframes fadeTabIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Objectives 2×2 grid */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .obj-card {
+      display: flex;
+      gap: 13px;
+      padding: 14px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .obj-card:hover {
+      border-color: var(--ucost-blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11,61,110,0.09);
+    }
+    .obj-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: rgba(11,61,110,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .obj-icon svg { width: 18px; height: 18px; color: var(--ucost-blue); }
+    .obj-num {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--saffron-accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .obj-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Methodology flow */
+    .methodology-intro {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    .flow-nodes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 9px;
+      padding: 14px 10px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      position: relative;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .flow-node:hover { border-color: var(--ucost-blue-light); box-shadow: 0 2px 8px rgba(11,61,110,0.1); }
+    .flow-node:not(:last-child)::after {
+      content: '›';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--ucost-blue-light);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .flow-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .flow-icon svg { width: 22px; height: 22px; }
+    .flow-title { font-size: 12px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+    .flow-desc  { font-size: 10px; color: var(--text-muted); line-height: 1.4; }
+
+    /* Deliverables list */
+    .deliv-list { display: flex; flex-direction: column; gap: 8px; }
+    .deliv-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 13px 16px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--ucost-blue-light);
+      border-radius: var(--radius-sm);
+      transition: border-left-color var(--transition), transform var(--transition);
+    }
+    .deliv-item:hover {
+      border-left-color: var(--saffron-accent);
+      transform: translateX(2px);
+    }
+    .deliv-num {
+      min-width: 26px;
+      height: 26px;
+      background: var(--ucost-blue);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .deliv-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+    .deliv-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .widget {
+      padding: 16px;
+    }
+    .widget-title {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ucost-blue);
+      padding-bottom: 9px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--saffron-accent);
+    }
+    .widget-title svg { width: 14px; height: 14px; }
+    /* Quick links */
+    .qlink-list { display: flex; flex-direction: column; gap: 1px; }
+    .qlink {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-radius: var(--radius-xs);
+      transition: background var(--transition), color var(--transition);
+    }
+    .qlink:hover { background: var(--bg-base); color: var(--ucost-blue); }
+    .qlink svg { width: 13px; height: 13px; color: var(--ucost-blue-light); flex-shrink: 0; }
+    /* Related */
+    .related-list { display: flex; flex-direction: column; gap: 6px; }
+    .related-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--text-secondary);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .related-item:hover { border-color: var(--ucost-blue-light); color: var(--ucost-blue); }
+    .related-item svg { width: 13px; height: 13px; color: var(--ucost-blue-light); flex-shrink: 0; }
+    /* Contact */
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 7px 0;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .contact-row + .contact-row { border-top: 1px solid var(--border-color); }
+    .contact-row svg { width: 13px; height: 13px; color: var(--ucost-blue-light); flex-shrink: 0; margin-top: 3px; }
+    /* Social row */
+    .social-row {
+      display: flex;
+      gap: 7px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: var(--bg-base);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .social-btn:hover {
+      background: var(--ucost-blue);
+      color: #fff;
+      border-color: var(--ucost-blue);
+      transform: translateY(-1px);
+    }
+    .social-btn svg { width: 14px; height: 14px; }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    .site-footer {
+      background: var(--ucost-blue-dark);
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+    }
+    .footer-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 26px 24px 20px;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 12px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-col p { line-height: 1.65; margin-bottom: 8px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 5px; }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--transition);
+    }
+    .footer-col ul a::before { content: '›'; color: var(--saffron-accent); font-weight: 700; font-size: 14px; }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 7px;
+      line-height: 1.55;
+    }
+    .footer-contact-row svg { width: 13px; height: 13px; flex-shrink: 0; margin-top: 3px; opacity: 0.75; }
+    .footer-social {
+      display: flex;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .footer-social a {
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.65);
+      transition: background var(--transition), color var(--transition);
+    }
+    .footer-social a:hover { background: var(--saffron-accent); color: #fff; }
+    .footer-social a svg { width: 13px; height: 13px; }
+    /* Footer bottom bar */
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-bar .inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 11px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .footer-bar-left span { font-size: 11px; color: rgba(255,255,255,0.38); }
+    .footer-bar-left a { font-size: 11px; color: rgba(255,255,255,0.45); transition: color var(--transition); }
+    .footer-bar-left a:hover { color: rgba(255,255,255,0.85); }
+    .footer-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .badges { display: flex; gap: 5px; }
+    .badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.55);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .visitor-ctr {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+    }
+    .visitor-ctr svg { width: 12px; height: 12px; opacity: 0.6; }
+    .visitor-ctr .count {
+      font-weight: 600;
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.09);
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================
+       ACCESSIBILITY UTILITIES
+    ========================================= */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* =========================================
+       HIGH CONTRAST MODE
+    ========================================= */
+    body.high-contrast {
+      --bg-base:        #fff;
+      --bg-card:        #fff;
+      --text-primary:   #000;
+      --text-secondary: #111;
+      --text-muted:     #333;
+      --border-color:   #666;
+      --ucost-blue:     #000080;
+    }
+
+    /* =========================================
+       RESPONSIVE — TABLET (768–1279px)
+    ========================================= */
+    @media (max-width: 1279px) {
+      :root { --sidebar-w: 260px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+    @media (max-width: 1023px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .sidebar .widget:last-child { grid-column: 1 / -1; }
+    }
+
+    /* =========================================
+       RESPONSIVE — MOBILE (<768px)
+    ========================================= */
+    @media (max-width: 767px) {
+      /* Utility bar */
+      .util-left .gov-name { display: none; }
+      .font-cluster { display: none; }
+      /* Header */
+      .site-header .inner { height: 58px; }
+      .brand-name { font-size: 13.5px; }
+      .brand-name-hi { display: none; }
+      .brand-tagline { display: none; }
+      .header-brand .logo-primary { height: 38px; }
+      .header-right .partner-logo { display: none; }
+      .search-wrap { display: none; }
+      /* Nav */
+      .nav-list {
+        display: none;
+        flex-direction: column;
+        background: var(--ucost-blue-dark);
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        z-index: 400;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      }
+      .nav-list.open { display: flex; }
+      .nav-item > a {
+        height: auto;
+        padding: 13px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+      .nav-item > a.active::after { display: none; }
+      .nav-dropdown {
+        display: none;
+        position: static;
+        border-radius: 0;
+        border: none;
+        border-top: none;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: rgba(0,0,0,0.2);
+      }
+      .nav-dropdown a { padding: 10px 28px; color: rgba(255,255,255,0.75); }
+      .nav-hamburger { display: flex; }
+      /* Page layout */
+      .page-layout { padding: 14px 16px 24px; }
+      /* Hero */
+      .hero-banner { height: 300px; }
+      .hero-banner h1 { font-size: 26px; }
+      .hero-content { padding: 24px 16px 28px; }
+      .hero-mute-btn { bottom: 14px; right: 14px; font-size: 10px; padding: 5px 10px 5px 8px; }
+      .hero-scroll-hint { display: none; }
+      .hero-tourism-badge { font-size: 9px; padding: 4px 11px; }
+      /* Fact sheet */
+      .fact-rows { grid-template-columns: 1fr; }
+      .fact-row:not(.full):nth-child(odd) { border-right: none; }
+      .fact-row.full { border-bottom: none; }
+      /* Mosaic carousel on mobile */
+      .mosaic-strip {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        height: 155px;
+        gap: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mosaic-strip::-webkit-scrollbar { display: none; }
+      .mosaic-tile {
+        flex: 0 0 150px;
+        scroll-snap-align: start;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        min-width: 140px;
+      }
+      .mosaic-tile:nth-child(1) { flex: 0 0 220px; }
+      .mosaic-tile:nth-child(6) { flex: 0 0 200px; }
+      /* Overview */
+      .overview-card { grid-template-columns: 1fr; }
+      .overview-body { border-right: none; border-bottom: 1px solid var(--border-color); }
+      .stat-panel { flex-direction: row; flex-wrap: wrap; justify-content: center; min-width: auto; padding: 14px; }
+      /* Team */
+      .team-row { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      /* Objectives */
+      .obj-grid { grid-template-columns: 1fr; }
+      /* Flow */
+      .flow-nodes { grid-template-columns: 1fr 1fr; }
+      .flow-node:not(:last-child)::after { display: none; }
+      /* Sidebar */
+      .sidebar { display: flex; flex-direction: column; }
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 16px; padding: 18px 16px; }
+      .footer-bar .inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+      /* Utility */
+      .utility-bar .inner { padding: 0 16px; }
+    }
+    @media (max-width: 480px) {
+      .tab-btn span { display: none; }
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =============================================
+     SKIP LINK (Accessibility)
+============================================= -->
+<a class="skip-link" href="#main-content" data-en="Skip to Main Content" data-hi="मुख्य सामग्री पर जाएं">Skip to Main Content</a>
+
+<!-- =============================================
+     TOP UTILITY BAR
+============================================= -->
+<div class="utility-bar" role="complementary" aria-label="Site utilities">
+  <div class="inner">
+    <div class="util-left">
+      <img src="assets/logo UK.png" alt="Government of Uttarakhand emblem" width="22" height="22">
+      <span class="gov-name" data-en="Government of Uttarakhand" data-hi="उत्तराखंड सरकार">Government of Uttarakhand</span>
+      <span class="util-sep" aria-hidden="true"></span>
+      <a href="#main-content" class="util-btn" data-en="Skip to Main Content" data-hi="मुख्य सामग्री पर जाएं">Skip to Main Content</a>
+      <span class="util-sep" aria-hidden="true"></span>
+      <a href="#screen-reader" class="util-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span data-en="Screen Reader" data-hi="स्क्रीन रीडर">Screen Reader</span>
+      </a>
+    </div>
+    <div class="util-right">
+      <div class="font-cluster" role="group" aria-label="Font size controls">
+        <button id="fsm" onclick="setFS('small')" aria-label="Decrease font size" title="Smaller text">A-</button>
+        <button id="fsn" onclick="setFS('normal')" aria-label="Default font size" title="Normal text" class="active">A</button>
+        <button id="fsl" onclick="setFS('large')" aria-label="Increase font size" title="Larger text">A+</button>
+      </div>
+      <span class="util-sep" aria-hidden="true"></span>
+      <button class="util-btn" onclick="toggleHC()" aria-label="Toggle high contrast mode" title="High contrast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20V2z" fill="currentColor"/></svg>
+        <span data-en="Contrast" data-hi="कंट्रास्ट">Contrast</span>
+      </button>
+      <span class="util-sep" aria-hidden="true"></span>
+      <div class="lang-cluster" role="group" aria-label="Language selector">
+        <button class="active" onclick="setLang('en',this)" lang="en" aria-pressed="true">EN</button>
+        <button onclick="setLang('hi',this)" lang="hi" aria-pressed="false">हिन्दी</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================
+     SITE HEADER BAND
+============================================= -->
+<header class="site-header" role="banner">
+  <div class="inner">
+    <a href="/" class="header-brand" aria-label="UCOST Homepage">
+      <img class="logo-primary" src="assets/logo-UCOST.png" alt="UCOST Logo" height="52">
+      <div class="brand-text">
+        <span class="brand-name" data-en="Uttarakhand State Council for Science &amp; Technology" data-hi="उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद">Uttarakhand State Council for Science &amp; Technology</span>
+        <span class="brand-name-hi" data-en="उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद" data-hi="Uttarakhand State Council for Science &amp; Technology">उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद</span>
+        <span class="brand-tagline" data-en="UCOST, Vigyan Dham, Jhajra, Dehradun – 248 007, Uttarakhand" data-hi="यूकोस्ट, विज्ञान धाम, झाझरा, देहरादून – 248 007, उत्तराखंड">UCOST, Vigyan Dham, Jhajra, Dehradun – 248 007, Uttarakhand</span>
+      </div>
+    </a>
+    <div class="header-right">
+      <img class="partner-logo" src="assets/logo UK.png" alt="Department of Science and Technology, Government of India — DST" height="46">
+      <form class="search-wrap" role="search" onsubmit="return false;">
+        <label for="site-search" class="sr-only" data-en="Search UCOST website" data-hi="यूकोस्ट वेबसाइट खोजें">Search UCOST website</label>
+        <input type="search" id="site-search" name="q" placeholder="Search UCOST…" autocomplete="off" maxlength="200" data-en-placeholder="Search UCOST…" data-hi-placeholder="यूकोस्ट खोजें…">
+        <button type="submit" aria-label="Submit search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- =============================================
+     PRIMARY NAVIGATION (sticky)
+============================================= -->
+<nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+  <div class="inner">
+    <ul class="nav-list" id="nav-list" role="menubar">
+      <li class="nav-item" role="none">
+        <a href="/" role="menuitem" data-en="Home" data-hi="होम">Home</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#about" role="menuitem" aria-haspopup="true">
+          <span data-en="About Us" data-hi="हमारे बारे में">About Us</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-dropdown" role="menu" aria-label="About Us submenu">
+          <li><a href="#" role="menuitem" data-en="Vision &amp; Mission" data-hi="दृष्टि और मिशन">Vision &amp; Mission</a></li>
+          <li><a href="#" role="menuitem" data-en="Governing Body" data-hi="शासी निकाय">Governing Body</a></li>
+          <li><a href="#" role="menuitem" data-en="Leadership" data-hi="नेतृत्व">Leadership</a></li>
+          <li><a href="#" role="menuitem" data-en="Annual Reports" data-hi="वार्षिक रिपोर्ट">Annual Reports</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#divisions" role="menuitem" aria-haspopup="true">
+          <span data-en="Divisions" data-hi="प्रभाग">Divisions</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <ul class="nav-dropdown" role="menu" aria-label="Divisions submenu">
+          <li><a href="#" role="menuitem" data-en="S&amp;T Extension" data-hi="विज्ञान एवं प्रौद्योगिकी विस्तार">S&amp;T Extension</a></li>
+          <li><a href="#" role="menuitem" data-en="Documentation" data-hi="दस्तावेज़ीकरण">Documentation</a></li>
+          <li><a href="#" role="menuitem" data-en="SC/ST Cell" data-hi="अनु.जाति/जनजाति प्रकोष्ठ">SC/ST Cell</a></li>
+          <li><a href="#" role="menuitem" data-en="HR Development" data-hi="मानव संसाधन विकास">HR Development</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#projects" role="menuitem" data-en="Projects" data-hi="परियोजनाएं">Projects</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#" class="active" role="menuitem" aria-current="page" data-en="SC/ST Cell" data-hi="अनु.जाति/जनजाति प्रकोष्ठ">SC/ST Cell</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#publications" role="menuitem" data-en="Publications" data-hi="प्रकाशन">Publications</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#media" role="menuitem" data-en="Media" data-hi="मीडिया">Media</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#rti" role="menuitem" data-en="RTI" data-hi="सूचना का अधिकार">RTI</a>
+      </li>
+      <li class="nav-item" role="none">
+        <a href="#contact" role="menuitem" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a>
+      </li>
+    </ul>
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- =============================================
+     BREADCRUMB
+============================================= -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="inner">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <a href="/" data-en="Home" data-hi="होम">Home</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <a href="#divisions" data-en="Divisions" data-hi="प्रभाग">Divisions</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span class="bc-current" aria-current="page" data-en="SC/ST Cell" data-hi="अनु.जाति/जनजाति प्रकोष्ठ">SC/ST Cell</span>
+  </div>
+</nav>
+
+<!-- =============================================
+     HERO BANNER — Uttarakhand Tourism Local Video Background
+============================================= -->
+<section class="hero-banner" aria-labelledby="page-h1">
+
+  <!-- Local MP4 Video Background (autoplay, muted, looped) -->
+  <video
+    id="hero-video"
+    class="hero-bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+    poster="assets/ucost campus.jpg"
+  >
+    <source src="vidssave.com Uttarakhand Tourism - Simply Sensational 2160P.mp4" type="video/mp4">
+  </video>
+
+  <!-- Gradient Overlay -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Hero Text Content -->
+  <div class="hero-content">
+    <div class="hero-tourism-badge" aria-hidden="true" data-en="Uttarakhand — Dev Bhoomi" data-hi="उत्तराखंड — देव भूमि">Uttarakhand — Dev Bhoomi</div>
+    <div class="hero-eyebrow" aria-hidden="true" data-en="SEED Division · DST · Government of India" data-hi="सीड प्रभाग · डीएसटी · भारत सरकार">SEED Division · DST · Government of India</div>
+    <h1 id="page-h1" data-en="SC/ST Cell" data-hi="अनु.जाति/जनजाति प्रकोष्ठ">SC/ST Cell</h1>
+    <p class="hero-subtitle" data-en="Establishment of Scheduled Caste (SC) / Scheduled Tribe (ST) Cell in UCOST, Dehradun — Leveraging Science &amp; Technology for Community Empowerment Across Uttarakhand" data-hi="यूकोस्ट, देहरादून में अनुसूचित जाति (SC) / अनुसूचित जनजाति (ST) प्रकोष्ठ की स्थापना — उत्तराखंड में सामुदायिक सशक्तीकरण हेतु विज्ञान एवं प्रौद्योगिकी का उपयोग">Establishment of Scheduled Caste (SC) / Scheduled Tribe (ST) Cell in UCOST, Dehradun — Leveraging Science &amp; Technology for Community Empowerment Across Uttarakhand</p>
+  </div>
+
+  <!-- Mute / Unmute Button -->
+  <button class="hero-mute-btn" id="hero-mute-btn" onclick="toggleVideoMute()" aria-label="Toggle video mute">
+    <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+    <svg id="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+    <span id="mute-label" data-en="Muted" data-hi="म्यूट">Muted</span>
+  </button>
+
+  <!-- Scroll Down Hint -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+
+</section>
+
+<!-- =============================================
+     PAGE LAYOUT — MAIN + SIDEBAR
+============================================= -->
+<div class="page-layout">
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main id="main-content" class="main-content" tabindex="-1">
+
+    <!-- ---- SECTION A: PROJECT FACT SHEET ---- -->
+    <section class="section" aria-labelledby="fact-sheet-h">
+      <div class="card fact-sheet">
+        <div class="fact-sheet-top">
+          <span class="fact-badge" aria-label="Label: Project Fact Sheet" data-en="Project Fact Sheet" data-hi="परियोजना तथ्य पत्रक">Project Fact Sheet</span>
+          <h2 id="fact-sheet-h" data-en="Establishment of SC/ST Cell in UCOST, Dehradun" data-hi="यूकोस्ट, देहरादून में अनु.जाति/जनजाति प्रकोष्ठ की स्थापना">Establishment of SC/ST Cell in UCOST, Dehradun</h2>
+        </div>
+        <div class="fact-rows">
+          <!-- Row 1: Title (full width) -->
+          <div class="fact-row full">
+            <div class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div>
+              <div class="fact-label" data-en="Project Title" data-hi="परियोजना शीर्षक">Project Title</div>
+              <div class="fact-value" data-en="Establishment of Scheduled Caste (SC) / Scheduled Tribe (ST) Cell in Uttarakhand State Council for Science and Technology (UCOST), Dehradun" data-hi="उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद (यूकोस्ट), देहरादून में अनुसूचित जाति (SC) / अनुसूचित जनजाति (ST) प्रकोष्ठ की स्थापना">Establishment of Scheduled Caste (SC) / Scheduled Tribe (ST) Cell in Uttarakhand State Council for Science and Technology (UCOST), Dehradun</div>
+            </div>
+          </div>
+          <!-- Row 2: Funded By (half width, left) -->
+          <div class="fact-row half-l">
+            <div class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="fact-label" data-en="Funded By" data-hi="वित्त पोषक">Funded By</div>
+              <div class="fact-value" data-en="Science for Equity Empowerment and Development (SEED) Division, Department of Science &amp; Technology (DST), New Delhi" data-hi="विज्ञान एवं प्रौद्योगिकी विभाग (डीएसटी), नई दिल्ली का साइंस फॉर इक्विटी एम्पावरमेंट एंड डेवलपमेंट <strong>(सीड)</strong> प्रभाग">Science for Equity Empowerment and Development <strong>(SEED)</strong> Division, Department of Science &amp; Technology (DST), New Delhi</div>
+            </div>
+          </div>
+          <!-- Row 3: Coverage (half width, right) -->
+          <div class="fact-row">
+            <div class="fact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="fact-label" data-en="Coverage" data-hi="कवरेज">Coverage</div>
+              <div class="fact-value" data-en="All 13 Districts of Uttarakhand — SC/ST Cells established across the entire state for statewide impact" data-hi="उत्तराखंड के सभी <strong>13 जिलों</strong> में — राज्यव्यापी प्रभाव के लिए पूरे राज्य में अनु.जाति/जनजाति प्रकोष्ठ स्थापित">All <strong>13 Districts</strong> of Uttarakhand — SC/ST Cells established across the entire state for statewide impact</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- SECTION A2: COMMUNITIES & LANDSCAPES MOSAIC ---- -->
+    <section class="section" aria-label="Communities and Landscapes of Uttarakhand — photo mosaic">
+      <div class="mosaic-strip">
+        <span class="mosaic-label" aria-hidden="true" data-en="Communities &amp; Landscapes of Uttarakhand" data-hi="उत्तराखंड के समुदाय और परिदृश्य">Communities &amp; Landscapes of Uttarakhand</span>
+        <!-- Tile 1 — wide (spans 2 rows, col 1) -->
+        <div class="mosaic-tile">
+          <img src="assets/moountains.webp" alt="Panoramic Himalayan mountain landscape of Uttarakhand, Garhwal region" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Himalayan Mountains" data-hi="हिमालय पर्वत">Himalayan Mountains</div>
+        </div>
+        <!-- Tile 2 — col 2, row 1 -->
+        <div class="mosaic-tile">
+          <img src="assets/chopta temple.webp" alt="Chopta Temple, Rudraprayag district, Uttarakhand — sacred heritage site" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Chopta Temple" data-hi="चोपता मंदिर">Chopta Temple</div>
+        </div>
+        <!-- Tile 3 — col 3, row 1 -->
+        <div class="mosaic-tile">
+          <img src="assets/culture.webp" alt="Traditional cultural practices and heritage of Uttarakhand hill communities" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Cultural Heritage" data-hi="सांस्कृतिक विरासत">Cultural Heritage</div>
+        </div>
+        <!-- Tile 4 — col 4, row 1 -->
+        <div class="mosaic-tile">
+          <img src="assets/temple 1.webp" alt="Ancient temple architecture representing the spiritual heritage of Uttarakhand" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Hill Temple" data-hi="पहाड़ी मंदिर">Hill Temple</div>
+        </div>
+        <!-- Tile 5 — col 2, row 2 -->
+        <div class="mosaic-tile">
+          <img src="assets/culture 1.webp" alt="Local artisan craft and cultural traditions of SC/ST communities in Uttarakhand" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Artisan Traditions" data-hi="कारीगर परंपराएं">Artisan Traditions</div>
+        </div>
+        <!-- Tile 6 — col 3–4, row 2 (wide) -->
+        <div class="mosaic-tile">
+          <img src="assets/nanital.webp" alt="Nainital lake and town, Kumaon division, Uttarakhand" loading="lazy">
+          <div class="mosaic-caption" aria-hidden="true" data-en="Nainital, Kumaon" data-hi="नैनीताल, कुमाऊं">Nainital, Kumaon</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- SECTION D: PROJECT OVERVIEW + STAT RINGS ---- -->
+    <section class="section" aria-labelledby="overview-h">
+      <h2 class="section-heading" id="overview-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span data-en="Project Overview" data-hi="परियोजना अवलोकन">Project Overview</span>
+      </h2>
+      <div class="card overview-card" id="stat-rings-section">
+        <div class="overview-body">
+          <p id="overview-para"
+             data-en="UCOST is implementing this SEED-DST funded project targeting the SC/ST community in Uttarakhand's hilly regions — with &lt;span class='highlight'&gt;18.76% Scheduled Caste&lt;/span&gt; and &lt;span class='highlight'&gt;2.89% Scheduled Tribe&lt;/span&gt; populations (Census 2011) — with a comprehensive focus on sustainable livelihood planning, traditional and indigenous knowledge capture, skill upgrades, technology database creation, and geospatial mapping through RS &amp; GIS. SC/ST Cells are being established across all &lt;span class='highlight'&gt;13 districts of Uttarakhand&lt;/span&gt; to coordinate technology adoption for socioeconomic development, scale successful interventions, and systematically build institutional and human capacity. The project bridges the gap between cutting-edge science &amp; technology and the lived realities of hill communities across Garhwal and Kumaon divisions, enabling equitable access to innovation ecosystems, government schemes, and market linkages."
+             data-hi="यूकोस्ट इस सीड-डीएसटी वित्त पोषित परियोजना को उत्तराखंड के पर्वतीय क्षेत्रों में अनुसूचित जाति/अनुसूचित जनजाति समुदाय को लक्षित करते हुए क्रियान्वित कर रहा है — जिसमें &lt;span class='highlight'&gt;18.76% अनुसूचित जाति&lt;/span&gt; और &lt;span class='highlight'&gt;2.89% अनुसूचित जनजाति&lt;/span&gt; जनसंख्या (जनगणना 2011) है — जिसमें टिकाऊ आजीविका नियोजन, पारंपरिक एवं स्थानीय ज्ञान संग्रहण, कौशल उन्नयन, प्रौद्योगिकी डेटाबेस निर्माण, तथा सुदूर संवेदन एवं भौगोलिक सूचना प्रणाली के माध्यम से भू-स्थानिक मानचित्रण पर व्यापक ध्यान केंद्रित किया जा रहा है। उत्तराखंड के सभी &lt;span class='highlight'&gt;13 जिलों&lt;/span&gt; में अनु.जाति/जनजाति प्रकोष्ठ स्थापित किए जा रहे हैं ताकि सामाजिक-आर्थिक विकास हेतु प्रौद्योगिकी अपनाने, सफल हस्तक्षेपों को बड़े पैमाने पर लागू करने और संस्थागत एवं मानव क्षमता का व्यवस्थित निर्माण किया जा सके। यह परियोजना गढ़वाल और कुमाऊं मंडल के पर्वतीय समुदायों की वास्तविकताओं और अत्याधुनिक विज्ञान एवं प्रौद्योगिकी के बीच की खाई को पाटती है, जिससे नवाचार पारिस्थितिकी तंत्र, सरकारी योजनाओं और बाज़ार संपर्कों तक समान पहुँच सुनिश्चित होती है।">
+            UCOST is implementing this SEED-DST funded project targeting the SC/ST community in Uttarakhand's hilly regions —
+            with <span class="highlight">18.76% Scheduled Caste</span> and <span class="highlight">2.89% Scheduled Tribe</span> populations
+            (Census 2011) — with a comprehensive focus on sustainable livelihood planning, traditional and indigenous knowledge
+            capture, skill upgrades, technology database creation, and geospatial mapping through RS &amp; GIS. SC/ST Cells
+            are being established across all <span class="highlight">13 districts of Uttarakhand</span> to coordinate technology
+            adoption for socioeconomic development, scale successful interventions, and systematically build institutional
+            and human capacity. The project bridges the gap between cutting-edge science &amp; technology and the lived realities
+            of hill communities across Garhwal and Kumaon divisions, enabling equitable access to innovation ecosystems,
+            government schemes, and market linkages.
+          </p>
+        </div>
+        <div class="stat-panel">
+          <div class="stat-panel-label" data-en="Population Share — Census 2011" data-hi="जनसंख्या अनुपात — जनगणना 2011">Population Share — Census 2011</div>
+          <div class="rings-row">
+            <!-- SC Ring (18.76%) -->
+            <div class="ring-item">
+              <svg class="ring-svg" viewBox="0 0 100 100" role="img" aria-label="Scheduled Caste population: 18.76 percent">
+                <circle class="ring-track" cx="50" cy="50" r="42"/>
+                <circle class="ring-fill sc" id="ring-sc" cx="50" cy="50" r="42"/>
+                <text x="50" y="46" text-anchor="middle" dominant-baseline="middle" class="ring-pct">18.76%</text>
+                <text x="50" y="60" text-anchor="middle" class="ring-lbl" data-en="SC Pop." data-hi="अनु.जाति">SC Pop.</text>
+              </svg>
+              <div class="ring-meta">
+                <span class="ring-name" style="color:var(--ucost-blue-light);" data-en="Scheduled Caste" data-hi="अनुसूचित जाति">Scheduled Caste</span>
+                <span class="ring-sub" data-en="of total population" data-hi="कुल जनसंख्या का">of total population</span>
+              </div>
+            </div>
+            <!-- ST Ring (2.89%) -->
+            <div class="ring-item">
+              <svg class="ring-svg" viewBox="0 0 100 100" role="img" aria-label="Scheduled Tribe population: 2.89 percent">
+                <circle class="ring-track" cx="50" cy="50" r="42"/>
+                <circle class="ring-fill st" id="ring-st" cx="50" cy="50" r="42"/>
+                <text x="50" y="46" text-anchor="middle" dominant-baseline="middle" class="ring-pct">2.89%</text>
+                <text x="50" y="60" text-anchor="middle" class="ring-lbl" data-en="ST Pop." data-hi="अनु.जनजाति">ST Pop.</text>
+              </svg>
+              <div class="ring-meta">
+                <span class="ring-name" style="color:var(--green-accent);" data-en="Scheduled Tribe" data-hi="अनुसूचित जनजाति">Scheduled Tribe</span>
+                <span class="ring-sub" data-en="of total population" data-hi="कुल जनसंख्या का">of total population</span>
+              </div>
+            </div>
+          </div>
+          <div class="census-note" data-en="Source: Census of India, 2011" data-hi="स्रोत: भारत की जनगणना, 2011">Source: Census of India, 2011</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- SECTIONS B+C: COORDINATORS + TEAM ---- -->
+    <section class="section" aria-labelledby="team-h">
+      <h2 class="section-heading" id="team-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span data-en="Project Leadership &amp; Team" data-hi="परियोजना नेतृत्व एवं दल">Project Leadership &amp; Team</span>
+      </h2>
+      <div class="team-row">
+
+        <!-- Coordinators Card -->
+        <div class="card coord-card">
+          <div class="panel-label" data-en="Project Coordinators" data-hi="परियोजना समन्वयक">Project Coordinators</div>
+          <div class="coord-item">
+            <div class="avatar" aria-hidden="true">DU</div>
+            <div>
+              <div class="coord-name">Dr. D.P. Uniyal</div>
+              <div class="coord-role" data-en="Joint Director, UCOST" data-hi="संयुक्त निदेशक, यूकोस्ट">Joint Director, UCOST</div>
+              <span class="coord-badge" data-en="Project Co-PI" data-hi="परियोजना सह-पीआई">Project Co-PI</span>
+            </div>
+          </div>
+          <div class="coord-item">
+            <div class="avatar" aria-hidden="true">MR</div>
+            <div>
+              <div class="coord-name">Dr. M.S. Rawat</div>
+              <div class="coord-role" data-en="Scientific Officer, UCOST" data-hi="वैज्ञानिक अधिकारी, यूकोस्ट">Scientific Officer, UCOST</div>
+              <span class="coord-badge" data-en="Project Co-PI" data-hi="परियोजना सह-पीआई">Project Co-PI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Card -->
+        <div class="card team-card">
+          <div class="panel-label" style="border-left-color: var(--ucost-blue-light);" data-en="Project Team" data-hi="परियोजना दल">Project Team</div>
+          <div class="team-grid" role="list" aria-label="Project team members">
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">SR</div>
+              <div class="member-name">Mr. Santosh Rawat</div>
+              <div class="member-role" data-en="Principal Project Associate" data-hi="प्रमुख परियोजना सहयोगी">Principal Project Associate</div>
+            </div>
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">ST</div>
+              <div class="member-name">Mr. Sunil Tewari</div>
+              <div class="member-role" data-en="Principal Project Associate" data-hi="प्रमुख परियोजना सहयोगी">Principal Project Associate</div>
+            </div>
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">PS</div>
+              <div class="member-name">Mr. Punit Singh</div>
+              <div class="member-role" data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</div>
+            </div>
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">GC</div>
+              <div class="member-name">Mr. Gaurav Chamoli</div>
+              <div class="member-role" data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</div>
+            </div>
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">PU</div>
+              <div class="member-name">Mr. Paras Upadhayay</div>
+              <div class="member-role" data-en="Project Assistant" data-hi="परियोजना सहायक">Project Assistant</div>
+            </div>
+            <div class="member-tile" role="listitem">
+              <div class="member-avatar" aria-hidden="true">UG</div>
+              <div class="member-name">Ms. Urmila Ghildiyal</div>
+              <div class="member-role" data-en="Project Assistant" data-hi="परियोजना सहायक">Project Assistant</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section divider strip (mountains background) -->
+    <div class="divider-strip" aria-hidden="true">
+      <img src="assets/moountains.webp" alt="" loading="lazy">
+      <div class="divider-overlay">
+        <span class="divider-text" data-en="Programme Details" data-hi="कार्यक्रम विवरण">Programme Details</span>
+      </div>
+    </div>
+
+    <!-- ---- SECTIONS E/F/G: TABBED CONTENT ---- -->
+    <section class="section" aria-labelledby="prog-h">
+      <h2 class="section-heading" id="prog-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span data-en="Objectives, Methodology &amp; Deliverables" data-hi="उद्देश्य, कार्यप्रणाली एवं परिणाम">Objectives, Methodology &amp; Deliverables</span>
+      </h2>
+      <div class="card tabbed-card">
+        <!-- Tab Navigation -->
+        <div class="tab-bar" role="tablist" aria-label="Programme sections">
+          <button class="tab-btn active" id="btn-obj" role="tab" aria-selected="true" aria-controls="panel-obj" onclick="switchTab('obj')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-en="Objectives" data-hi="उद्देश्य">Objectives</span>
+          </button>
+          <button class="tab-btn" id="btn-meth" role="tab" aria-selected="false" aria-controls="panel-meth" onclick="switchTab('meth')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <span data-en="Methodology" data-hi="कार्यप्रणाली">Methodology</span>
+          </button>
+          <button class="tab-btn" id="btn-deliv" role="tab" aria-selected="false" aria-controls="panel-deliv" onclick="switchTab('deliv')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span data-en="Deliverables" data-hi="परिणाम">Deliverables</span>
+          </button>
+        </div>
+
+        <!-- PANEL: Objectives -->
+        <div class="tab-panel active" id="panel-obj" role="tabpanel" aria-labelledby="btn-obj">
+          <div class="obj-grid" role="list" aria-label="Project objectives">
+            <div class="obj-card" role="listitem">
+              <div class="obj-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+              </div>
+              <div>
+                <div class="obj-num" data-en="01 — Livelihood" data-hi="01 — आजीविका">01 — Livelihood</div>
+                <div class="obj-text" data-en="Assess the livelihood system for sustainable livelihood planning through science, know-how, and practices of SC/ST communities in Uttarakhand's hilly terrain." data-hi="उत्तराखंड के पहाड़ी इलाकों में अनु.जाति/जनजाति समुदायों की विज्ञान, ज्ञान और प्रथाओं के माध्यम से टिकाऊ आजीविका योजना हेतु आजीविका प्रणाली का आकलन करना।">Assess the livelihood system for sustainable livelihood planning through science, know-how, and practices of SC/ST communities in Uttarakhand's hilly terrain.</div>
+              </div>
+            </div>
+            <div class="obj-card" role="listitem">
+              <div class="obj-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <div class="obj-num" data-en="02 — Knowledge" data-hi="02 — ज्ञान">02 — Knowledge</div>
+                <div class="obj-text" data-en="Capture traditional and indigenous knowledge and upgrade skills, building on local innovation and knowledge systems unique to SC/ST hill communities." data-hi="पारंपरिक और स्वदेशी ज्ञान को संरक्षित करना और कौशल उन्नयन करना, अनु.जाति/जनजाति पहाड़ी समुदायों की स्थानीय नवाचार और ज्ञान प्रणालियों पर आधारित।">Capture traditional and indigenous knowledge and upgrade skills, building on local innovation and knowledge systems unique to SC/ST hill communities.</div>
+              </div>
+            </div>
+            <div class="obj-card" role="listitem">
+              <div class="obj-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <div>
+                <div class="obj-num" data-en="03 — Database" data-hi="03 — डेटाबेस">03 — Database</div>
+                <div class="obj-text" data-en="Establish a comprehensive database of promising technologies for widespread adaptation and replication across all 13 SC/ST districts of Uttarakhand." data-hi="उत्तराखंड के सभी 13 अनु.जाति/जनजाति जिलों में व्यापक अनुकूलन और प्रतिकृति के लिए प्रभावी प्रौद्योगिकियों का व्यापक डेटाबेस स्थापित करना।">Establish a comprehensive database of promising technologies for widespread adaptation and replication across all 13 SC/ST districts of Uttarakhand.</div>
+              </div>
+            </div>
+            <div class="obj-card" role="listitem">
+              <div class="obj-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+              </div>
+              <div>
+                <div class="obj-num" data-en="04 — Spatial Mapping" data-hi="04 — स्थानिक मानचित्रण">04 — Spatial Mapping</div>
+                <div class="obj-text" data-en="Map data and resources on the spatial domain through GIS &amp; Remote Sensing technologies to enable evidence-based policy and programme planning." data-hi="साक्ष्य आधारित नीति और कार्यक्रम नियोजन हेतु जीआईएस और रिमोट सेंसिंग प्रौद्योगिकियों के माध्यम से डेटा और संसाधनों का स्थानिक मानचित्रण करना।">Map data and resources on the spatial domain through GIS &amp; Remote Sensing technologies to enable evidence-based policy and programme planning.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: Methodology -->
+        <div class="tab-panel" id="panel-meth" role="tabpanel" aria-labelledby="btn-meth" hidden>
+          <p class="methodology-intro" data-en="The project employs a multi-pronged integrated approach combining food preservation, traditional craft support, indigenous knowledge validation, and geospatial technologies. These four units operate as a connected programme pipeline — each feeding into the overall socioeconomic empowerment of SC/ST communities across all 13 districts of Uttarakhand." data-hi="यह परियोजना खाद्य संरक्षण, पारंपरिक शिल्प सहायता, स्वदेशी ज्ञान सत्यापन और भू-स्थानिक प्रौद्योगिकियों को मिलाकर बहु-आयामी एकीकृत दृष्टिकोण अपनाती है। ये चार इकाइयां एक जुड़ी हुई कार्यक्रम पाइपलाइन के रूप में संचालित होती हैं — प्रत्येक उत्तराखंड के सभी 13 जिलों में अनु.जाति/जनजाति समुदायों के समग्र सामाजिक-आर्थिक सशक्तीकरण में योगदान देती है।">
+            The project employs a multi-pronged integrated approach combining food preservation, traditional craft support, indigenous knowledge validation, and geospatial technologies. These four units operate as a connected programme pipeline — each feeding into the overall socioeconomic empowerment of SC/ST communities across all 13 districts of Uttarakhand.
+          </p>
+          <div class="flow-nodes" role="list" aria-label="Methodology workflow">
+            <div class="flow-node" role="listitem">
+              <div class="flow-icon" style="background: var(--ucost-blue);" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <div class="flow-title" data-en="Food Preservation Unit" data-hi="खाद्य संरक्षण इकाई">Food Preservation Unit</div>
+              <div class="flow-desc" data-en="Horticulture &amp; Agriculture product processing, value addition, and food science interventions" data-hi="बागवानी एवं कृषि उत्पाद प्रसंस्करण, मूल्य संवर्धन और खाद्य विज्ञान हस्तक्षेप">Horticulture &amp; Agriculture product processing, value addition, and food science interventions</div>
+            </div>
+            <div class="flow-node" role="listitem">
+              <div class="flow-icon" style="background: var(--ucost-blue-light);" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="flow-title" data-en="Artisan &amp; Handicrafts Unit" data-hi="कारीगर एवं हस्तशिल्प इकाई">Artisan &amp; Handicrafts Unit</div>
+              <div class="flow-desc" data-en="Traditional craft support &amp; market linkage for SC/ST artisans and weavers" data-hi="अनु.जाति/जनजाति कारीगरों और बुनकरों के लिए पारंपरिक शिल्प समर्थन एवं बाजार संपर्क">Traditional craft support &amp; market linkage for SC/ST artisans and weavers</div>
+            </div>
+            <div class="flow-node" role="listitem">
+              <div class="flow-icon" style="background: #1A6B40;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="flow-title" data-en="Scientific Gazettes Unit" data-hi="वैज्ञानिक राजपत्र इकाई">Scientific Gazettes Unit</div>
+              <div class="flow-desc" data-en="Indigenous knowledge testing, product quality validation, and market linkage documentation" data-hi="स्वदेशी ज्ञान परीक्षण, उत्पाद गुणवत्ता सत्यापन और बाजार संपर्क दस्तावेज़ीकरण">Indigenous knowledge testing, product quality validation, and market linkage documentation</div>
+            </div>
+            <div class="flow-node" role="listitem">
+              <div class="flow-icon" style="background: #5C35A0;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+              </div>
+              <div class="flow-title" data-en="RS &amp; GIS Mapping" data-hi="आरएस एवं जीआईएस मानचित्रण">RS &amp; GIS Mapping</div>
+              <div class="flow-desc" data-en="Remote Sensing &amp; Geographic Information System spatial resource and community mapping" data-hi="रिमोट सेंसिंग एवं भौगोलिक सूचना प्रणाली द्वारा स्थानिक संसाधन और सामुदायिक मानचित्रण">Remote Sensing &amp; Geographic Information System spatial resource and community mapping</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL: Deliverables -->
+        <div class="tab-panel" id="panel-deliv" role="tabpanel" aria-labelledby="btn-deliv" hidden>
+          <div class="deliv-list" role="list" aria-label="Project deliverables">
+            <div class="deliv-item" role="listitem">
+              <div class="deliv-num" aria-hidden="true">1</div>
+              <div>
+                <div class="deliv-title" data-en="Human Resource Development of SC/ST Community" data-hi="अनु.जाति/जनजाति समुदाय का मानव संसाधन विकास">Human Resource Development of SC/ST Community</div>
+                <div class="deliv-desc" data-en="Comprehensive capacity building and skill enhancement programmes targeting community members across all 13 districts of Uttarakhand." data-hi="उत्तराखंड के सभी 13 जिलों में समुदाय के सदस्यों को लक्षित करते हुए व्यापक क्षमता निर्माण और कौशल संवर्धन कार्यक्रम।">Comprehensive capacity building and skill enhancement programmes targeting community members across all 13 districts of Uttarakhand.</div>
+              </div>
+            </div>
+            <div class="deliv-item" role="listitem">
+              <div class="deliv-num" aria-hidden="true">2</div>
+              <div>
+                <div class="deliv-title" data-en="Establishment of Site-based Skill Development Centre" data-hi="स्थल-आधारित कौशल विकास केंद्र की स्थापना">Establishment of Site-based Skill Development Centre</div>
+                <div class="deliv-desc" data-en="On-ground vocational training and technology transfer centres established within SC/ST habitations for local access." data-hi="स्थानीय पहुंच के लिए अनु.जाति/जनजाति बस्तियों में व्यावसायिक प्रशिक्षण और प्रौद्योगिकी हस्तांतरण केंद्र स्थापित।">On-ground vocational training and technology transfer centres established within SC/ST habitations for local access.</div>
+              </div>
+            </div>
+            <div class="deliv-item" role="listitem">
+              <div class="deliv-num" aria-hidden="true">3</div>
+              <div>
+                <div class="deliv-title" data-en="Identification of Gaps in Existing Government / Non-Government Schemes" data-hi="मौजूदा सरकारी/गैर-सरकारी योजनाओं में अंतरालों की पहचान">Identification of Gaps in Existing Government / Non-Government Schemes</div>
+                <div class="deliv-desc" data-en="Evidence-based gap analysis to identify underserved areas, unmet needs, and opportunities for improved policy coverage." data-hi="वंचित क्षेत्रों, अपूर्ण आवश्यकताओं और बेहतर नीति कवरेज के अवसरों की पहचान हेतु साक्ष्य-आधारित अंतराल विश्लेषण।">Evidence-based gap analysis to identify underserved areas, unmet needs, and opportunities for improved policy coverage.</div>
+              </div>
+            </div>
+            <div class="deliv-item" role="listitem">
+              <div class="deliv-num" aria-hidden="true">4</div>
+              <div>
+                <div class="deliv-title" data-en="Formulation, Strengthening, Coordination &amp; Documentation" data-hi="निर्माण, सुदृढ़ीकरण, समन्वय एवं दस्तावेज़ीकरण">Formulation, Strengthening, Coordination &amp; Documentation</div>
+                <div class="deliv-desc" data-en="Designing and documenting tailored programmes for filling identified gaps through targeted S&amp;T interventions across SC/ST areas." data-hi="अनु.जाति/जनजाति क्षेत्रों में लक्षित विज्ञान एवं प्रौद्योगिकी हस्तक्षेपों के माध्यम से पहचाने गए अंतरालों को भरने हेतु अनुकूलित कार्यक्रमों का निर्माण और दस्तावेज़ीकरण।">Designing and documenting tailored programmes for filling identified gaps through targeted S&amp;T interventions across SC/ST areas.</div>
+              </div>
+            </div>
+            <div class="deliv-item" role="listitem">
+              <div class="deliv-num" aria-hidden="true">5</div>
+              <div>
+                <div class="deliv-title" data-en="Replicable Model Development through S&amp;T Intervention" data-hi="विज्ञान एवं प्रौद्योगिकी हस्तक्षेप से प्रतिकृति योग्य मॉडल विकास">Replicable Model Development through S&amp;T Intervention</div>
+                <div class="deliv-desc" data-en="Creating scalable and transferable socioeconomic intervention models for SC/ST areas — designed for nationwide replication." data-hi="अनु.जाति/जनजाति क्षेत्रों के लिए स्केलेबल और हस्तांतरणीय सामाजिक-आर्थिक हस्तक्षेप मॉडल तैयार करना — राष्ट्रव्यापी प्रतिकृति के लिए डिज़ाइन किया गया।">Creating scalable and transferable socioeconomic intervention models for SC/ST areas — designed for nationwide replication.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== STICKY SIDEBAR ==================== -->
+  <aside class="sidebar" aria-label="Related links and contact information">
+
+    <!-- Quick Links Widget -->
+    <div class="card widget" aria-labelledby="qlinks-h">
+      <div class="widget-title" id="qlinks-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        Quick Links
+      </div>
+      <ul class="qlink-list" role="list">
+        <li>
+          <a href="#rti" class="qlink" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span data-en="RTI Information" data-hi="सूचना का अधिकार (आरटीआई)">RTI Information</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="qlink" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span data-en="Tenders &amp; Notices" data-hi="निविदाएं एवं सूचनाएं">Tenders &amp; Notices</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="qlink" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-en="Downloads" data-hi="डाउनलोड">Downloads</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="qlink" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-en="Related Schemes" data-hi="संबंधित योजनाएं">Related Schemes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="qlink" role="listitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span data-en="Publications" data-hi="प्रकाशन">Publications</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Related Divisions Widget -->
+    <div class="card widget" aria-labelledby="related-h">
+      <div class="widget-title" id="related-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+        Related Divisions
+      </div>
+      <div class="related-list" role="list">
+        <a href="#" class="related-item" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span data-en="S&amp;T Extension Division" data-hi="विज्ञान एवं प्रौद्योगिकी विस्तार प्रभाग">S&amp;T Extension Division</span>
+        </a>
+        <a href="#" class="related-item" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span data-en="Documentation Division" data-hi="दस्तावेज़ीकरण प्रभाग">Documentation Division</span>
+        </a>
+        <a href="#" class="related-item" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span data-en="HR Development Cell" data-hi="मानव संसाधन विकास प्रकोष्ठ">HR Development Cell</span>
+        </a>
+        <a href="#" class="related-item" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span data-en="SEED-DST Programme" data-hi="सीड-डीएसटी कार्यक्रम">SEED-DST Programme</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Widget -->
+    <div class="card widget" aria-labelledby="contact-h" id="contact">
+      <div class="widget-title" id="contact-h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Contact UCOST
+      </div>
+      <address>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="Vigyan Dham, Jhajra, Haridwar Road, Dehradun — 248 007, Uttarakhand" data-hi="विज्ञान धाम, झाझरा, हरिद्वार रोड, देहरादून — 248 007, उत्तराखंड">Vigyan Dham, Jhajra, Haridwar Road, Dehradun — 248 007, Uttarakhand</span>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span><a href="tel:01352781200">0135-2781200</a></span>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><a href="mailto:info@ucost.in">info@ucost.in</a></span>
+        </div>
+      </address>
+      <div class="social-row" aria-label="UCOST on social media">
+        <a href="#" class="social-btn" aria-label="UCOST on X (Twitter)" title="Follow on X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.727-8.82-8.163-10.68h7.052l4.261 5.633 5.625-6.433zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="UCOST on Facebook" title="Follow on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="UCOST on YouTube" title="Watch on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- =============================================
+     SITE FOOTER
+============================================= -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <!-- Col 1: About -->
+    <div class="footer-col">
+      <div class="footer-col-title" data-en="About UCOST" data-hi="यूकोस्ट के बारे में">About UCOST</div>
+      <p data-en="Uttarakhand State Council for Science &amp; Technology (UCOST) is the apex body for coordinating S&amp;T activities in Uttarakhand, established by the Government of Uttarakhand to drive evidence-based development." data-hi="उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद (यूकोस्ट) उत्तराखंड में विज्ञान एवं प्रौद्योगिकी गतिविधियों के समन्वय हेतु सर्वोच्च निकाय है, जिसे साक्ष्य-आधारित विकास को बढ़ावा देने के लिए उत्तराखंड सरकार द्वारा स्थापित किया गया है।">Uttarakhand State Council for Science &amp; Technology (UCOST) is the apex body for coordinating S&amp;T activities in Uttarakhand, established by the Government of Uttarakhand to drive evidence-based development.</p>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-en="Vigyan Dham, Jhajra, Haridwar Road, Dehradun – 248 007" data-hi="विज्ञान धाम, झाझरा, हरिद्वार रोड, देहरादून – 248 007">Vigyan Dham, Jhajra, Haridwar Road, Dehradun – 248 007</span>
+      </div>
+      <div class="footer-social" aria-label="Social media links">
+        <a href="#" aria-label="UCOST on X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.727-8.82-8.163-10.68h7.052l4.261 5.633 5.625-6.433zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="UCOST on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="UCOST on YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- Col 2: Important Links -->
+    <div class="footer-col">
+      <div class="footer-col-title" data-en="Important Links" data-hi="महत्वपूर्ण लिंक">Important Links</div>
+      <ul>
+        <li><a href="#" data-en="About UCOST" data-hi="यूकोस्ट के बारे में">About UCOST</a></li>
+        <li><a href="#" data-en="Divisions &amp; Units" data-hi="प्रभाग एवं इकाइयां">Divisions &amp; Units</a></li>
+        <li><a href="#" data-en="Projects &amp; Programmes" data-hi="परियोजनाएं एवं कार्यक्रम">Projects &amp; Programmes</a></li>
+        <li><a href="#" data-en="Publications" data-hi="प्रकाशन">Publications</a></li>
+        <li><a href="#" data-en="RTI" data-hi="सूचना का अधिकार">RTI</a></li>
+        <li><a href="#" data-en="Tenders" data-hi="निविदाएं">Tenders</a></li>
+        <li><a href="#" data-en="Careers" data-hi="करियर">Careers</a></li>
+        <li><a href="#" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</a></li>
+      </ul>
+    </div>
+    <!-- Col 3: Related Portals -->
+    <div class="footer-col">
+      <div class="footer-col-title" data-en="Related Portals" data-hi="संबंधित पोर्टल">Related Portals</div>
+      <ul>
+        <li><a href="https://dst.gov.in" target="_blank" rel="noopener noreferrer" data-en="DST — Dept. of Science &amp; Technology" data-hi="डीएसटी — विज्ञान एवं प्रौद्योगिकी विभाग">DST — Dept. of Science &amp; Technology</a></li>
+        <li><a href="https://meity.gov.in" target="_blank" rel="noopener noreferrer" data-en="MeitY" data-hi="मेइटी">MeitY</a></li>
+        <li><a href="https://digitalindia.gov.in" target="_blank" rel="noopener noreferrer" data-en="Digital India" data-hi="डिजिटल इंडिया">Digital India</a></li>
+        <li><a href="https://mygov.in" target="_blank" rel="noopener noreferrer" data-en="MyGov" data-hi="माईगव">MyGov</a></li>
+        <li><a href="https://india.gov.in" target="_blank" rel="noopener noreferrer" data-en="National Portal of India" data-hi="भारत का राष्ट्रीय पोर्टल">National Portal of India</a></li>
+        <li><a href="https://uk.gov.in" target="_blank" rel="noopener noreferrer" data-en="Govt. of Uttarakhand" data-hi="उत्तराखंड सरकार">Govt. of Uttarakhand</a></li>
+        <li><a href="https://seed.dst.gov.in" target="_blank" rel="noopener noreferrer" data-en="SEED Division, DST" data-hi="सीड प्रभाग, डीएसटी">SEED Division, DST</a></li>
+      </ul>
+    </div>
+    <!-- Col 4: Contact -->
+    <div class="footer-col">
+      <div class="footer-col-title" data-en="Contact &amp; Info" data-hi="संपर्क एवं जानकारी">Contact &amp; Info</div>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.9 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0135-2781200
+      </div>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@ucost.in
+      </div>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-en="Web Info Manager: UCOST IT Cell" data-hi="वेब सूचना प्रबंधक: यूकोस्ट आईटी सेल">Web Info Manager: UCOST IT Cell</span>
+      </div>
+      <div style="margin-top:10px; font-size:11px; color:rgba(255,255,255,0.38); line-height:1.6;">
+        <span data-en="Last Updated: July 2026" data-hi="अंतिम अपडेट: जुलाई 2026">Last Updated: July 2026</span><br>
+        <span data-en="Content owned &amp; maintained by UCOST, Dehradun" data-hi="सामग्री का स्वामित्व एवं रखरखाव: यूकोस्ट, देहरादून">Content owned &amp; maintained by UCOST, Dehradun</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom Bar -->
+  <div class="footer-bar">
+    <div class="inner">
+      <div class="footer-bar-left">
+        <span>© 2026 UCOST, Dehradun. All Rights Reserved.</span>
+        <a href="#">Sitemap</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Hyperlinking Policy</a>
+        <a href="#">Copyright Policy</a>
+      </div>
+      <div class="footer-bar-right">
+        <div class="badges" aria-label="Compliance standards">
+          <span class="badge" title="Guidelines for Indian Government Websites 3.0">GIGW 3.0</span>
+          <span class="badge" title="Web Content Accessibility Guidelines 2.1 Level AA">WCAG 2.1 AA</span>
+          <span class="badge" title="Valid HTML5 markup">HTML5</span>
+        </div>
+        <div class="visitor-ctr" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span data-en="Visitors:" data-hi="आगंतुक:">Visitors:</span>
+          <span class="count" id="visitor-count">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT
+============================================= -->
+<script>
+  'use strict';
+
+  /* ─── Hero Video — mute / unmute toggle ─── */
+  (function () {
+    const vid = document.getElementById('hero-video');
+    const iconMuted = document.getElementById('icon-muted');
+    const iconSound = document.getElementById('icon-sound');
+    const muteLabel = document.getElementById('mute-label');
+
+    window.toggleVideoMute = function () {
+      if (!vid) return;
+      vid.muted = !vid.muted;
+      const muted = vid.muted;
+      iconMuted.style.display = muted ? '' : 'none';
+      iconSound.style.display = muted ? 'none' : '';
+      const lang = document.documentElement.getAttribute('lang') || 'en';
+      const txt = muted
+        ? (lang === 'hi' ? 'म्यूट' : 'Muted')
+        : (lang === 'hi' ? 'ध्वनि चालू' : 'Sound On');
+      if (muteLabel) {
+        muteLabel.textContent = txt;
+        muteLabel.setAttribute('data-en', muted ? 'Muted' : 'Sound On');
+        muteLabel.setAttribute('data-hi', muted ? 'म्यूट' : 'ध्वनि चालू');
+      }
+    };
+  })();
+
+  /* ─── Sticky nav shrink on scroll ─── */
+  const nav = document.getElementById('primary-nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 80);
+    lastScroll = y;
+  }, { passive: true });
+
+  /* ─── Mobile hamburger ─── */
+  const navToggle = document.getElementById('nav-toggle');
+  const navList   = document.getElementById('nav-list');
+  navToggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  });
+  // Close nav when any nav link is clicked
+  navList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ─── Tab switcher ─── */
+  const tabs = [
+    { id: 'obj',  btnId: 'btn-obj',  panelId: 'panel-obj'  },
+    { id: 'meth', btnId: 'btn-meth', panelId: 'panel-meth' },
+    { id: 'deliv',btnId: 'btn-deliv',panelId: 'panel-deliv'},
+  ];
+
+  function switchTab(id) {
+    tabs.forEach(t => {
+      const btn   = document.getElementById(t.btnId);
+      const panel = document.getElementById(t.panelId);
+      const active = t.id === id;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', String(active));
+      panel.classList.toggle('active', active);
+      panel.hidden = !active;
+    });
+  }
+
+  // Keyboard arrow navigation between tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach((btn, idx) => {
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { tabBtns[(idx + 1) % tabBtns.length].focus(); }
+      if (e.key === 'ArrowLeft')  { tabBtns[(idx - 1 + tabBtns.length) % tabBtns.length].focus(); }
+    });
+  });
+
+  /* ─── SVG Stat Rings — scroll-triggered, once ─── */
+  const CIRCUM = 2 * Math.PI * 42; // r = 42 → ≈ 263.89
+
+  function animateRings() {
+    const ringSC = document.getElementById('ring-sc');
+    const ringST = document.getElementById('ring-st');
+    if (!ringSC || !ringST) return;
+    // SC: 18.76% of circumference
+    const scFill = CIRCUM * 0.1876;
+    ringSC.style.strokeDasharray = `${scFill.toFixed(2)} ${(CIRCUM - scFill).toFixed(2)}`;
+    // ST: 2.89% of circumference
+    const stFill = CIRCUM * 0.0289;
+    ringST.style.strokeDasharray = `${stFill.toFixed(2)} ${(CIRCUM - stFill).toFixed(2)}`;
+  }
+
+  const ringsEl = document.getElementById('stat-rings-section');
+  if (ringsEl && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Small delay so the transition is visible
+          setTimeout(animateRings, 150);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(ringsEl);
+  } else {
+    animateRings(); // Fallback
+  }
+
+  /* ─── Font size toggle ─── */
+  function setFS(size) {
+    document.body.classList.remove('fs-small', 'fs-large');
+    if (size === 'small') document.body.classList.add('fs-small');
+    if (size === 'large') document.body.classList.add('fs-large');
+    ['fsm','fsn','fsl'].forEach(id => document.getElementById(id)?.classList.remove('active'));
+    const idMap = { small:'fsm', normal:'fsn', large:'fsl' };
+    document.getElementById(idMap[size])?.classList.add('active');
+  }
+
+  /* ─── High contrast toggle ─── */
+  function toggleHC() {
+    document.body.classList.toggle('high-contrast');
+  }
+
+  /* ─── Language toggle ─── */
+  let currentLang = 'en';
+
+  function setLang(lang, el) {
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+    el.closest('.lang-cluster').querySelectorAll('button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    el.classList.add('active');
+    el.setAttribute('aria-pressed', 'true');
+
+    // Update page title
+    document.title = lang === 'hi'
+      ? 'अनु.जाति/जनजाति प्रकोष्ठ | यूकोस्ट — उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद'
+      : 'SC/ST Cell | UCOST — Uttarakhand State Council for Science & Technology';
+
+    // Swap all data-en / data-hi text on elements
+    document.querySelectorAll('[data-en][data-hi]').forEach(node => {
+      const val = node.getAttribute('data-' + lang);
+      if (val === null) return;
+      // SVG <text> elements
+      if (node.tagName.toLowerCase() === 'text') {
+        node.textContent = val;
+        return;
+      }
+      // Use innerHTML only when the value contains HTML tags
+      if (val.includes('<')) {
+        node.innerHTML = val;
+      } else {
+        node.textContent = val;
+      }
+    });
+
+    // Swap placeholder on search input
+    document.querySelectorAll('[data-en-placeholder][data-hi-placeholder]').forEach(input => {
+      input.placeholder = input.getAttribute('data-' + lang + '-placeholder');
+    });
+
+    // Adjust font-family for Devanagari readability
+    document.body.style.fontFamily = lang === 'hi'
+      ? "'Noto Sans Devanagari', 'Noto Sans', 'Inter', sans-serif"
+      : "'Inter', 'Noto Sans', 'Noto Sans Devanagari', sans-serif";
+  }
+
+  /* ─── Simulated visitor counter ─── */
+  (function() {
+    const el = document.getElementById('visitor-count');
+    if (!el) return;
+    const base = 148500 + Math.floor(Math.random() * 500);
+    el.textContent = base.toLocaleString('en-IN');
+  })();
+</script>
+
+</body>
+</html>
