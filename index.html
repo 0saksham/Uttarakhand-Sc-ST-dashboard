@@ -1762,6 +1762,193 @@
       .tab-btn span { display: none; }
       .team-grid { grid-template-columns: repeat(3, 1fr); }
     }
+
+    /* =========================================
+       NEWS & EVENTS SECTION STYLE
+    ========================================= */
+    .news-header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .news-search-container {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+    }
+    .news-search-input {
+      width: 100%;
+      padding: 8px 12px 8px 36px;
+      font-size: 13px;
+      font-family: inherit;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .news-search-input:focus {
+      outline: none;
+      border-color: var(--ucost-blue-light);
+      box-shadow: 0 0 0 3px rgba(30, 111, 181, 0.15);
+    }
+    .news-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      color: var(--text-secondary);
+      pointer-events: none;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 16px;
+      border-left: 4px solid var(--ucost-blue);
+      text-decoration: none;
+      color: inherit;
+    }
+    .news-card.featured {
+      border-left-color: var(--saffron-accent);
+    }
+    .news-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .news-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .news-badge.general {
+      background: var(--saffron-light);
+      color: #D35400;
+      border: 1px solid rgba(255, 153, 51, 0.2);
+    }
+    .news-badge.featured {
+      background: var(--green-light);
+      color: var(--green-accent);
+      border: 1px solid rgba(18, 136, 7, 0.2);
+    }
+    .news-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .news-date svg {
+      width: 12px;
+      height: 12px;
+      color: var(--text-muted);
+    }
+    .news-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    .news-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+    }
+    .news-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ucost-blue-light);
+      transition: color var(--transition), transform var(--transition);
+    }
+    .news-card:hover .news-btn {
+      color: var(--ucost-blue);
+      transform: translateX(2px);
+    }
+    .news-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+    .news-no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius-card);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    .news-view-all-container {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .btn-view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ucost-blue-light);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .btn-view-all:hover {
+      background: var(--ucost-blue);
+      box-shadow: var(--shadow-hover);
+    }
+    .btn-view-all svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Media query adjust for news */
+    @media (max-width: 768px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      .news-header-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .news-search-container {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2103,6 +2290,194 @@
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;flex-shrink:0;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- SECTION: LATEST NEWS & EVENTS ---- -->
+    <section class="section" aria-labelledby="news-h">
+      <div class="news-header-wrap">
+        <h2 class="section-heading" id="news-h" style="margin-bottom:0; flex-grow:1;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-1"/>
+            <path d="M12 8h2m-6 4h6m-6 4h4"/>
+          </svg>
+          <span data-en="Latest News &amp; Events" data-hi="नवीनतम समाचार एवं गतिविधियाँ">Latest News &amp; Events</span>
+        </h2>
+        <div class="news-search-container">
+          <svg class="news-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input 
+            type="text" 
+            id="news-search" 
+            class="news-search-input" 
+            placeholder="Search news..." 
+            data-en-placeholder="Search news..." 
+            data-hi-placeholder="समाचार खोजें..."
+            oninput="filterNews()"
+            aria-label="Search news articles"
+          >
+        </div>
+      </div>
+
+      <div class="news-grid" id="news-grid">
+        <!-- News Card 1 -->
+        <div class="card news-card featured" data-tags="environment env climate 2026 पर्यावरण">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge featured" data-en="Featured" data-hi="मुख्य">Featured</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="June 05, 2026" data-hi="05 जून, 2026">June 05, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="World Environment Day 2026 Celebrated at UCOST with Focus “Inspired by Nature, For Climate, For Our Future.”" 
+                 data-hi="यूकोस्ट में विश्व पर्यावरण दिवस 2026 मनाया गया, फोकस &quot;प्रकृति से प्रेरित, जलवायु के लिए, हमारे भविष्य के लिए&quot;।">
+              World Environment Day 2026 Celebrated at UCOST with Focus “Inspired by Nature, For Climate, For Our Future.”
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/world-environment-day-2026-celebrated-ucost-focus-inspired-nature-climate-our-future" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about World Environment Day 2026">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- News Card 2 -->
+        <div class="card news-card" data-tags="technology workshop development driver कार्यशाला">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge general" data-en="Workshop" data-hi="कार्यशाला">Workshop</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="May 25, 2026" data-hi="25 मई, 2026">May 25, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="One-day workshop on &quot;Technology as a development driver&quot; organized at UCOST campus" 
+                 data-hi="यूकॉस्ट परिसर में Technology as a development driver विषय पर एक-दिवसीय कार्यशाला का आयोजन">
+              यूकॉस्ट परिसर में Technology as a development driver विषय पर एक-दिवसीय कार्यशाला का आयोजन
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/yauukaosata-paraisara-maen-technology-development-driver-vaisaya-para-eka-daivasaiya-kaarayasaalaa" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about Technology as a development driver workshop">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- News Card 3 -->
+        <div class="card news-card" data-tags="rainwater harvesting water conservation lecture व्याख्यान जल संचयन">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge general" data-en="Lecture" data-hi="व्याख्यान">Lecture</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="May 18, 2026" data-hi="18 मई, 2026">May 18, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="Expert lecture on &quot;Rainwater Harvesting Efforts in Himalayan Mountainous Terrain&quot; organized by UCOST" 
+                 data-hi="यूकॉस्ट द्वारा &quot;हिमालयी पर्वतीय भूभाग में वर्षा जल संचयन के प्रयास&quot; विषय पर विशेषज्ञ व्याख्यान का आयोजन">
+              यूकॉस्ट द्वारा "हिमालयी पर्वतीय भूभाग में वर्षा जल संचयन के प्रयास" विषय पर विशेषज्ञ व्याख्यान का आयोजन
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/yauukaosata-davaaraa-haimaalayai-paravataiya-bhauubhaaga-maen-varasaa-jala-sancayana-kae-parayaasa" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about Rainwater Harvesting lecture">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- News Card 4 -->
+        <div class="card news-card" data-tags="technology day events national प्रौद्योगिकी दिवस">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge general" data-en="Event" data-hi="आयोजन">Event</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="May 11, 2026" data-hi="11 मई, 2026">May 11, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="Events organized by UCOST on the occasion of National Technology Day" 
+                 data-hi="यूकॉस्ट द्वारा राष्ट्रीय प्रौद्योगिकी दिवस के अवसर पर कार्यक्रमो का आयोजन">
+              यूकॉस्ट द्वारा राष्ट्रीय प्रौद्योगिकी दिवस के अवसर पर कार्यक्रमो का आयोजन
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/yauukaosata-davaaraa-raasataraiya-paraaudayaogaikai-daivasa-kae-avasara-para-kaarayakaramao-kaa" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about National Technology Day events">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- News Card 5 -->
+        <div class="card news-card" data-tags="maan dhara naman water education जल शिक्षा">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge general" data-en="Lecture" data-hi="व्याख्यान">Lecture</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="April 28, 2026" data-hi="28 अप्रैल, 2026">April 28, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="Lecture under Maan Dhara Naman program (Water Education Program)" 
+                 data-hi="मान धारा नमन कार्यक्रम (जल शिक्षा कार्यक्रम) के तहत व्याख्यान">
+              Lecture under Maan Dhara Naman program (Water Education Program)
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/lecture-under-maan-dhara-naman-program-water-education-program" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about Maan Dhara Naman lecture">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- News Card 6 -->
+        <div class="card news-card" data-tags="stem writer village lekhak gaon laboratory उद्घाटन">
+          <div>
+            <div class="news-card-meta">
+              <span class="news-badge general" data-en="Inauguration" data-hi="उद्घाटन">Inauguration</span>
+              <span class="news-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-en="April 15, 2026" data-hi="15 अप्रैल, 2026">April 15, 2026</span>
+              </span>
+            </div>
+            <div class="news-title" 
+                 data-en="Inauguration of “S.T.E.M Curiosity Room and Laboratory” in Writer's Village (Lekhak Gaon) by Uttarakhand State Council for Science and Technology (UCOST)" 
+                 data-hi="उत्तराखंड विज्ञान एवं प्रौद्योगिकी परिषद (UCOST) द्वारा लेखक गांव में “S.T.E.M जिज्ञासा कक्ष एवं प्रयोगशाला” का उद्घाटन">
+              उत्तराखंड विज्ञान एवं प्रौद्योगिकी परिषद (UCOST) द्वारा लेखक गांव में “S.T.E.M जिज्ञासा कक्ष एवं प्रयोगशाला” का उद्घाटन
+            </div>
+          </div>
+          <div class="news-footer">
+            <a href="https://ucost.uk.gov.in/utataraakhanda-vaijanaana-evan-paraaudayaogaikai-paraisada-ucost-davaaraa-laekhaka-gaanva-maen-stem" target="_blank" rel="noopener noreferrer" class="news-btn" aria-label="Read more about STEM laboratory inauguration">
+              <span data-en="Read More" data-hi="अधिक पढ़ें">Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- No Search Results Message -->
+        <div id="news-no-results" class="news-no-results" style="display: none;" 
+             data-en="No news updates found matching your search." 
+             data-hi="आपकी खोज से मेल खाता कोई समाचार नहीं मिला।">
+          No news updates found matching your search.
+        </div>
+
+        <div class="news-view-all-container">
+          <a href="https://ucost.uk.gov.in/news-events" target="_blank" rel="noopener noreferrer" class="btn-view-all">
+            <span data-en="View All News on UCOST Portal" data-hi="यूकोस्ट पोर्टल पर सभी समाचार देखें">View All News on UCOST Portal</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -2713,6 +3088,36 @@
       ? "'Noto Sans Devanagari', 'Noto Sans', 'Inter', sans-serif"
       : "'Inter', 'Noto Sans', 'Noto Sans Devanagari', sans-serif";
   }
+
+  /* ─── News Search Filter ─── */
+  window.filterNews = function() {
+    const query = document.getElementById('news-search').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.news-card');
+    const noResults = document.getElementById('news-no-results');
+    const viewAll = document.querySelector('.news-view-all-container');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      const titleEn = (card.querySelector('.news-title').getAttribute('data-en') || '').toLowerCase();
+      const titleHi = (card.querySelector('.news-title').getAttribute('data-hi') || '').toLowerCase();
+      
+      const match = tags.includes(query) || titleEn.includes(query) || titleHi.includes(query);
+      if (match) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+    if (viewAll) {
+      viewAll.style.display = query !== '' ? 'none' : '';
+    }
+  };
 
   /* ─── Simulated visitor counter ─── */
   (function() {
