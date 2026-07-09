@@ -1,0 +1,10 @@
+[
+  { "name": "National Portal of India", "url": "https://www.india.gov.in/", "logo": "National Portal of india.png" },
+  { "name": "Department of Science & Technology, Govt. of India", "url": "https://dst.gov.in/", "logo": "Department of Science & Technology, Government of India.jpg" },
+  { "name": "India Science, Technology & Innovation Portal", "url": "https://www.indiascienceandtechnology.gov.in/", "logo": "India Science, Technology & Innovation Portal.svg" },
+  { "name": "Council of Scientific & Industrial Research (CSIR)", "url": "http://www.csir.res.in/", "logo": "Council of Scientific & Industrial Research.png" },
+  { "name": "Government of Uttarakhand", "url": "https://uk.gov.in/", "logo": "Government of Uttarakhand.png" },
+  { "name": "Dept. of IT, Good Governance and Science Technology, Govt. of Uttarakhand", "url": "https://it.uk.gov.in/", "logo": "Department of Information Technology, Good Governance and Science Technology, Government of Uttarakhand.png" },
+  { "name": "Uttarakhand State Council for Science and Technology", "url": "https://ucost.uk.gov.in/", "logo": "Uttarakhand State Council for Science and Technology.png" },
+  { "name": "Directorate of Tribal Welfare, Government of Uttarakhand", "url": "https://tribalwelfare.uk.gov.in/", "logo": "Directorate of Tribal Welfare, Government of Uttarakhand.png" }
+]

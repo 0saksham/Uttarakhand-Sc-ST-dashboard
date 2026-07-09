@@ -1,0 +1,11 @@
+[
+  { "tier": "PI", "name": "Prof. (Dr.) Durgesh Pant", "role": "Director General", "org": "Uttarakhand State Council for Science & Technology (UCOST), Government of Uttarakhand, Vigyan Dham, Jhajra, Dehradun" },
+  { "tier": "Co-PI", "name": "Dr. D. P. Uniyal", "role": "Joint Director", "org": "UCOST, Government of Uttarakhand, Vigyan Dham, Jhajra, Dehradun" },
+  { "tier": "Co-PI", "name": "Dr. M. S. Rawat", "role": "Scientific Officer", "org": "UCOST, Government of Uttarakhand, Vigyan Dham, Jhajra, Dehradun" },
+  { "tier": "Staff", "name": "Mr. Devendra Singh", "role": "Principal Project Associate" },
+  { "tier": "Staff", "name": "Mr. Nalin Sharma", "role": "Principal Project Associate" },
+  { "tier": "Staff", "name": "Mr. Ankit Kandiyal", "role": "Senior Project Associate" },
+  { "tier": "Staff", "name": "Ms. Rukhsar", "role": "Project Associate" },
+  { "tier": "Staff", "name": "Mr. Kumar Roshan", "role": "Project Associate" },
+  { "tier": "Staff", "name": "Mr. Shalinder Rautela", "role": "Project Assistant" }
+]

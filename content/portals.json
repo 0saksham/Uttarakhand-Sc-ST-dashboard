@@ -1,0 +1,7 @@
+[
+  { "name": "Department of Science & Technology", "url": "https://dst.gov.in/", "abbr": "DST" },
+  { "name": "Ministry of Electronics & Information Technology", "url": "https://www.meity.gov.in/", "abbr": "MeitY" },
+  { "name": "Digital India", "url": "https://www.digitalindia.gov.in/", "abbr": "Digital India" },
+  { "name": "MyGov", "url": "https://www.mygov.in/", "abbr": "MyGov" },
+  { "name": "SEED Division, DST", "url": "https://dst.gov.in/scientific-programmes/st-and-socio-economic-development/seed", "abbr": "SEED" }
+]
