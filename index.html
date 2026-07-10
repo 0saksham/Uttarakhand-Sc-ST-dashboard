@@ -671,6 +671,20 @@
       .lightbox-next{right:4px}
       .header-banner{display:none !important}
     }
+    /* What's New Carousel Widget */
+    .whats-new-wrapper .whats-new-item {
+      transform: none !important;
+      box-shadow: none !important;
+      border: none !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      transition: background var(--transition) !important;
+    }
+    .whats-new-wrapper .whats-new-item:hover {
+      background: var(--bg-base) !important;
+    }
   </style>
 </head>
 <body>
@@ -1028,13 +1042,15 @@
         <div class="sidebar-inner">
           
           <!-- WHAT'S NEW WIDGET (Moved to sidebar) -->
-          <div class="card sidebar-widget" id="sidebar-whats-new">
+          <div class="card sidebar-widget" id="sidebar-whats-new" style="padding: 16px;">
             <h3 data-en="What's New" data-hi="क्या नया है">
               <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               What's New
             </h3>
-            <div class="whats-new-list" id="whats-new-list">
-              <!-- Rendered dynamically -->
+            <div class="whats-new-wrapper" id="whats-new-wrapper" style="height: 300px; overflow: hidden; position: relative; border: none; box-shadow: none;">
+              <div class="whats-new-list" id="whats-new-list" style="display: flex; flex-direction: column; gap: 0; transition: transform 0.4s ease; will-change: transform;">
+                <!-- Rendered dynamically -->
+              </div>
             </div>
           </div>
 
@@ -1759,26 +1775,90 @@
       grid.innerHTML = html;
     }
 
+    let whatsNewInterval;
+    function initWhatsNewScroll() {
+      const wrapper = document.getElementById('whats-new-wrapper');
+      const track = document.getElementById('whats-new-list');
+      if (!track || !wrapper) return;
+      
+      if (whatsNewInterval) clearInterval(whatsNewInterval);
+      
+      let pos = 0;
+      track.style.transform = `translateY(0px)`;
+      
+      function scroll() {
+        const halfHeight = track.scrollHeight / 2;
+        if (halfHeight <= 0) return;
+        pos += 0.8; // scroll speed
+        if (pos >= halfHeight) {
+          pos = 0;
+        }
+        track.style.transform = `translateY(-${pos}px)`;
+      }
+      
+      function start() {
+        if (whatsNewInterval) clearInterval(whatsNewInterval);
+        whatsNewInterval = setInterval(scroll, 50);
+      }
+      
+      function stop() {
+        clearInterval(whatsNewInterval);
+      }
+      
+      setTimeout(() => {
+        const halfHeight = track.scrollHeight / 2;
+        const wrapperHeight = wrapper.offsetHeight;
+        
+        if (halfHeight > wrapperHeight) {
+          start();
+          wrapper.onmouseenter = stop;
+          wrapper.onmouseleave = start;
+        } else {
+          track.style.transform = `translateY(0px)`;
+          wrapper.onmouseenter = null;
+          wrapper.onmouseleave = null;
+        }
+      }, 500);
+    }
+
     function renderWhatsNew() {
       const list = document.getElementById('whats-new-list');
       if (!list) return;
-      const docs = WHATS_NEW_PDFS.length ? WHATS_NEW_PDFS : APP.whatsNew;
+      
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
+      
+      const docs = APP.notesOrders.filter(item => {
+        if (!item.date) return false;
+        const itemDate = new Date(item.date);
+        return itemDate >= oneMonthAgo;
+      });
+      
       if (!docs.length) {
-        list.innerHTML = '<p style="color:var(--text-muted);font-size:.85rem;padding:16px">No updates yet. Check back soon.</p>';
+        list.innerHTML = '<p style="color:var(--text-muted);font-size:.85rem;padding:16px" data-en="No updates in the last 30 days." data-hi="पिछले 30 दिनों में कोई अपडेट नहीं है।">No updates in the last 30 days.</p>';
         return;
       }
-      list.innerHTML = docs.map(item => {
-        const pdfUrl = `what%27s%20new/${encodeURIComponent(item.pdf)}`;
+      
+      // Sort newest first
+      docs.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      // Duplicate for infinite scrolling
+      const duplicatedDocs = docs.concat(docs);
+      
+      list.innerHTML = duplicatedDocs.map(item => {
+        const pdfUrl = `assets/pdfs/${encodeURIComponent(item.pdf)}`;
         const dateText = item.date ? new Date(item.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '';
         return `
-        <a href="${pdfUrl}" class="card whats-new-item" target="_blank" rel="noopener noreferrer">
+        <a href="${pdfUrl}" class="whats-new-item" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
           <div class="whats-new-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
           <div class="whats-new-info">
-            <h4>${item.title}</h4>
-            <p>${dateText}${dateText ? ' — ' : ''}${item.summary}</p>
+            <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-size: 0.85rem; font-weight: 600;">${item.title}</h4>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.75rem;">${dateText}${dateText ? ' — ' : ''}${item.category || 'Notification'}</p>
           </div>
         </a>
       `}).join('');
+      
+      initWhatsNewScroll();
     }
 
     function renderEvents() {
