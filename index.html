@@ -1152,6 +1152,10 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="5" width="15" height="14" rx="2"></rect><polygon points="10 10 10 14 14 12"></polygon><path d="M17 10l5-3v10l-5-3z"></path></svg>
           <span>Videos</span>
         </button>
+        <button id="gallery-tab-news-clips" class="gallery-media-btn" type="button" role="tab" aria-selected="false" data-en="News Clips" data-hi="समाचार क्लिप्स">
+          <svg viewBox="0 0 24 24"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 4a2 2 0 0 0-2-2h-1m1 11a2 2 0 0 1-2 2h-1M21 8v10a2 2 0 0 1-2 2h-4"/></svg>
+          <span>News Clips</span>
+        </button>
       </div>
 
       <div id="gallery-images-panel" class="gallery-media-panel active" role="tabpanel" aria-labelledby="gallery-tab-images">
@@ -1161,6 +1165,11 @@
       </div>
       <div id="gallery-videos-panel" class="gallery-media-panel" role="tabpanel" aria-labelledby="gallery-tab-videos">
         <div class="videos-grid" id="full-videos-grid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+      <div id="gallery-news-clips-panel" class="gallery-media-panel" role="tabpanel" aria-labelledby="gallery-tab-news-clips">
+        <div class="photos-grid" id="full-news-clips-grid">
           <!-- Rendered dynamically by JS -->
         </div>
       </div>
@@ -1671,12 +1680,12 @@
       `).join('');
       grid.onclick = (e) => {
         const item = e.target.closest('.photo-item');
-        if (item) openLightbox(parseInt(item.dataset.index));
+        if (item) openLightbox(parseInt(item.dataset.index), APP.photos, 'assets/photos/');
       };
       grid.onkeydown = (e) => {
         if (e.key === 'Enter') {
           const item = e.target.closest('.photo-item');
-          if (item) openLightbox(parseInt(item.dataset.index));
+          if (item) openLightbox(parseInt(item.dataset.index), APP.photos, 'assets/photos/');
         }
       };
     }
@@ -1699,32 +1708,75 @@
       `).join('');
     }
 
+    const NEWS_CLIPS_IMAGES = [
+      { filename: 'News_1.jpg.jpeg', caption: 'News Clip 1' },
+      { filename: 'News_2.jpg.jpeg', caption: 'News Clip 2' },
+      { filename: 'News_3.jpg.jpeg', caption: 'News Clip 3' },
+      { filename: 'News_4.jpg.jpeg', caption: 'News Clip 4' },
+      { filename: 'News_5.jpg.jpeg', caption: 'News Clip 5' },
+      { filename: 'News_6.jpg.jpeg', caption: 'News Clip 6' },
+      { filename: 'News_7.jpg.jpeg', caption: 'News Clip 7' },
+      { filename: 'News_8.jpg.jpeg', caption: 'News Clip 8' }
+    ];
+
+    function renderFullNewsClips() {
+      const grid = document.getElementById('full-news-clips-grid');
+      if (!grid) return;
+      grid.innerHTML = NEWS_CLIPS_IMAGES.map((p, i) => `
+        <div class="photo-item" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.caption}">
+          <img src="assets/Newspaper Clips/${encodeURIComponent(p.filename)}" alt="${p.caption}" loading="lazy">
+          <div class="photo-caption">${p.caption}</div>
+        </div>
+      `).join('');
+      grid.onclick = (e) => {
+        const item = e.target.closest('.photo-item');
+        if (item) openLightbox(parseInt(item.dataset.index), NEWS_CLIPS_IMAGES, 'assets/Newspaper Clips/');
+      };
+      grid.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+          const item = e.target.closest('.photo-item');
+          if (item) openLightbox(parseInt(item.dataset.index), NEWS_CLIPS_IMAGES, 'assets/Newspaper Clips/');
+        }
+      };
+    }
+
     function initGalleryMediaTabs(defaultType = 'images') {
       const imgBtn = document.getElementById('gallery-tab-images');
       const vidBtn = document.getElementById('gallery-tab-videos');
+      const newsBtn = document.getElementById('gallery-tab-news-clips');
+      
       const imgPanel = document.getElementById('gallery-images-panel');
       const vidPanel = document.getElementById('gallery-videos-panel');
-      if (!imgBtn || !vidBtn || !imgPanel || !vidPanel) return;
+      const newsPanel = document.getElementById('gallery-news-clips-panel');
+      
+      if (!imgBtn || !vidBtn || !newsBtn || !imgPanel || !vidPanel || !newsPanel) return;
 
       function setType(type) {
-        const imagesActive = type === 'images';
-        APP.galleryMediaType = imagesActive ? 'images' : 'videos';
-        imgBtn.classList.toggle('active', imagesActive);
-        vidBtn.classList.toggle('active', !imagesActive);
-        imgBtn.setAttribute('aria-selected', imagesActive ? 'true' : 'false');
-        vidBtn.setAttribute('aria-selected', imagesActive ? 'false' : 'true');
-        imgPanel.classList.toggle('active', imagesActive);
-        vidPanel.classList.toggle('active', !imagesActive);
+        APP.galleryMediaType = type;
+        
+        imgBtn.classList.toggle('active', type === 'images');
+        vidBtn.classList.toggle('active', type === 'videos');
+        newsBtn.classList.toggle('active', type === 'news-clips');
+        
+        imgBtn.setAttribute('aria-selected', type === 'images' ? 'true' : 'false');
+        vidBtn.setAttribute('aria-selected', type === 'videos' ? 'true' : 'false');
+        newsBtn.setAttribute('aria-selected', type === 'news-clips' ? 'true' : 'false');
+        
+        imgPanel.classList.toggle('active', type === 'images');
+        vidPanel.classList.toggle('active', type === 'videos');
+        newsPanel.classList.toggle('active', type === 'news-clips');
       }
 
       imgBtn.onclick = () => setType('images');
       vidBtn.onclick = () => setType('videos');
+      newsBtn.onclick = () => setType('news-clips');
       setType(defaultType);
     }
 
     function renderFullMediaGallery() {
       renderFullPhotos();
       renderFullVideos();
+      renderFullNewsClips();
       initGalleryMediaTabs(APP.galleryMediaType || 'images');
     }
 
@@ -1828,15 +1880,21 @@
       const oneMonthAgo = new Date();
       oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
       
-      const docs = APP.notesOrders.filter(item => {
+      let docs = APP.notesOrders.filter(item => {
         if (!item.date) return false;
         const itemDate = new Date(item.date);
         return itemDate >= oneMonthAgo;
       });
       
       if (!docs.length) {
-        list.innerHTML = '<p style="color:var(--text-muted);font-size:.85rem;padding:16px" data-en="No updates in the last 30 days." data-hi="पिछले 30 दिनों में कोई अपडेट नहीं है।">No updates in the last 30 days.</p>';
-        return;
+        if (APP.notesOrders.length) {
+          // Fallback: sort all notes/orders by date descending and grab the single latest one
+          const sortedAll = [...APP.notesOrders].sort((a, b) => new Date(b.date) - new Date(a.date));
+          docs = [sortedAll[0]];
+        } else {
+          list.innerHTML = '<p style="color:var(--text-muted);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
+          return;
+        }
       }
       
       // Sort newest first
@@ -2289,8 +2347,10 @@
     /* ===========================================
        LIGHTBOX
     =========================================== */
-    function openLightbox(index) {
+    function openLightbox(index, gallery = APP.photos, path = 'assets/photos/') {
       APP.lightboxIndex = index;
+      APP.lightboxGallery = gallery;
+      APP.lightboxPath = path;
       const lb = document.getElementById('lightbox');
       lb.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -2300,17 +2360,22 @@
       document.getElementById('lightbox').classList.remove('active');
       document.body.style.overflow = '';
       APP.lightboxIndex = -1;
+      APP.lightboxGallery = null;
+      APP.lightboxPath = null;
     }
     function updateLightbox() {
-      const p = APP.photos[APP.lightboxIndex];
+      const gallery = APP.lightboxGallery || APP.photos;
+      const path = APP.lightboxPath || 'assets/photos/';
+      const p = gallery[APP.lightboxIndex];
       if (!p) return;
-      document.getElementById('lightbox-img').src = `assets/photos/${encodeURIComponent(p.filename)}`;
+      document.getElementById('lightbox-img').src = `${path}${encodeURIComponent(p.filename)}`;
       document.getElementById('lightbox-img').alt = p.caption;
       document.getElementById('lightbox-caption').textContent = p.caption;
-      document.getElementById('lightbox-counter').textContent = `${APP.lightboxIndex + 1} / ${APP.photos.length}`;
+      document.getElementById('lightbox-counter').textContent = `${APP.lightboxIndex + 1} / ${gallery.length}`;
     }
     function lightboxNav(dir) {
-      APP.lightboxIndex = (APP.lightboxIndex + dir + APP.photos.length) % APP.photos.length;
+      const gallery = APP.lightboxGallery || APP.photos;
+      APP.lightboxIndex = (APP.lightboxIndex + dir + gallery.length) % gallery.length;
       updateLightbox();
     }
     function initLightbox() {
