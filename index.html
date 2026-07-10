@@ -114,6 +114,20 @@
     .scst-badge .st{color:var(--ucost-blue)}
     .scst-badge .cell{color:var(--ucost-blue);margin-left:8px;font-weight:700;font-size:2.4rem}
     .scst-subtitle{font-size:14px;color:var(--ucost-blue-light);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-top:4px}
+    /* Hindi overrides for SC/ST Cell wordmark to prevent overflow */
+    html[lang="hi"] .scst-badge {
+      font-size: 1.45rem;
+      letter-spacing: normal;
+    }
+    html[lang="hi"] .scst-badge .cell {
+      font-size: 1.35rem;
+      margin-left: 6px;
+    }
+    html[lang="hi"] .scst-subtitle {
+      font-size: 11.5px;
+      letter-spacing: normal;
+      text-transform: none;
+    }
     /* ===========================================
        NAVIGATION
     =========================================== */
@@ -609,6 +623,9 @@
       .header-logo{height:80px}
       .scst-badge{font-size:2.0rem}
       .scst-badge .cell{font-size:1.8rem}
+      html[lang="hi"] .scst-badge{font-size:1.15rem}
+      html[lang="hi"] .scst-badge .cell{font-size:1.05rem}
+      html[lang="hi"] .scst-subtitle{font-size:10px}
       .header-banner{height:80px;width:auto;max-width:280px;object-fit:contain}
     }
     /* ===========================================
@@ -623,6 +640,9 @@
       .scst-badge{font-size:1.6rem}
       .scst-badge .cell{font-size:1.4rem}
       .scst-subtitle{font-size:10px}
+      html[lang="hi"] .scst-badge{font-size:0.9rem}
+      html[lang="hi"] .scst-badge .cell{font-size:0.8rem;margin-left:4px}
+      html[lang="hi"] .scst-subtitle{font-size:8px}
       .header-banner{display:block;height:60px;width:auto;max-width:200px;object-fit:contain}
       .nav-ticker{max-width:100%;margin-left:0;margin-right:12px;height:30px}
       .ticker-track{animation-duration:45s}
@@ -729,10 +749,10 @@
           <img src="assets/logo-UCOST.png" alt="UCOST Logo" class="header-logo" width="166" height="72">
         </a>
         <div class="scst-wordmark" style="flex-shrink:0;">
-          <div class="scst-badge">
+          <div class="scst-badge" data-en='<span class="sc">SC</span><span class="slash">/</span><span class="st">ST</span><span class="cell">Cell</span>' data-hi='<span class="sc">अनुसूचित जाति</span><span class="slash">/</span><span class="st">अनुसूचित जनजाति</span><span class="cell">प्रकोष्ठ</span>'>
             <span class="sc">SC</span><span class="slash">/</span><span class="st">ST</span><span class="cell">Cell</span>
           </div>
-          <div class="scst-subtitle">SEED · DST · Government of India</div>
+          <div class="scst-subtitle" data-en="SEED · DST · Government of India" data-hi="सीड (SEED) · विज्ञान एवं प्रौद्योगिकी विभाग (DST) · भारत सरकार">SEED · DST · Government of India</div>
         </div>
       </div>
       <!-- Banner Image -->
