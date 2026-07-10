@@ -746,7 +746,7 @@
     <div class="header-inner">
       <div class="header-brand">
         <a href="#/" aria-label="Home">
-          <img src="assets/logo-UCOST.png" alt="UCOST Logo" class="header-logo" width="166" height="72">
+          <img src="assets/logo-UCOST.png" alt="UCOST Logo" class="header-logo" width="166" height="72" data-en="assets/logo-UCOST.png" data-hi="assets/logo-UCOST-hindi.png" data-alt-en="UCOST Logo" data-alt-hi="यूकोस्ट लोगो">
         </a>
         <div class="scst-wordmark" style="flex-shrink:0;">
           <div class="scst-badge" data-en='<span class="sc">SC</span><span class="slash">/</span><span class="st">ST</span><span class="cell">Cell</span>' data-hi='<span class="sc">अनुसूचित जाति</span><span class="slash">/</span><span class="st">अनुसूचित जनजाति</span><span class="cell">प्रकोष्ठ</span>'>
@@ -2334,10 +2334,18 @@
         ? 'प्रकोष्ठ | यूकोस्ट — उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद'
         : 'SC/ST Cell | UCOST — Uttarakhand State Council for Science & Technology';
 
-      // Swap text
+      // Swap text & attributes (like image sources)
       document.querySelectorAll('[data-en][data-hi]').forEach(node => {
         const val = node.getAttribute('data-' + lang);
         if (val === null) return;
+        if (node.tagName.toLowerCase() === 'img') {
+          node.setAttribute('src', val);
+          const altVal = node.getAttribute('data-alt-' + lang);
+          if (altVal !== null) {
+            node.setAttribute('alt', altVal);
+          }
+          return;
+        }
         if (node.tagName.toLowerCase() === 'text') {
           node.textContent = val;
           return;
