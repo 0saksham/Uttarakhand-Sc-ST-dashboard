@@ -2014,33 +2014,35 @@
         }
       });
 
-      pipPlayer = new YT.Player('pip-video', {
-        videoId: 'deNQUtwSYQQ',
-        playerVars: {
-          'autoplay': 1,
-          'mute': 1,
-          'loop': 1,
-          'playlist': 'deNQUtwSYQQ',
-          'controls': 0,
-          'showinfo': 0,
-          'rel': 0,
-          'modestbranding': 1,
-          'playsinline': 1,
-          'iv_load_policy': 3,
-          'disablekb': 1
-        },
-        events: {
-          'onReady': onPipPlayerReady,
-          'onStateChange': onPipPlayerStateChange
-        }
-      });
+      if (window.innerWidth > 768) {
+        pipPlayer = new YT.Player('pip-video', {
+          videoId: 'deNQUtwSYQQ',
+          playerVars: {
+            'autoplay': 0,
+            'mute': 1,
+            'loop': 1,
+            'playlist': 'deNQUtwSYQQ',
+            'controls': 0,
+            'showinfo': 0,
+            'rel': 0,
+            'modestbranding': 1,
+            'playsinline': 1,
+            'iv_load_policy': 3,
+            'disablekb': 1
+          },
+          events: {
+            'onReady': onPipPlayerReady,
+            'onStateChange': onPipPlayerStateChange
+          }
+        });
+      }
     };
 
     function onPlayerReady(event) {
       event.target.playVideo();
     }
     function onPipPlayerReady(event) {
-      event.target.playVideo();
+      // Do not auto-play on load
     }
 
     function onPlayerStateChange(event) {
@@ -2049,7 +2051,7 @@
       }
     }
     function onPipPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
+      if (event.data === YT.PlayerState.ENDED && pipPlayer && typeof pipPlayer.playVideo === 'function') {
         pipPlayer.playVideo();
       }
     }
