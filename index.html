@@ -88,7 +88,7 @@
     /* ===========================================
        HEADER / BRANDING
     =========================================== */
-    .site-header{background:#fff;border-bottom:1px solid var(--border-color);position:relative;z-index:100}
+    .site-header{background:#fff;border-bottom:1px solid var(--border-color);position:relative;z-index:110}
     .header-inner{max-width:var(--max-width);margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .header-brand{display:flex;align-items:center;gap:24px}
     .header-banner{height:100px;max-height:100px;width:auto;max-width:350px;object-fit:contain;border-radius:var(--radius-sm);transition:all var(--transition)}
@@ -300,6 +300,263 @@
     .explore-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,var(--ucost-blue),var(--ucost-blue-light));color:#fff;border-radius:50px;font-weight:600;font-size:.9rem;transition:all .3s ease;box-shadow:var(--shadow-sm);margin-top:16px}
     .explore-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);color:#fff}
     .explore-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all var(--transition);
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+    }
+    .pdf-btn.view {
+      background: var(--bg-card);
+      color: var(--ucost-blue-light);
+      border-color: var(--ucost-blue-light);
+    }
+    .pdf-btn.view:hover {
+      background: var(--ucost-blue-light);
+      color: #fff;
+    }
+    .pdf-btn.download {
+      background: var(--ucost-blue);
+      color: #fff;
+      border-color: var(--ucost-blue);
+    }
+    .pdf-btn.download:hover {
+      background: var(--ucost-blue-light);
+      border-color: var(--ucost-blue-light);
+      color: #fff;
+    }
+    /* ===========================================
+       FAQ ACCORDION
+    =========================================== */
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .faq-item.active {
+      border-color: var(--ucost-blue-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-trigger {
+      width: 100%;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s ease;
+    }
+    .faq-trigger:hover {
+      background: rgba(30, 111, 181, 0.03);
+    }
+    .faq-trigger:focus {
+      outline: none;
+      background: rgba(30, 111, 181, 0.05);
+    }
+    .faq-trigger .faq-icon {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 2.5;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .faq-item.active .faq-trigger .faq-icon {
+      transform: rotate(180deg);
+      stroke: var(--ucost-blue-light);
+    }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 24px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .faq-item.active .faq-content {
+      max-height: 500px;
+      padding: 0 24px 20px;
+    }
+
+    /* ===========================================
+       GLOBAL PORTAL SEARCH
+    =========================================== */
+    .header-search {
+      position: relative;
+      width: 280px;
+      margin-left: auto;
+      margin-right: 24px;
+      z-index: 1000;
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .header-search input {
+      width: 100%;
+      padding: 8px 36px 8px 36px;
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      transition: all var(--transition);
+    }
+    .header-search input::-webkit-search-cancel-button,
+    .header-search input::-webkit-search-decoration,
+    .header-search input::-webkit-search-results-button,
+    .header-search input::-webkit-search-results-decoration {
+      display: none;
+      -webkit-appearance: none;
+    }
+    .header-search input:focus {
+      outline: none;
+      border-color: var(--ucost-blue-light);
+      box-shadow: 0 0 0 3px rgba(30,111,181,0.15);
+      background: #fff;
+    }
+    .header-search .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 2.5;
+      pointer-events: none;
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+    }
+    .search-clear-btn:hover {
+      color: var(--text-primary);
+    }
+    .search-results-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      max-height: 320px;
+      overflow-y: auto;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      padding: 6px 0;
+    }
+    .search-result-item {
+      padding: 10px 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      transition: background var(--transition);
+      text-decoration: none;
+      text-align: left;
+    }
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    .search-result-item:hover, .search-result-item.focused {
+      background: var(--bg-base);
+      outline: none;
+    }
+    .search-result-item .result-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ucost-blue);
+    }
+    .search-result-item .result-snippet {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .search-result-item .result-category {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--saffron-accent);
+      align-self: flex-start;
+    }
+    .search-no-results {
+      padding: 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    
+    /* Highlight/Flash animation */
+    @keyframes searchFlash {
+      0% { background-color: rgba(255, 153, 51, 0.4); outline: 3px solid var(--saffron-accent); }
+      100% { background-color: transparent; outline: 3px solid transparent; }
+    }
+    .search-highlight {
+      animation: searchFlash 2s ease-out;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 991px) {
+      .header-search {
+        width: 220px;
+        margin-right: 12px;
+      }
+    }
+    @media (max-width: 767px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .header-search {
+        width: 100%;
+        margin: 0;
+      }
+    }
     /* ===========================================
        LIGHTBOX
     =========================================== */
@@ -371,7 +628,7 @@
     .event-date .year{font-size:.65rem;font-weight:700;opacity:.85;margin-top:2px}
     .event-info h4{font-size:.9rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;line-height:1.4}
     .event-info p{font-size:.78rem;color:var(--text-muted);line-height:1.5}
-    .events-empty{text-align:center;padding:48px 24px;color:var(--text-muted)}
+    .events-empty{text-align:center;padding:48px 24px;color:var(--text-secondary)}
     .events-empty svg{width:48px;height:48px;stroke:var(--border-color);fill:none;stroke-width:1.5;margin:0 auto 12px}
     /* ===========================================
        SIDEBAR & TWIN COLUMN STYLING
@@ -416,7 +673,7 @@
     =========================================== */
     .tabs-container{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-color);background:var(--bg-card);box-shadow:var(--shadow-sm)}
     .tabs-header{display:flex;border-bottom:1px solid var(--border-color);background:var(--bg-base)}
-    .tab-btn{flex:1;padding:14px 20px;font-weight:600;font-size:.875rem;color:var(--text-muted);transition:all var(--transition);position:relative;text-align:center}
+    .tab-btn{flex:1;padding:14px 20px;font-weight:600;font-size:.875rem;color:var(--text-secondary);transition:all var(--transition);position:relative;text-align:center}
     .tab-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--saffron-accent);transform:scaleX(0);transition:transform .3s ease}
     .tab-btn:hover{color:var(--text-primary);background:rgba(0,0,0,.02)}
     .tab-btn.active{color:var(--ucost-blue);background:var(--bg-card)}
@@ -755,6 +1012,15 @@
           <div class="scst-subtitle" data-en="SEED · DST · Government of India" data-hi="सीड (SEED) · विज्ञान एवं प्रौद्योगिकी विभाग (DST) · भारत सरकार">SEED · DST · Government of India</div>
         </div>
       </div>
+      <!-- Search Bar -->
+      <div class="header-search" role="search">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="portal-search-input" data-en="Search portal..." data-hi="पोर्टल खोजें..." placeholder="Search portal..." aria-label="Search portal" data-aria-en="Search portal" data-aria-hi="पोर्टल खोजें" autocomplete="off">
+          <button id="search-clear-btn" class="search-clear-btn" type="button" aria-label="Clear search" data-aria-en="Clear search" data-aria-hi="खोज साफ करें" style="display:none;">&times;</button>
+        </div>
+        <div id="search-results-dropdown" class="search-results-dropdown" role="region" aria-live="polite" style="display:none;"></div>
+      </div>
       <!-- Banner Image -->
       <img src="top.png" alt="Branding Banner" class="header-banner">
     </div>
@@ -781,6 +1047,9 @@
         </li>
         <li class="nav-item" role="none">
           <a class="nav-link" href="#/notes-orders" role="menuitem" data-en="Notes & Orders" data-hi="सूचना एवं आदेश">Notes &amp; Orders</a>
+        </li>
+        <li class="nav-item" role="none">
+          <a class="nav-link" href="#/faq" role="menuitem" data-en="FAQ" data-hi="एफएक्यू">FAQ</a>
         </li>
       </ul>
       <!-- News Ticker -->
@@ -1006,35 +1275,35 @@
             <!-- OBJECTIVES -->
             <div class="tab-panel active" id="panel-obj" role="tabpanel" aria-labelledby="tab-obj">
               <div class="objectives-grid">
-                <div class="objective-card"><span class="objective-num">1</span><p class="objective-text" data-en="To assess the livelihood system for sustainable livelihood planning through science, know-how and practices." data-hi="विज्ञान, ज्ञान और प्रथाओं के माध्यम से टिकाऊ आजीविका योजना हेतु आजीविका प्रणाली का आकलन करना।">To assess the livelihood system for sustainable livelihood planning through science, know-how and practices.</p></div>
-                <div class="objective-card"><span class="objective-num">2</span><p class="objective-text" data-en="To capture traditional and indigenous knowledge and upgrade the skill, building on local innovation and local knowledge system." data-hi="स्थानीय नवाचार और स्थानीय ज्ञान प्रणाली पर आधारित पारंपरिक और स्वदेशी ज्ञान को संग्रहीत करना और कौशल का उन्नयन करना।">To capture traditional and indigenous knowledge and upgrade the skill, building on local innovation and local knowledge system.</p></div>
-                <div class="objective-card"><span class="objective-num">3</span><p class="objective-text" data-en="Establishment of database of promising technologies that can be taken up for widespread adaption." data-hi="व्यापक अनुकूलन के लिए उपयोगी संभावित प्रौद्योगिकियों का डेटाबेस स्थापित करना।">Establishment of database of promising technologies that can be taken up for widespread adaption.</p></div>
-                <div class="objective-card"><span class="objective-num">4</span><p class="objective-text" data-en="Mapping of the above data and resources of spatial domain." data-hi="स्थानिक क्षेत्र के उपरोक्त डेटा और संसाधनों का मानचित्रण करना।">Mapping of the above data and resources of spatial domain.</p></div>
-                <div class="objective-card"><span class="objective-num">5</span><p class="objective-text" data-en="To act as coordination cell to promote adaption of appropriate and relevant technologies for socio-economic development of target development." data-hi="लक्षित विकास के सामाजिक-आर्थिक विकास के लिए उपयुक्त और प्रासंगिक प्रौद्योगिकियों के अनुकूलन को बढ़ावा देने के लिए समन्वय सेल के रूप में कार्य करना।">To act as coordination cell to promote adaption of appropriate and relevant technologies for socio-economic development of target development.</p></div>
-                <div class="objective-card"><span class="objective-num">6</span><p class="objective-text" data-en="Promotion, replication and scaling up of successful technologies leading to socio-economic employment of capacity building." data-hi="क्षमता निर्माण के सामाजिक-आर्थिक रोजगार की ओर ले जाने वाली सफल प्रौद्योगिकियों को बढ़ावा देना, दोहराना और उनका विस्तार करना।">Promotion, replication and scaling up of successful technologies leading to socio-economic employment of capacity building.</p></div>
-                <div class="objective-card"><span class="objective-num">7</span><p class="objective-text" data-en="Development of programs and projects for strengthening human &amp; institutional capacities and technology development." data-hi="मानव और संस्थागत क्षमताओं और प्रौद्योगिकी विकास को मजबूत करने के लिए कार्यक्रमों और परियोजनाओं का विकास करना।">Development of programs and projects for strengthening human &amp; institutional capacities and technology development.</p></div>
-                <div class="objective-card"><span class="objective-num">8</span><p class="objective-text" data-en="Human Resource development of SC/ST Community." data-hi="अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास करना।">Human Resource development of SC/ST Community.</p></div>
-                <div class="objective-card"><span class="objective-num">9</span><p class="objective-text" data-en="Establishment of site-based skill development centre." data-hi="साइट-आधारित कौशल विकास केंद्र की स्थापना करना।">Establishment of site-based skill development centre.</p></div>
-                <div class="objective-card"><span class="objective-num">10</span><p class="objective-text" data-en="Identification of gaps in existing government/non-government schemes." data-hi="मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान करना।">Identification of gaps in existing government/non-government schemes.</p></div>
+                <div class="objective-card" id="objective-card-1"><span class="objective-num">1</span><p class="objective-text" data-en="To assess the livelihood system for sustainable livelihood planning through science, know-how and practices." data-hi="विज्ञान, ज्ञान and प्रथाओं के माध्यम से टिकाऊ आजीविका योजना हेतु आजीविका प्रणाली का आकलन करना।">To assess the livelihood system for sustainable livelihood planning through science, know-how and practices.</p></div>
+                <div class="objective-card" id="objective-card-2"><span class="objective-num">2</span><p class="objective-text" data-en="To capture traditional and indigenous knowledge and upgrade the skill, building on local innovation and local knowledge system." data-hi="स्थानीय नवाचार और स्थानीय ज्ञान प्रणाली पर आधारित पारंपरिक और स्वदेशी ज्ञान को संग्रहीत करना और कौशल का उन्नयन करना।">To capture traditional and indigenous knowledge and upgrade the skill, building on local innovation and local knowledge system.</p></div>
+                <div class="objective-card" id="objective-card-3"><span class="objective-num">3</span><p class="objective-text" data-en="Establishment of database of promising technologies that can be taken up for widespread adaption." data-hi="व्यापक अनुकूलन के लिए उपयोगी संभावित प्रौद्योगिकियों का डेटाबेस स्थापित करना।">Establishment of database of promising technologies that can be taken up for widespread adaption.</p></div>
+                <div class="objective-card" id="objective-card-4"><span class="objective-num">4</span><p class="objective-text" data-en="Mapping of the above data and resources of spatial domain." data-hi="स्थानिक क्षेत्र के उपरोक्त डेटा और संसाधनों का मानचित्रण करना।">Mapping of the above data and resources of spatial domain.</p></div>
+                <div class="objective-card" id="objective-card-5"><span class="objective-num">5</span><p class="objective-text" data-en="To act as coordination cell to promote adaption of appropriate and relevant technologies for socio-economic development of target development." data-hi="लक्षित विकास के सामाजिक-आर्थिक विकास के लिए उपयुक्त और प्रासंगिक प्रौद्योगिकियों के अनुकूलन को बढ़ावा देने के लिए समन्वय सेल के रूप में कार्य करना।">To act as coordination cell to promote adaption of appropriate and relevant technologies for socio-economic development of target development.</p></div>
+                <div class="objective-card" id="objective-card-6"><span class="objective-num">6</span><p class="objective-text" data-en="Promotion, replication and scaling up of successful technologies leading to socio-economic employment of capacity building." data-hi="क्षमता निर्माण के सामाजिक-आर्थिक रोजगार की ओर ले जाने वाली सफल प्रौद्योगिकियों को बढ़ावा देना, दोहराना और उनका विस्तार करना।">Promotion, replication and scaling up of successful technologies leading to socio-economic employment of capacity building.</p></div>
+                <div class="objective-card" id="objective-card-7"><span class="objective-num">7</span><p class="objective-text" data-en="Development of programs and projects for strengthening human &amp; institutional capacities and technology development." data-hi="मानव और संस्थागत क्षमताओं और प्रौद्योगिकी विकास को मजबूत करने के लिए कार्यक्रमों और परियोजनाओं का विकास करना।">Development of programs and projects for strengthening human &amp; institutional capacities and technology development.</p></div>
+                <div class="objective-card" id="objective-card-8"><span class="objective-num">8</span><p class="objective-text" data-en="Human Resource development of SC/ST Community." data-hi="अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास करना।">Human Resource development of SC/ST Community.</p></div>
+                <div class="objective-card" id="objective-card-9"><span class="objective-num">9</span><p class="objective-text" data-en="Establishment of site-based skill development centre." data-hi="साइट-आधारित कौशल विकास केंद्र की स्थापना करना।">Establishment of site-based skill development centre.</p></div>
+                <div class="objective-card" id="objective-card-10"><span class="objective-num">10</span><p class="objective-text" data-en="Identification of gaps in existing government/non-government schemes." data-hi="मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान करना।">Identification of gaps in existing government/non-government schemes.</p></div>
               </div>
             </div>
             <!-- METHODOLOGY -->
             <div class="tab-panel" id="panel-meth" role="tabpanel" aria-labelledby="tab-meth">
               <p class="method-intro" data-en="Site-specific priority areas across Uttarakhand's varying geography, with need-based interventions for socio-economic upliftment via:" data-hi="उत्तराखंड के अलग-अलग भूगोल में आवश्यकता-आधारित हस्तक्षेपों के माध्यम से सामाजिक-आर्थिक उत्थान के लिए साइट-विशिष्ट प्राथमिकता वाले क्षेत्र:">Site-specific priority areas across Uttarakhand's varying geography, with need-based interventions for socio-economic upliftment via:</p>
               <div class="method-flow">
-                <div class="method-node blue">
+                <div class="method-node blue" id="method-node-1">
                   <h4 data-en="Food Preservation Unit" data-hi="खाद्य संरक्षण इकाई">Food Preservation Unit</h4>
                   <p data-en="Horticulture &amp; Agriculture Products — processing, value addition, and market linkage for local produce" data-hi="बागवानी और कृषि उत्पाद — प्रसंस्करण, मूल्यवर्धन और स्थानीय उपज के लिए बाजार संबंध">Horticulture &amp; Agriculture Products — processing, value addition, and market linkage for local produce</p>
                 </div>
-                <div class="method-node light">
+                <div class="method-node light" id="method-node-2">
                   <h4 data-en="Artisan &amp; Handicrafts Unit" data-hi="कारीगर और हस्तशिल्प इकाई">Artisan &amp; Handicrafts Unit</h4>
                   <p data-en="Skill development, design innovation, and market access for traditional artisans and craftspeople" data-hi="पारंपरिक कारीगरों और शिल्पकारों के लिए कौशल विकास, डिजाइन नवाचार और बाजार तक पहुंच">Skill development, design innovation, and market access for traditional artisans and craftspeople</p>
                 </div>
-                <div class="method-node green">
+                <div class="method-node green" id="method-node-3">
                   <h4 data-en="Scientific Gazettes Preparation Unit" data-hi="वैज्ञानिक राजपत्र तैयारी इकाई">Scientific Gazettes Preparation Unit</h4>
                   <p data-en="Indigenous/traditional knowledge testing, product quality validation, and market linkage documentation" data-hi="स्वदेशी/पारंपरिक ज्ञान परीक्षण, उत्पाद गुणवत्ता सत्यापन और बाजार संबंध प्रलेखन">Indigenous/traditional knowledge testing, product quality validation, and market linkage documentation</p>
                 </div>
-                <div class="method-node saffron">
+                <div class="method-node saffron" id="method-node-4">
                   <h4 data-en="Mapping through RS &amp; GIS" data-hi="आरएस और जीआईएस के माध्यम से मानचित्रण">Mapping through RS &amp; GIS</h4>
                   <p data-en="Spatial mapping of resources using Remote Sensing and Geographical Information System for evidence-based planning" data-hi="साक्ष्य-आधारित योजना के लिए रिमोट सेंसिंग और भौगोलिक सूचना प्रणाली का उपयोग करके संसाधनों का स्थानिक मानचित्रण">Spatial mapping of resources using Remote Sensing and Geographical Information System for evidence-based planning</p>
                 </div>
@@ -1043,11 +1312,11 @@
             <!-- DELIVERABLES -->
             <div class="tab-panel" id="panel-deliv" role="tabpanel" aria-labelledby="tab-deliv">
               <div class="deliverables-list">
-                <div class="deliverable-item"><span class="deliverable-num">1</span><p class="deliverable-text" data-en="Human Resource Development of SC/ST Community." data-hi="अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास।">Human Resource Development of SC/ST Community.</p></div>
-                <div class="deliverable-item"><span class="deliverable-num">2</span><p class="deliverable-text" data-en="Establishment of Site-based Skill Development Centre." data-hi="साइट-आधारित कौशल विकास केंद्र की स्थापना।">Establishment of Site-based Skill Development Centre.</p></div>
-                <div class="deliverable-item"><span class="deliverable-num">3</span><p class="deliverable-text" data-en="Identification of Gaps in Existing Government/Non-Government Schemes." data-hi="मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान।">Identification of Gaps in Existing Government/Non-Government Schemes.</p></div>
-                <div class="deliverable-item"><span class="deliverable-num">4</span><p class="deliverable-text" data-en="Formulation, Strengthening, Coordination &amp; Documentation of programmes/Projects for filling gaps through S&amp;T interventions." data-hi="विज्ञान और प्रौद्योगिकी हस्तक्षेपों के माध्यम से कमियों को पाटने के लिए कार्यक्रमों/परियोजनाओं का निर्माण, सुदृढ़ीकरण, समन्वय और प्रलेखन।">Formulation, Strengthening, Coordination &amp; Documentation of programmes/Projects for filling gaps through S&amp;T interventions.</p></div>
-                <div class="deliverable-item"><span class="deliverable-num">5</span><p class="deliverable-text" data-en="The proposed model, developed through S&amp;T intervention in SC/ST areas, is designed to be replicable elsewhere." data-hi="अनुसूचित जाति/अनुसूचित जनजाति क्षेत्रों में विज्ञान और प्रौद्योगिकी हस्तक्षेप के माध्यम से विकसित प्रस्तावित मॉडल अन्यत्र भी दोहराने योग्य है।">The proposed model, developed through S&amp;T intervention in SC/ST areas, is designed to be replicable elsewhere.</p></div>
+                <div class="deliverable-item" id="deliverable-item-1"><span class="deliverable-num">1</span><p class="deliverable-text" data-en="Human Resource Development of SC/ST Community." data-hi="अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास।">Human Resource Development of SC/ST Community.</p></div>
+                <div class="deliverable-item" id="deliverable-item-2"><span class="deliverable-num">2</span><p class="deliverable-text" data-en="Establishment of Site-based Skill Development Centre." data-hi="साइट-आधारित कौशल विकास केंद्र की स्थापना।">Establishment of Site-based Skill Development Centre.</p></div>
+                <div class="deliverable-item" id="deliverable-item-3"><span class="deliverable-num">3</span><p class="deliverable-text" data-en="Identification of Gaps in Existing Government/Non-Government Schemes." data-hi="मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान।">Identification of Gaps in Existing Government/Non-Government Schemes.</p></div>
+                <div class="deliverable-item" id="deliverable-item-4"><span class="deliverable-num">4</span><p class="deliverable-text" data-en="Formulation, Strengthening, Coordination &amp; Documentation of programmes/Projects for filling gaps through S&amp;T interventions." data-hi="विज्ञान और प्रौद्योगिकी हस्तक्षेपों के माध्यम से कमियों को पाटने के लिए कार्यक्रमों/परियोजनाओं का निर्माण, सुदृढ़ीकरण, समन्वय और प्रलेखन।">Formulation, Strengthening, Coordination &amp; Documentation of programmes/Projects for filling gaps through S&amp;T interventions.</p></div>
+                <div class="deliverable-item" id="deliverable-item-5"><span class="deliverable-num">5</span><p class="deliverable-text" data-en="The proposed model, developed through S&amp;T intervention in SC/ST areas, is designed to be replicable elsewhere." data-hi="अनुसूचित जाति/अनुसूचित जनजाति क्षेत्रों में विज्ञान और प्रौद्योगिकी हस्तक्षेप के माध्यम से विकसित प्रस्तावित मॉडल अन्यत्र भी दोहराने योग्य है।">The proposed model, developed through S&amp;T intervention in SC/ST areas, is designed to be replicable elsewhere.</p></div>
               </div>
             </div>
           </div>
@@ -1217,6 +1486,62 @@
     </div>
   </div>
 
+  <!-- ========== FAQ PAGE ========== -->
+  <div id="page-faq" class="page-view">
+    <div class="contact-page" style="max-width: 860px; margin: 0 auto; padding: 40px 24px;">
+      <h1 class="detail-title" data-en="Frequently Asked Questions (FAQ)" data-hi="अक्सर पूछे जाने वाले प्रश्न (एफएक्यू)">Frequently Asked Questions (FAQ)</h1>
+      <div id="faq-list" style="display: flex; flex-direction: column; gap: 16px;">
+        <!-- Rendered dynamically from faqs.json -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========== ACCESSIBILITY STATEMENT PAGE ========== -->
+  <div id="page-accessibility" class="page-view">
+    <div class="contact-page" style="max-width: 860px; margin: 0 auto; padding: 40px 24px;">
+      <h1 class="detail-title" data-en="Accessibility Statement" data-hi="अभिगम्यता विवरण">Accessibility Statement</h1>
+      
+      <div class="card" style="padding: 28px; display: flex; flex-direction: column; gap: 20px;">
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--ucost-blue); margin-bottom: 12px;" data-en="Our Commitment" data-hi="हमारी प्रतिबद्धता">Our Commitment</h2>
+          <p style="line-height: 1.8; color: var(--text-secondary);" data-en="The Uttarakhand State Council for Science &amp; Technology (UCOST) is committed to ensuring that the SC/ST Cell portal is accessible to all users, including persons with disabilities. The website is designed and maintained to comply with the GIGW 3.0 Guidelines for Indian Government Websites and Web Content Accessibility Guidelines (WCAG) 2.1 Level AA conformance." data-hi="उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद (यूकोस्ट) यह सुनिश्चित करने के लिए प्रतिबद्ध है कि अनु.जाति/जनजाति प्रकोष्ठ पोर्टल सभी उपयोगकर्ताओं के लिए सुलभ हो, जिसमें विकलांग व्यक्ति भी शामिल हैं। वेबसाइट को भारत सरकार की वेबसाइटों के लिए GIGW 3.0 दिशानिर्देशों और वेब सामग्री अभिगम्यता दिशानिर्देश (WCAG) 2.1 स्तर AA के अनुपालन के अनुसार डिज़ाइन और अनुरक्षित किया गया है।">The Uttarakhand State Council for Science &amp; Technology (UCOST) is committed to ensuring that the SC/ST Cell portal is accessible to all users, including persons with disabilities. The website is designed and maintained to comply with the GIGW 3.0 Guidelines for Indian Government Websites and Web Content Accessibility Guidelines (WCAG) 2.1 Level AA conformance.</p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--ucost-blue); margin-bottom: 12px;" data-en="Accessibility Features" data-hi="अभिगम्यता विशेषताएँ">Accessibility Features</h2>
+          <ul style="line-height: 1.8; color: var(--text-secondary); padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+            <li data-en="Skip to Main Content link is provided for quick keyboard navigation." data-hi="त्वरित कीबोर्ड नेविगेशन के लिए 'मुख्य सामग्री पर जाएं' लिंक प्रदान किया गया है।">Skip to Main Content link is provided for quick keyboard navigation.</li>
+            <li data-en="Bilingual support allows switching between English and Hindi content." data-hi="द्विभाषी सहायता अंग्रेजी और हिंदी सामग्री के बीच स्विच करने की अनुमति देती है।">Bilingual support allows switching between English and Hindi content.</li>
+            <li data-en="Font size adjustment controls (A-, A, A+) are available in the top utility bar." data-hi="शीर्ष उपयोगिता पट्टी में फ़ॉन्ट आकार समायोजन नियंत्रण (A-, A, A+) उपलब्ध हैं।">Font size adjustment controls (A-, A, A+) are available in the top utility bar.</li>
+            <li data-en="High contrast mode switch is available for visually impaired users." data-hi="दृष्टिबाधित उपयोगकर्ताओं के लिए उच्च कंट्रास्ट मोड स्विच उपलब्ध है।">High contrast mode switch is available for visually impaired users.</li>
+            <li data-en="Full keyboard accessibility allowing navigation via Tab and arrow keys." data-hi="पूर्ण कीबोर्ड अभिगम्यता जो टैब और तीर कुंजियों के माध्यम से नेविगेशन की अनुमति देती है।">Full keyboard accessibility allowing navigation via Tab and arrow keys.</li>
+            <li data-en="Screen reader friendly semantic structure with ARIA landmarks and dynamic announcements." data-hi="ARIA स्थलों और गतिशील घोषणाओं के साथ स्क्रीन रीडर अनुकूल सिमेंटिक संरचना।">Screen reader friendly semantic structure with ARIA landmarks and dynamic announcements.</li>
+            <li data-en="Accessible on-site search engine with keyboard support and screen reader count announcements." data-hi="कीबोर्ड समर्थन और screen reader गणना घोषणाओं के साथ सुलभ ऑन-साइट खोज इंजन।">Accessible on-site search engine with keyboard support and screen reader count announcements.</li>
+          </ul>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--ucost-blue); margin-bottom: 12px;" data-en="Known Limitations" data-hi="ज्ञात सीमाएँ">Known Limitations</h2>
+          <p style="line-height: 1.8; color: var(--text-secondary);" data-en="While we strive to ensure accessibility of all pages, some legacy PDF documents and scanned newspaper clips might not be fully optimized for screen readers yet. We are actively working to replace these with accessible versions." data-hi="हालांकि हम सभी पृष्ठों की अभिगम्यता सुनिश्चित करने का प्रयास करते हैं, कुछ विरासत पीडीएफ दस्तावेज और स्कैन की गई समाचार पत्रों की क्लिप अभी तक स्क्रीन पाठकों के लिए पूरी तरह से अनुकूलित नहीं हो सकती हैं। हम इन्हें सुलभ संस्करणों के साथ बदलने के लिए सक्रिय रूप से काम कर रहे हैं।">While we strive to ensure accessibility of all pages, some legacy PDF documents and scanned newspaper clips might not be fully optimized for screen readers yet. We are actively working to replace these with accessible versions.</p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--ucost-blue); margin-bottom: 12px;" data-en="Feedback &amp; Contact Info" data-hi="प्रतिक्रिया और संपर्क जानकारी">Feedback &amp; Contact Info</h2>
+          <p style="line-height: 1.8; color: var(--text-secondary); margin-bottom: 12px;" data-en="If you encounter any accessibility barriers on this portal or wish to suggest improvements, please report them to:" data-hi="यदि आप इस पोर्टल पर किसी भी अभिगम्यता बाधा का सामना करते हैं या सुधार का सुझाव देना चाहते हैं, तो कृपया उन्हें रिपोर्ट करें:">If you encounter any accessibility barriers on this portal or wish to suggest improvements, please report them to:</p>
+          <div class="contact-detail" style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:6px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--ucost-blue-light);fill:none;stroke-width:2;margin-right:8px;vertical-align:middle;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:dg@ucost.in" style="color: var(--ucost-blue-light); font-weight: 500;">dg@ucost.in</a>
+          </div>
+          <div class="contact-detail" style="font-size:0.88rem; color:var(--text-secondary);">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:var(--ucost-blue-light);fill:none;stroke-width:2;margin-right:8px;vertical-align:middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07"/></svg>
+            +91-0135-2976266
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========== DETAIL PAGE (dynamic) ========== -->
   <div id="page-detail" class="page-view">
     <div class="detail-page" id="detail-content">
@@ -1230,7 +1555,7 @@
       <h1 class="detail-title" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</h1>
       <div class="contact-grid">
         <!-- PI -->
-        <div class="card contact-card">
+        <div class="card contact-card" id="contact-card-pi" style="transition: background 0.3s ease, transform 0.3s ease;">
           <span class="tier-badge pi" data-en="Principal Investigator" data-hi="प्रधान अन्वेषक">Principal Investigator</span>
           <h4>Prof. (Dr.) Durgesh Pant</h4>
           <p class="role" data-en="Director General, UCOST" data-hi="महानिदेशक, यूकोस्ट">Director General, UCOST</p>
@@ -1248,7 +1573,7 @@
           </div>
         </div>
         <!-- Co-PI 1 -->
-        <div class="card contact-card">
+        <div class="card contact-card" id="contact-card-copi-1" style="transition: background 0.3s ease, transform 0.3s ease;">
           <span class="tier-badge copi" data-en="Co-Principal Investigator" data-hi="सह-प्रधान अन्वेषक">Co-Principal Investigator</span>
           <h4>Dr. Devi Prashad Uniyal</h4>
           <p class="role" data-en="Joint Director, UCOST" data-hi="संयुक्त निदेशक, यूकोस्ट">Joint Director, UCOST</p>
@@ -1262,7 +1587,7 @@
           </div>
         </div>
         <!-- Co-PI 2 -->
-        <div class="card contact-card">
+        <div class="card contact-card" id="contact-card-copi-2" style="transition: background 0.3s ease, transform 0.3s ease;">
           <span class="tier-badge copi" data-en="Co-Principal Investigator" data-hi="सह-प्रधान अन्वेषक">Co-Principal Investigator</span>
           <h4>Dr. Manmohan Singh Rawat</h4>
           <p class="role" data-en="Scientific Officer, UCOST" data-hi="वैज्ञानिक अधिकारी, यूकोस्ट">Scientific Officer, UCOST</p>
@@ -1276,7 +1601,7 @@
           </div>
         </div>
         <!-- Staff Section -->
-        <div class="card staff-grid">
+        <div class="card staff-grid" id="contact-card-staff" style="transition: background 0.3s ease, transform 0.3s ease;">
           <span class="tier-badge staff" data-en="Project Staff" data-hi="परियोजना कर्मचारी">Project Staff</span>
           <div class="staff-list" style="margin-top:14px">
             <div class="card staff-chip"><h5>Mr. Nalin Sharma</h5><p data-en="Principal Project Associate" data-hi="प्रधान परियोजना सहयोगी">Principal Project Associate</p></div>
@@ -1352,14 +1677,10 @@
 
       </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
       <p data-en="© 2026 Uttarakhand State Council for Science &amp; Technology (UCOST). All rights reserved." data-hi="© 2026 उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद (यूकोस्ट)। सर्वाधिकार सुरक्षित।">© 2026 Uttarakhand State Council for Science &amp; Technology (UCOST). All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#" data-en="Sitemap" data-hi="साइटमैप">Sitemap</a>
-        <a href="#" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a>
-        <a href="#" data-en="Terms of Use" data-hi="उपयोग की शर्तें">Terms of Use</a>
-        <a href="#" data-en="Disclaimer" data-hi="अस्वीकरण">Disclaimer</a>
-        <a href="#" data-en="Copyright Policy" data-hi="कॉपीराइट नीति">Copyright Policy</a>
+      <div style="display: flex; gap: 16px;">
+        <a href="#/accessibility" data-en="Accessibility Statement" data-hi="अभिगम्यता विवरण" style="color: rgba(255,255,255,0.55); font-size: 0.78rem; text-decoration: none; transition: color var(--transition);" onmouseover="this.style.color='var(--saffron-accent)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Accessibility Statement</a>
       </div>
     </div>
   </footer>
@@ -1373,6 +1694,7 @@
       photos: [], events: [], whatsNew: [], quickLinks: [],
       team: [], portals: [], notesOrders: [], newsTicker: [],
       videos: [],
+      faqs: [],
       lightboxIndex: -1,
       pipDismissed: false,
       carouselPos: 0,
@@ -1451,11 +1773,14 @@
     }
 
     async function loadData() {
-      const files = ['photos','events','whats-new','quick-links','team','portals','notes-orders','news-ticker'];
+      const files = ['photos','events','whats-new','quick-links','team','portals','notes-orders','news-ticker','faqs'];
       const results = await Promise.all(
         files.map(f => fetch(`content/${f}.json`).then(r => r.json()).catch(() => []))
       );
-      [APP.photos, APP.events, APP.whatsNew, APP.quickLinks, APP.team, APP.portals, APP.notesOrders, APP.newsTicker] = results;
+      [
+        APP.photos, APP.events, APP.whatsNew, APP.quickLinks, APP.team, APP.portals, APP.notesOrders, APP.newsTicker,
+        APP.faqs
+      ] = results;
       ensureSupplementalMedia();
     }
 
@@ -1693,7 +2018,7 @@
       const grid = document.getElementById('full-photos-grid');
       if (!grid || !APP.photos.length) return;
       grid.innerHTML = APP.photos.map((p, i) => `
-        <div class="photo-item${p.highlight ? ' highlight' : ''}" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.caption}">
+        <div class="photo-item${p.highlight ? ' highlight' : ''}" id="photo-item-${i}" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.caption}">
           <img src="assets/photos/${encodeURIComponent(p.filename)}" alt="${p.caption}" loading="lazy">
           <div class="photo-caption">${p.caption}</div>
         </div>
@@ -1714,11 +2039,11 @@
       const grid = document.getElementById('full-videos-grid');
       if (!grid) return;
       if (!APP.videos.length) {
-        grid.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem;padding:16px">No videos available yet.</p>';
+        grid.innerHTML = '<p style="color:var(--text-secondary);font-size:.9rem;padding:16px">No videos available yet.</p>';
         return;
       }
-      grid.innerHTML = APP.videos.map(v => `
-        <div class="video-item">
+      grid.innerHTML = APP.videos.map((v, i) => `
+        <div class="video-item" id="video-item-${i}">
           <video controls preload="metadata" playsinline>
             <source src="assets/photos/${encodeURIComponent(v.filename)}" type="video/mp4">
             Your browser does not support the video tag.
@@ -1743,7 +2068,7 @@
       const grid = document.getElementById('full-news-clips-grid');
       if (!grid) return;
       grid.innerHTML = NEWS_CLIPS_IMAGES.map((p, i) => `
-        <div class="photo-item" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.caption}">
+        <div class="photo-item" id="news-clip-item-${i}" data-index="${i}" tabindex="0" role="button" aria-label="View ${p.caption}">
           <img src="assets/Newspaper Clips/${encodeURIComponent(p.filename)}" alt="${p.caption}" loading="lazy">
           <div class="photo-caption">${p.caption}</div>
         </div>
@@ -1912,7 +2237,7 @@
           const sortedAll = [...APP.notesOrders].sort((a, b) => new Date(b.date) - new Date(a.date));
           docs = [sortedAll[0]];
         } else {
-          list.innerHTML = '<p style="color:var(--text-muted);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
+          list.innerHTML = '<p style="color:var(--text-secondary);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
           return;
         }
       }
@@ -1931,7 +2256,7 @@
           <div class="whats-new-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
           <div class="whats-new-info">
             <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-size: 0.85rem; font-weight: 600;">${item.title}</h4>
-            <p style="margin: 0; color: var(--text-muted); font-size: 0.75rem;">${dateText}${dateText ? ' — ' : ''}${item.category || 'Notification'}</p>
+            <p style="margin: 0; color: var(--text-secondary); font-size: 0.75rem;">${dateText}${dateText ? ' — ' : ''}${item.category || 'Notification'}</p>
           </div>
         </a>
       `}).join('');
@@ -1973,22 +2298,82 @@
     function renderNotesOrders() {
       const tbody = document.getElementById('notes-orders-tbody');
       if (!tbody || !APP.notesOrders.length) return;
-      tbody.innerHTML = APP.notesOrders.map(item => {
+      tbody.innerHTML = APP.notesOrders.map((item, index) => {
         const dateStr = new Date(item.date).toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+        const pdfPath = `assets/pdfs/${encodeURIComponent(item.pdf)}`;
         return `
-          <tr style="border-bottom: 1px solid var(--border-color);">
+          <tr id="notice-row-${index}" style="border-bottom: 1px solid var(--border-color); transition: background 0.3s ease;">
             <td style="padding: 12px 8px; color: var(--text-secondary); white-space: nowrap;">${dateStr}</td>
             <td style="padding: 12px 8px; font-weight: 500; color: var(--text-primary);">${item.title}</td>
-            <td style="padding: 12px 8px; text-align: center;">
-              <a href="assets/pdfs/${encodeURIComponent(item.pdf)}" target="_blank" rel="noopener" class="map-directions" style="padding: 6px 12px; font-size: 0.75rem;">
-                <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2.5; vertical-align:middle; margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span data-en="Download PDF" data-hi="डाउनलोड पीडीएफ">Download PDF</span>
-              </a>
+            <td style="padding: 12px 8px; text-align: center; white-space: nowrap;">
+              <div style="display: inline-flex; gap: 8px; justify-content: center; align-items: center; width: 100%;">
+                <a href="${pdfPath}" target="_blank" rel="noopener" class="pdf-btn view" title="View PDF">
+                  <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2.5; vertical-align:middle;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span data-en="View" data-hi="देखें">View</span>
+                </a>
+                <a href="${pdfPath}" download class="pdf-btn download" title="Download PDF">
+                  <svg viewBox="0 0 24 24" style="width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:2.5; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span data-en="Download" data-hi="डाउनलोड">Download</span>
+                </a>
+              </div>
             </td>
           </tr>
         `;
       }).join('');
     }
+
+    /* ===========================================
+       FAQ & TENDERS & DOWNLOADS RENDERERS
+    =========================================== */
+    function renderFAQs() {
+      const container = document.getElementById('faq-list');
+      if (!container) return;
+      if (!APP.faqs || !APP.faqs.length) {
+        container.innerHTML = '<p style="color:var(--text-secondary);font-size:.9rem;padding:16px;text-align:center;">No FAQs available.</p>';
+        return;
+      }
+
+      const isHi = APP.currentLang === 'hi';
+      container.innerHTML = APP.faqs.map((faq, index) => {
+        const question = isHi ? faq.question_hi : faq.question_en;
+        const answer = isHi ? faq.answer_hi : faq.answer_en;
+        return `
+          <div class="faq-item" id="faq-item-${index}">
+            <button class="faq-trigger" aria-expanded="false" aria-controls="faq-content-${index}" onclick="toggleFAQ(${index})">
+              <span>${question}</span>
+              <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="faq-content-${index}" class="faq-content" role="region">
+              <p style="margin: 0; padding-top: 10px;">${answer}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleFAQ = function(index) {
+      const item = document.getElementById(`faq-item-${index}`);
+      if (!item) return;
+      const trigger = item.querySelector('.faq-trigger');
+      const isActive = item.classList.contains('active');
+      
+      // Close all other FAQs for accordion behavior
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isActive) {
+        item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    };
+
 
     /* ===========================================
        DETAIL PAGE RENDERER
@@ -2015,7 +2400,7 @@
         breadcrumbParentHash = '#/';
       }
       if (!data) {
-        container.innerHTML = '<p style="text-align:center;padding:60px;color:var(--text-muted)">Content not found.</p>';
+        container.innerHTML = '<p style="text-align:center;padding:60px;color:var(--text-secondary)">Content not found.</p>';
         return;
       }
       const title = APP.currentLang === 'hi' ? (data.title_hi || data.title) : (data.title_en || data.title);
@@ -2116,6 +2501,16 @@
         document.getElementById('page-notes-orders').classList.add('active');
         hero.style.display = 'none';
         renderNotesOrders();
+        window.scrollTo(0, 0);
+      } else if (hash === '/faq') {
+        document.getElementById('page-faq').classList.add('active');
+        hero.style.display = 'none';
+        renderFAQs();
+        window.scrollTo(0, 0);
+
+      } else if (hash === '/accessibility') {
+        document.getElementById('page-accessibility').classList.add('active');
+        hero.style.display = 'none';
         window.scrollTo(0, 0);
       } else if (hash.startsWith('/whats-new/')) {
         const slug = hash.split('/whats-new/')[1];
@@ -2334,11 +2729,16 @@
         ? 'प्रकोष्ठ | यूकोस्ट — उत्तराखंड राज्य विज्ञान एवं प्रौद्योगिकी परिषद'
         : 'SC/ST Cell | UCOST — Uttarakhand State Council for Science & Technology';
 
-      // Swap text & attributes (like image sources)
+      // Swap text & attributes (like image sources, placeholders)
       document.querySelectorAll('[data-en][data-hi]').forEach(node => {
         const val = node.getAttribute('data-' + lang);
         if (val === null) return;
-        if (node.tagName.toLowerCase() === 'img') {
+        const tagName = node.tagName.toLowerCase();
+        if (tagName === 'input') {
+          node.setAttribute('placeholder', val);
+          return;
+        }
+        if (tagName === 'img') {
           node.setAttribute('src', val);
           const altVal = node.getAttribute('data-alt-' + lang);
           if (altVal !== null) {
@@ -2346,7 +2746,7 @@
           }
           return;
         }
-        if (node.tagName.toLowerCase() === 'text') {
+        if (tagName === 'text') {
           node.textContent = val;
           return;
         }
@@ -2354,6 +2754,14 @@
           node.innerHTML = val;
         } else {
           node.textContent = val;
+        }
+      });
+
+      // Swap aria-labels if present
+      document.querySelectorAll('[data-aria-en][data-aria-hi]').forEach(node => {
+        const val = node.getAttribute('data-aria-' + lang);
+        if (val !== null) {
+          node.setAttribute('aria-label', val);
         }
       });
 
@@ -2370,6 +2778,9 @@
       document.body.style.fontFamily = lang === 'hi'
         ? "'Noto Sans Devanagari', 'Noto Sans', 'Inter', sans-serif"
         : "'Inter', 'Noto Sans', 'Noto Sans Devanagari', sans-serif";
+
+      // Re-render dynamic bilingual components
+      if (typeof renderFAQs === 'function') renderFAQs();
     };
 
     /* ===========================================
@@ -2472,19 +2883,25 @@
        TABS
     =========================================== */
     function initTabs() {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected','true');
-          document.getElementById(btn.dataset.tab).classList.add('active');
-        });
-        btn.addEventListener('keydown', e => {
-          const tabs = Array.from(document.querySelectorAll('.tab-btn'));
-          const idx = tabs.indexOf(btn);
-          if (e.key === 'ArrowRight' && idx < tabs.length - 1) { tabs[idx+1].click(); tabs[idx+1].focus(); }
-          if (e.key === 'ArrowLeft' && idx > 0) { tabs[idx-1].click(); tabs[idx-1].focus(); }
+      document.querySelectorAll('.tabs-container').forEach(container => {
+        const buttons = container.querySelectorAll('.tab-btn');
+        const panels = container.querySelectorAll('.tab-panel');
+        
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+            panels.forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected','true');
+            const panel = container.querySelector('#' + btn.dataset.tab);
+            if (panel) panel.classList.add('active');
+          });
+          btn.addEventListener('keydown', e => {
+            const tabs = Array.from(buttons);
+            const idx = tabs.indexOf(btn);
+            if (e.key === 'ArrowRight' && idx < tabs.length - 1) { tabs[idx+1].click(); tabs[idx+1].focus(); }
+            if (e.key === 'ArrowLeft' && idx > 0) { tabs[idx-1].click(); tabs[idx-1].focus(); }
+          });
         });
       });
     }
@@ -2591,6 +3008,13 @@
           toggle.setAttribute('aria-expanded', 'false');
         });
       });
+
+      document.querySelectorAll('.nav-link:not(#about-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+          list.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
     }
 
     /* ===========================================
@@ -2624,6 +3048,535 @@
     }
 
     /* ===========================================
+       GLOBAL PORTAL SEARCH LOGIC
+    =========================================== */
+    APP.searchIndex = [];
+
+    function buildSearchIndex() {
+      APP.searchIndex = [];
+
+      // 1. About Us pages
+      if (typeof ABOUT_DATA !== 'undefined') {
+        Object.entries(ABOUT_DATA).forEach(([key, value]) => {
+          APP.searchIndex.push({
+            id: `about-${key}`,
+            title_en: value.title_en || value.title,
+            title_hi: value.title_hi || value.title,
+            text_en: value.body_en || value.detailText || '',
+            text_hi: value.body_hi || value.detailText || '',
+            route: `#/about/${key}`,
+            category_en: 'About Us',
+            category_hi: 'हमारे बारे में'
+          });
+        });
+      }
+
+      // 2. Notices & Orders
+      if (APP.notesOrders && APP.notesOrders.length) {
+        APP.notesOrders.forEach((item, index) => {
+          APP.searchIndex.push({
+            id: `notice-${index}`,
+            title_en: item.title,
+            title_hi: item.title,
+            text_en: `Date: ${item.date || ''}. Category: ${item.category || ''}. File: ${item.pdf || ''}`,
+            text_hi: `दिनांक: ${item.date || ''}. श्रेणी: ${item.category || ''}. फ़ाइल: ${item.pdf || ''}`,
+            route: '#/notes-orders',
+            elementId: `notice-row-${index}`,
+            category_en: 'Notice / Order',
+            category_hi: 'सूचना / आदेश'
+          });
+        });
+      }
+
+      // 3. Gallery (Photos)
+      if (APP.photos && APP.photos.length) {
+        APP.photos.forEach((item, index) => {
+          APP.searchIndex.push({
+            id: `photo-${index}`,
+            title_en: item.caption || item.filename || '',
+            title_hi: item.caption || item.filename || '',
+            text_en: `Gallery image photo caption: ${item.caption || ''}. Filename: ${item.filename || ''}`,
+            text_hi: `गैलरी चित्र फोटो कैप्शन: ${item.caption || ''}. फ़ाइल का नाम: ${item.filename || ''}`,
+            route: '#/gallery',
+            tabId: 'gallery-tab-images',
+            elementId: `photo-item-${index}`,
+            category_en: 'Gallery Photo',
+            category_hi: 'गैलरी चित्र'
+          });
+        });
+      }
+
+      // 4. Videos
+      if (APP.videos && APP.videos.length) {
+        APP.videos.forEach((item, index) => {
+          APP.searchIndex.push({
+            id: `video-${index}`,
+            title_en: item.title || item.filename || '',
+            title_hi: item.title || item.filename || '',
+            text_en: `Gallery video: ${item.title || ''}. Filename: ${item.filename || ''}`,
+            text_hi: `गैलरी वीडियो: ${item.title || ''}. फ़ाइल का नाम: ${item.filename || ''}`,
+            route: '#/gallery',
+            tabId: 'gallery-tab-videos',
+            elementId: `video-item-${index}`,
+            category_en: 'Gallery Video',
+            category_hi: 'गैलरी वीडियो'
+          });
+        });
+      }
+
+      // 5. News Clips
+      if (typeof NEWS_CLIPS_IMAGES !== 'undefined') {
+        NEWS_CLIPS_IMAGES.forEach((item, index) => {
+          APP.searchIndex.push({
+            id: `news-clip-${index}`,
+            title_en: item.caption || item.filename || '',
+            title_hi: item.caption || item.filename || '',
+            text_en: `Newspaper news clip press media: ${item.caption || ''}. Filename: ${item.filename || ''}`,
+            text_hi: `समाचार पत्र क्लिप प्रेस मीडिया: ${item.caption || ''}. फ़ाइल का नाम: ${item.filename || ''}`,
+            route: '#/gallery',
+            tabId: 'gallery-tab-news-clips',
+            elementId: `news-clip-item-${index}`,
+            category_en: 'News Clip',
+            category_hi: 'समाचार क्लिप'
+          });
+        });
+      }
+
+      // 6. Events & Activity
+      if (APP.events && APP.events.length) {
+        APP.events.forEach((item) => {
+          APP.searchIndex.push({
+            id: `event-${item.slug}`,
+            title_en: item.title,
+            title_hi: item.title,
+            text_en: `Event activity: ${item.title}. Summary: ${item.summary || ''}. Date: ${item.date || ''}. Location: ${item.location || ''}`,
+            text_hi: `कार्यक्रम गतिविधि: ${item.title}. सारांश: ${item.summary || ''}. दिनांक: ${item.date || ''}. स्थान: ${item.location || ''}`,
+            route: `#/events/${item.slug}`,
+            category_en: 'Event / Activity',
+            category_hi: 'कार्यक्रम / गतिविधि'
+          });
+        });
+      }
+
+      // 7. Announcements / What's New
+      if (APP.whatsNew && APP.whatsNew.length) {
+        APP.whatsNew.forEach((item) => {
+          APP.searchIndex.push({
+            id: `whats-new-${item.slug}`,
+            title_en: item.title,
+            title_hi: item.title,
+            text_en: `What's new announcement: ${item.title}. Summary: ${item.summary || ''}. Detail: ${item.detailText || ''}`,
+            text_hi: `क्या नया है घोषणा: ${item.title}. सारांश: ${item.summary || ''}. विवरण: ${item.detailText || ''}`,
+            route: `#/whats-new/${item.slug}`,
+            category_en: "What's New",
+            category_hi: 'क्या नया है'
+          });
+        });
+      }
+
+      // 8. Quick Links
+      if (APP.quickLinks && APP.quickLinks.length) {
+        APP.quickLinks.forEach((item) => {
+          APP.searchIndex.push({
+            id: `quick-link-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+            title_en: item.name,
+            title_hi: item.name,
+            text_en: `External quick link portal: ${item.name}. URL: ${item.url}`,
+            text_hi: `बाहरी त्वरित लिंक पोर्टल: ${item.name}. यूआरएल: ${item.url}`,
+            route: '#/',
+            elementId: 'sidebar-quick-links',
+            category_en: 'Quick Link',
+            category_hi: 'त्वरित लिंक'
+          });
+        });
+      }
+
+      // 9. Team members
+      if (APP.team && APP.team.length) {
+        APP.team.forEach((item, index) => {
+          APP.searchIndex.push({
+            id: `team-${index}`,
+            title_en: item.name,
+            title_hi: item.name,
+            text_en: `Project Team Member leadership: ${item.name}. Designation role: ${item.role}. Organization: ${item.org || ''}. Tier: ${item.tier}`,
+            text_hi: `परियोजना टीम सदस्य नेतृत्व: ${item.name}. पद नाम भूमिका: ${item.role}. संगठन: ${item.org || ''}. श्रेणी: ${item.tier}`,
+            route: '#/',
+            elementId: 'team-section',
+            category_en: 'Team Member',
+            category_hi: 'टीम सदस्य'
+          });
+        });
+      }
+
+      // 10. Portals
+      if (APP.portals && APP.portals.length) {
+        APP.portals.forEach((item) => {
+          APP.searchIndex.push({
+            id: `portal-${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+            title_en: item.name,
+            title_hi: item.name,
+            text_en: `Government related portal: ${item.name}. Abbreviation: ${item.abbr || ''}. URL: ${item.url}`,
+            text_hi: `सरकारी संबंधित पोर्टल: ${item.name}. संक्षेप: ${item.abbr || ''}. यूआरएल: ${item.url}`,
+            route: '#/',
+            elementId: 'portals-grid',
+            category_en: 'Related Portal',
+            category_hi: 'संबंधित पोर्टल'
+          });
+        });
+      }
+
+      // 11. Objectives (Hardcoded in HTML)
+      const objectives = [
+        { en: "To assess the livelihood system for sustainable livelihood planning through science, know-how and practices.", hi: "विज्ञान, ज्ञान and प्रथाओं के माध्यम से टिकाऊ आजीविका योजना हेतु आजीविका प्रणाली का आकलन करना।" },
+        { en: "To capture traditional and indigenous knowledge and upgrade the skill, building on local innovation and local knowledge system.", hi: "स्थानीय नवाचार और स्थानीय ज्ञान प्रणाली पर आधारित पारंपरिक और स्वदेशी ज्ञान को संग्रहीत करना और कौशल का उन्नयन करना।" },
+        { en: "Establishment of database of promising technologies that can be taken up for widespread adaption.", hi: "व्यापक अनुकूलन के लिए उपयोगी संभावित प्रौद्योगिकियों का डेटाबेस स्थापित करना।" },
+        { en: "Mapping of the above data and resources of spatial domain.", hi: "स्थानिक क्षेत्र के उपरोक्त डेटा और संसाधनों का मानचित्रण करना।" },
+        { en: "To act as coordination cell to promote adaption of appropriate and relevant technologies for socio-economic development of target development.", hi: "लक्षित विकास के सामाजिक-आर्थिक विकास के लिए उपयुक्त और प्रासंगिक प्रौद्योगिकियों के अनुकूलन को बढ़ावा देने के लिए समन्वय सेल के रूप में कार्य करना।" },
+        { en: "Promotion, replication and scaling up of successful technologies leading to socio-economic employment of capacity building.", hi: "क्षमता निर्माण के सामाजिक-आर्थिक रोजगार की ओर ले जाने वाली सफल प्रौद्योगिकियों को बढ़ावा देना, दोहराना और उनका विस्तार करना।" },
+        { en: "Development of programs and projects for strengthening human & institutional capacities and technology development.", hi: "मानव और संस्थागत क्षमताओं और प्रौद्योगिकी विकास को मजबूत करने के लिए कार्यक्रमों और परियोजनाओं का विकास करना।" },
+        { en: "Human Resource development of SC/ST Community.", hi: "अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास करना।" },
+        { en: "Establishment of site-based skill development centre.", hi: "साइट-आधारित कौशल विकास केंद्र की स्थापना करना।" },
+        { en: "Identification of gaps in existing government/non-government schemes.", hi: "मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान करना।" }
+      ];
+      objectives.forEach((obj, idx) => {
+        APP.searchIndex.push({
+          id: `objective-${idx + 1}`,
+          title_en: `Objective ${idx + 1}`,
+          title_hi: `उद्देश्य ${idx + 1}`,
+          text_en: obj.en,
+          text_hi: obj.hi,
+          route: '#/',
+          tabId: 'tab-obj',
+          elementId: `objective-card-${idx + 1}`,
+          category_en: 'Project Objective',
+          category_hi: 'परियोजना उद्देश्य'
+        });
+      });
+
+      // 12. Methodology (Hardcoded in HTML)
+      const methods = [
+        { name_en: "Food Preservation Unit", name_hi: "खाद्य संरक्षण इकाई", en: "Horticulture & Agriculture Products — processing, value addition, and market linkage for local produce", hi: "बागवानी और कृषि उत्पाद — प्रसंस्करण, मूल्यवर्धन और स्थानीय उपज के लिए बाजार संबंध" },
+        { name_en: "Artisan & Handicrafts Unit", name_hi: "कारीगर और हस्तशिल्प इकाई", en: "Skill development, design innovation, and market access for traditional artisans and craftspeople", hi: "पारंपरिक कारीगरों और शिल्पकारों के लिए कौशल विकास, डिजाइन नवाचार और बाजार तक पहुंच" },
+        { name_en: "Scientific Gazettes Preparation Unit", name_hi: "वैज्ञानिक राजपत्र तैयारी इकाई", en: "Indigenous/traditional knowledge testing, product quality validation, and market linkage documentation", hi: "स्वदेशी/पारंपरिक ज्ञान परीक्षण, उत्पाद गुणवत्ता सत्यापन और बाजार संबंध प्रलेखन" },
+        { name_en: "Mapping through RS & GIS", name_hi: "आरएस और जीआईएस के माध्यम से मानचित्रण", en: "Spatial mapping of resources using Remote Sensing and Geographical Information System for evidence-based planning", hi: "साक्ष्य-आधारित योजना के लिए रिमोट सेंसिंग और भौगोलिक सूचना प्रणाली का उपयोग करके संसाधनों का स्थानिक मानचित्रण" }
+      ];
+      methods.forEach((meth, idx) => {
+        APP.searchIndex.push({
+          id: `methodology-${idx + 1}`,
+          title_en: meth.name_en,
+          title_hi: meth.name_hi,
+          text_en: meth.en,
+          text_hi: meth.hi,
+          route: '#/',
+          tabId: 'tab-meth',
+          elementId: `method-node-${idx + 1}`,
+          category_en: 'Methodology / Unit',
+          category_hi: 'कार्यप्रणाली / इकाई'
+        });
+      });
+
+      // 13. Deliverables (Hardcoded in HTML)
+      const deliverables = [
+        { en: "Human Resource Development of SC/ST Community.", hi: "अनुसूचित जाति/अनुसूचित जनजाति समुदाय का मानव संसाधन विकास।" },
+        { en: "Establishment of Site-based Skill Development Centre.", hi: "साइट-आधारित कौशल विकास केंद्र की स्थापना।" },
+        { en: "Identification of Gaps in Existing Government/Non-Government Schemes.", hi: "मौजूदा सरकारी/गैर-सरकारी योजनाओं में कमियों की पहचान।" },
+        { en: "Formulation, Strengthening, Coordination & Documentation of programmes/Projects for filling gaps through S&T interventions.", hi: "विज्ञान और प्रौद्योगिकी हस्तक्षेपों के माध्यम से कमियों को पाटने के लिए कार्यक्रमों/परियोजनाओं का निर्माण, सुदृढ़ीकरण, समन्वय और प्रलेखन।" },
+        { en: "The proposed model, developed through S&T intervention in SC/ST areas, is designed to be replicable elsewhere.", hi: "अनुसूचित जाति/अनुसूचित जनजाति क्षेत्रों में विज्ञान और प्रौद्योगिकी हस्तक्षेप के माध्यम से विकसित प्रस्तावित मॉडल अन्यत्र भी दोहराने योग्य है।" }
+      ];
+      deliverables.forEach((del, idx) => {
+        APP.searchIndex.push({
+          id: `deliverable-${idx + 1}`,
+          title_en: `Deliverable ${idx + 1}`,
+          title_hi: `परिणाम ${idx + 1}`,
+          text_en: del.en,
+          text_hi: del.hi,
+          route: '#/',
+          tabId: 'tab-deliv',
+          elementId: `deliverable-item-${idx + 1}`,
+          category_en: 'Project Deliverable',
+          category_hi: 'परियोजना परिणाम'
+        });
+      });
+
+      // 14. Contact Us page items (Hardcoded in HTML)
+      APP.searchIndex.push({
+        id: 'contact-pi',
+        title_en: 'Prof. (Dr.) Durgesh Pant (Principal Investigator)',
+        title_hi: 'प्रो. (डॉ.) दुर्गेश पंत (प्रधान अन्वेषक)',
+        text_en: 'Director General, UCOST. Address: Vigyan Sadan Block, Vigyan Dham, Dehradun – 248007. Phone: +91-0135-2976266. Email: dg@ucost.in',
+        text_hi: 'महानिदेशक, यूकोस्ट। पता: विज्ञान सदन ब्लॉक, विज्ञान धाम, देहरादून – 248007। फोन: +91-0135-2976266। ईमेल: dg@ucost.in',
+        route: '#/contact',
+        elementId: 'contact-card-pi',
+        category_en: 'Contact Info',
+        category_hi: 'संपर्क विवरण'
+      });
+      APP.searchIndex.push({
+        id: 'contact-copi-1',
+        title_en: 'Dr. Devi Prashad Uniyal (Co-Principal Investigator)',
+        title_hi: 'डॉ. देवी प्रसाद उनियाल (सह-प्रधान अन्वेषक)',
+        text_en: 'Joint Director, UCOST. Phone: +91-9837862069. Email: dpuniyal.ucost@gmail.com',
+        text_hi: 'संयुक्त निदेशक, यूकोस्ट। फोन: +91-9837862069। ईमेल: dpuniyal.ucost@gmail.com',
+        route: '#/contact',
+        elementId: 'contact-card-copi-1',
+        category_en: 'Contact Info',
+        category_hi: 'संपर्क विवरण'
+      });
+      APP.searchIndex.push({
+        id: 'contact-copi-2',
+        title_en: 'Dr. Manmohan Singh Rawat (Co-Principal Investigator)',
+        title_hi: 'डॉ. मनमोहन सिंह रावत (सह-प्रधान अन्वेषक)',
+        text_en: 'Scientific Officer, UCOST. Phone: +91-9368399447. Email: dg@ucost.in',
+        text_hi: 'वैज्ञानिक अधिकारी, यूकोस्ट। फोन: +91-9368399447। ईमेल: dg@ucost.in',
+        route: '#/contact',
+        elementId: 'contact-card-copi-2',
+        category_en: 'Contact Info',
+        category_hi: 'संपर्क विवरण'
+      });
+
+      // 15. FAQs
+      if (APP.faqs && APP.faqs.length) {
+        APP.faqs.forEach((faq, index) => {
+          APP.searchIndex.push({
+            id: `faq-${index}`,
+            title_en: faq.question_en,
+            title_hi: faq.question_hi,
+            text_en: faq.answer_en,
+            text_hi: faq.answer_hi,
+            route: '#/faq',
+            elementId: `faq-item-${index}`,
+            category_en: 'FAQ',
+            category_hi: 'अक्सर पूछे जाने वाले प्रश्न'
+          });
+        });
+      }
+
+      // 19. Accessibility Statement
+      APP.searchIndex.push({
+        id: 'accessibility-statement',
+        title_en: 'Accessibility Statement & Conformance Level',
+        title_hi: 'अभिगम्यता विवरण और अनुपालन स्तर',
+        text_en: 'WCAG 2.1 AA conformance. Accessibility features skip-to-content, keyboard navigation, font size resize toggle, contrast toggle. Report barriers or submit feedback.',
+        text_hi: 'WCAG 2.1 AA अनुपालन। अभिगम्यता विशेषताएं मुख्य सामग्री पर जाएं, कीबोर्ड नेविगेशन, फ़ॉन्ट आकार समायोजन, कंट्रास्ट टॉगल। बाधाओं की रिपोर्ट करें या प्रतिक्रिया सबमिट करें।',
+        route: '#/accessibility',
+        category_en: 'Accessibility',
+        category_hi: 'अभिगम्यता'
+      });
+    }
+
+    function initGlobalSearch() {
+      const input = document.getElementById('portal-search-input');
+      const clearBtn = document.getElementById('search-clear-btn');
+      const dropdown = document.getElementById('search-results-dropdown');
+      if (!input || !dropdown) return;
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      let focusedIndex = -1;
+
+      // Build index dynamically
+      buildSearchIndex();
+
+      function getResults(query) {
+        if (!query) return [];
+        const terms = query.toLowerCase().split(/\s+/).filter(t => t);
+        if (!terms.length) return [];
+
+        const isHi = APP.currentLang === 'hi';
+
+        return APP.searchIndex.map(doc => {
+          let score = 0;
+          const title = (isHi ? doc.title_hi : doc.title_en) || '';
+          const text = (isHi ? doc.text_hi : doc.text_en) || '';
+          
+          const fullText = (title + ' ' + text).toLowerCase();
+
+          // Simple term checking
+          let matchAll = true;
+          terms.forEach(term => {
+            const count = (fullText.split(term).length - 1);
+            if (count > 0) {
+              score += count * 5; // basic matching score
+              if (title.toLowerCase().includes(term)) {
+                score += 15; // bonus for title match
+              }
+            } else {
+              matchAll = false;
+            }
+          });
+
+          return { doc, score, match: matchAll };
+        })
+        .filter(res => res.score > 0 && res.match)
+        .sort((a, b) => b.score - a.score)
+        .map(res => res.doc);
+      }
+
+      function hideDropdown() {
+        dropdown.style.display = 'none';
+        input.removeAttribute('aria-activedescendant');
+        focusedIndex = -1;
+      }
+
+      function showResults(results, query) {
+        if (!results.length) {
+          const escaped = escapeHtml(query);
+          dropdown.innerHTML = `<div class="search-no-results" data-en="No results found for '${escaped}'" data-hi="'${escaped}' के लिए कोई परिणाम नहीं मिला">No results found for '${escaped}'</div>`;
+          setLang(APP.currentLang, null); // Sync language attributes of newly rendered nodes
+        } else {
+          const isHi = APP.currentLang === 'hi';
+          dropdown.innerHTML = results.slice(0, 8).map((doc, idx) => {
+            const title = isHi ? doc.title_hi : doc.title_en;
+            const category = isHi ? doc.category_hi : doc.category_en;
+            let snippet = isHi ? doc.text_hi : doc.text_en;
+            // Clean html tags from snippet
+            snippet = snippet.replace(/<[^>]*>/g, '');
+            return `
+              <a class="search-result-item" id="search-opt-${idx}" href="${doc.route}" data-index="${idx}" role="option">
+                <span class="result-category">${category}</span>
+                <span class="result-title">${title}</span>
+                <span class="result-snippet">${snippet}</span>
+              </a>
+            `;
+          }).join('');
+        }
+        dropdown.style.display = 'flex';
+        focusedIndex = -1;
+
+        // Announce count to screen readers
+        const count = results.length;
+        const msg = APP.currentLang === 'hi' 
+          ? `${count} परिणाम मिले।` 
+          : `${count} results found.`;
+        announce(msg);
+      }
+
+      function handleSelection(doc) {
+        // Close search
+        input.value = '';
+        if (clearBtn) clearBtn.style.display = 'none';
+        hideDropdown();
+
+        // 1. Set hash route
+        window.location.hash = doc.route;
+
+        // 2. Perform tab switching and scroll-to-highlight after route is resolved
+        setTimeout(() => {
+          // Switch Tab if needed
+          if (doc.tabId) {
+            const tabBtn = document.getElementById(doc.tabId);
+            if (tabBtn) tabBtn.click();
+          }
+
+          // Scroll and Highlight
+          if (doc.elementId) {
+            const target = document.getElementById(doc.elementId);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              target.classList.add('search-highlight');
+              setTimeout(() => {
+                target.classList.remove('search-highlight');
+              }, 2000);
+            }
+          }
+        }, 150);
+      }
+
+      input.addEventListener('input', () => {
+        const query = input.value.trim();
+        if (clearBtn) clearBtn.style.display = query ? 'flex' : 'none';
+
+        if (!query) {
+          hideDropdown();
+          return;
+        }
+
+        const results = getResults(query);
+        showResults(results, query);
+
+        // Bind clicks to result items
+        dropdown.querySelectorAll('.search-result-item').forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const idx = parseInt(item.dataset.index);
+            const doc = results[idx];
+            if (doc) handleSelection(doc);
+          });
+        });
+      });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          clearBtn.style.display = 'none';
+          hideDropdown();
+          input.focus();
+        });
+      }
+
+      // Keyboard Controls
+      input.addEventListener('keydown', (e) => {
+        const items = Array.from(dropdown.querySelectorAll('.search-result-item'));
+        if (dropdown.style.display === 'none' || !items.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          focusedIndex = (focusedIndex + 1) % items.length;
+          items.forEach((item, idx) => {
+            item.classList.toggle('focused', idx === focusedIndex);
+            if (idx === focusedIndex) {
+              input.setAttribute('aria-activedescendant', item.id);
+              item.scrollIntoView({ block: 'nearest' });
+            }
+          });
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          focusedIndex = (focusedIndex - 1 + items.length) % items.length;
+          items.forEach((item, idx) => {
+            item.classList.toggle('focused', idx === focusedIndex);
+            if (idx === focusedIndex) {
+              input.setAttribute('aria-activedescendant', item.id);
+              item.scrollIntoView({ block: 'nearest' });
+            }
+          });
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (focusedIndex >= 0 && focusedIndex < items.length) {
+            items[focusedIndex].click();
+          } else if (items.length > 0) {
+            // Click the first item as default
+            items[0].click();
+          }
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          hideDropdown();
+        }
+      });
+
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.header-search')) {
+          hideDropdown();
+        }
+      });
+
+      // Keep index updated if lang changes
+      const origSetLang = window.setLang;
+      window.setLang = function(lang, el) {
+        origSetLang(lang, el);
+        // rebuild index using the new language logic
+        buildSearchIndex();
+      };
+    }
+
+    /* ===========================================
        INIT
     =========================================== */
     async function init() {
@@ -2652,6 +3605,7 @@
       initMobileMenu();
       initScrollReveal();
       initStatRings();
+      initGlobalSearch();
     }
 
     document.addEventListener('DOMContentLoaded', init);
