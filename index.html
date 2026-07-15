@@ -91,7 +91,7 @@
     .site-header{background:#fff;border-bottom:1px solid var(--border-color);position:relative;z-index:110}
     .header-inner{max-width:var(--max-width);margin:0 auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .header-brand{display:flex;align-items:center;gap:24px}
-    .header-banner{height:100px;max-height:100px;width:auto;max-width:350px;object-fit:contain;border-radius:var(--radius-sm);transition:all var(--transition)}
+    .header-banner{height:100px;max-height:100px;width:auto;max-width:350px;object-fit:contain;border-radius:var(--radius-sm);transition:all var(--transition);margin-left:auto}
     /* Ticker Styles */
     .nav-ticker{display:flex;align-items:center;overflow:hidden;background:rgba(0,0,0,.20);border-radius:var(--radius-sm);height:34px;flex-grow:1;margin-left:20px;max-width:650px;min-width:0;position:relative}
     .ticker-label{flex-shrink:0;background:var(--saffron-accent);color:var(--ucost-blue-dark);padding:0 12px;font-weight:700;font-size:.75rem;height:100%;display:flex;align-items:center;justify-content:center;letter-spacing:.04em;text-transform:uppercase;position:relative;z-index:2;box-shadow:2px 0 5px rgba(0,0,0,.15)}
@@ -403,8 +403,7 @@
     .header-search {
       position: relative;
       width: 280px;
-      margin-left: auto;
-      margin-right: 24px;
+      margin: 0;
       z-index: 1000;
     }
     .search-input-wrapper {
@@ -543,7 +542,7 @@
     @media (max-width: 991px) {
       .header-search {
         width: 220px;
-        margin-right: 12px;
+        margin: 0;
       }
     }
     @media (max-width: 767px) {
@@ -1012,6 +1011,8 @@
           <div class="scst-subtitle" data-en="SEED · DST · Government of India" data-hi="सीड (SEED) · विज्ञान एवं प्रौद्योगिकी विभाग (DST) · भारत सरकार">SEED · DST · Government of India</div>
         </div>
       </div>
+      <!-- Banner Image -->
+      <img src="top.png" alt="Branding Banner" class="header-banner">
       <!-- Search Bar -->
       <div class="header-search" role="search">
         <div class="search-input-wrapper">
@@ -1021,8 +1022,6 @@
         </div>
         <div id="search-results-dropdown" class="search-results-dropdown" role="region" aria-live="polite" style="display:none;"></div>
       </div>
-      <!-- Banner Image -->
-      <img src="top.png" alt="Branding Banner" class="header-banner">
     </div>
   </header>
 
