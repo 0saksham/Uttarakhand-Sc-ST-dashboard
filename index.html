@@ -581,6 +581,11 @@
     .overview-text{padding:28px}
     .overview-text p{color:var(--text-secondary);line-height:1.8;margin-bottom:16px}
     .overview-text .highlight{font-weight:700;color:var(--ucost-blue)}
+    .dashboard-btn-wrap{margin-top:24px}
+    .dashboard-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:linear-gradient(135deg,var(--ucost-blue-dark),var(--ucost-blue));color:#fff;font-weight:700;font-size:.95rem;border-radius:10px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 18px rgba(30,111,181,.35);transition:transform .2s,box-shadow .2s,filter .2s;letter-spacing:.02em}
+    .dashboard-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 28px rgba(30,111,181,.55);filter:brightness(1.08)}
+    .dashboard-btn:active{transform:translateY(0) scale(.98)}
+    .dashboard-btn svg{width:18px;height:18px;flex-shrink:0;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
     .stats-panel{background:linear-gradient(135deg,var(--ucost-blue-dark),var(--ucost-blue));padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
     .stat-ring{text-align:center}
     .stat-ring svg{width:110px;height:110px}
@@ -1180,6 +1185,21 @@
             <div class="overview-text">
               <p data-en="UCOST is implementing this SEED-DST funded project targeting the SC/ST community in Uttarakhand's hilly regions — 18.76% SC population and 2.89% ST population (Census 2011) — with focus on sustainable livelihood planning, traditional/indigenous knowledge capture, skill upgrades, technology database creation, and spatial mapping." data-hi="यूकोस्ट उत्तराखंड के पहाड़ी क्षेत्रों में अनुसूचित जाति/अनुसूचित जनजाति समुदाय को लक्षित करने वाली इस SEED-DST वित्त पोषित परियोजना को लागू कर रहा है — 18.76% अनुसूचित जाति जनसंख्या और 2.89% अनुसूचित जनजाति जनसंख्या (जनगणना 2011) — विज्ञान आधारित टिकाऊ आजीविका योजना, पारंपरिक/स्वदेशी ज्ञान संरक्षण, कौशल उन्नयन, प्रौद्योगिकी डेटाबेस निर्माण और स्थानिक मानचित्रण पर ध्यान केंद्रित करते हुए।">UCOST is implementing this SEED-DST funded project targeting the SC/ST community in Uttarakhand's hilly regions — <span class="highlight">18.76% SC population</span> and <span class="highlight">2.89% ST population</span> (Census 2011) — with focus on sustainable livelihood planning, traditional/indigenous knowledge capture, skill upgrades, technology database creation, and spatial mapping.</p>
               <p data-en="SC/ST Cells are being established across all 13 districts of Uttarakhand to coordinate technology adoption for socioeconomic development, scale successful interventions, and build institutional and human capacity." data-hi="अनुसूचित जाति/अनुसूचित जनजाति सेल उत्तराखंड के सभी 13 जिलों में स्थापित किए जा रहे हैं ताकि सामाजिक-आर्थिक विकास के लिए प्रौद्योगिकी अपनाने में समन्वय किया जा सके, सफल हस्तक्षेपों का विस्तार किया जा सके और संस्थागत व मानव क्षमता का निर्माण किया जा सके।">SC/ST Cells are being established across all <span class="highlight">13 districts</span> of Uttarakhand to coordinate technology adoption for socioeconomic development, scale successful interventions, and build institutional and human capacity.</p>
+              <div class="dashboard-btn-wrap">
+                <a href="https://sc-st-portal.vercel.app/" target="_blank" rel="noopener noreferrer" class="dashboard-btn" id="scst-dashboard-btn" data-en="SC-ST Dashboard" data-hi="एससी-एसटी डैशबोर्ड">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                  </svg>
+                  <span data-en="SC-ST Dashboard" data-hi="एससी-एसटी डैशबोर्ड">SC-ST Dashboard</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true" style="margin-left:2px">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </a>
+              </div>
             </div>
             <div class="stats-panel" id="stats-panel">
               <div class="stat-ring">
