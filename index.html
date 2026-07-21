@@ -780,10 +780,14 @@
     .contact-detail{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-secondary);margin-bottom:6px}
     .contact-detail svg{width:14px;height:14px;stroke:var(--ucost-blue-light);fill:none;stroke-width:2;flex-shrink:0}
     .staff-grid{grid-column:1/-1;margin-top:8px}
-    .staff-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .staff-chip{padding:14px;text-align:center}
-    .staff-chip h5{font-size:.85rem;font-weight:600;margin-bottom:2px}
-    .staff-chip p{font-size:.75rem;color:var(--text-muted)}
+    .staff-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .staff-chip{display:flex;align-items:center;gap:14px;padding:16px;text-align:left;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius);transition:all .26s cubic-bezier(0.4,0,0.2,1);box-shadow:var(--shadow-sm);overflow:hidden}
+    .staff-chip:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(11,61,110,0.08);border-color:var(--ucost-blue-light)}
+    .staff-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.88rem;flex-shrink:0;box-shadow:0 3px 6px rgba(0,0,0,0.08)}
+    .staff-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+    .staff-chip h5{font-size:.88rem;font-weight:700;color:var(--text-primary);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .staff-chip p{font-size:.76rem;color:var(--text-secondary);margin:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    body.high-contrast .staff-avatar{background:#111 !important;border:2px solid #fff;color:#fff !important;box-shadow:none}
     /* ===========================================
        SIDEBAR
     =========================================== */
@@ -1602,15 +1606,51 @@
           </div>
         </div>
         <!-- Staff Section -->
-        <div class="card staff-grid" id="contact-card-staff" style="transition: background 0.3s ease, transform 0.3s ease;">
-          <span class="tier-badge staff" data-en="Project Staff" data-hi="परियोजना कर्मचारी">Project Staff</span>
-          <div class="staff-list" style="margin-top:14px">
-            <div class="card staff-chip"><h5>Mr. Nalin Sharma</h5><p data-en="Principal Project Associate" data-hi="प्रधान परियोजना सहयोगी">Principal Project Associate</p></div>
-            <div class="card staff-chip"><h5>Mr. Devendra Singh</h5><p data-en="Principal Project Associate" data-hi="प्रधान परियोजना सहयोगी">Principal Project Associate</p></div>
-            <div class="card staff-chip"><h5>Mr. Ankit Kandiyal</h5><p data-en="Senior Project Associate" data-hi="वरिष्ठ परियोजना सहयोगी">Senior Project Associate</p></div>
-            <div class="card staff-chip"><h5>Mr. Kumar Roshan</h5><p data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</p></div>
-            <div class="card staff-chip"><h5>Ms. Rukhsar</h5><p data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</p></div>
-            <div class="card staff-chip"><h5>Mr. Shailender Rautela</h5><p data-en="Project Assistant" data-hi="परियोजना सहायक">Project Assistant</p></div>
+        <div class="card staff-grid" id="contact-card-staff" style="transition: background 0.3s ease, transform 0.3s ease; padding: 24px;">
+          <span class="tier-badge staff" data-en="Project Staff" data-hi="परियोजना कर्मचारी" style="background: rgba(18,136,7,0.1); color: var(--green-accent);">Project Staff</span>
+          <div class="staff-list" style="margin-top:16px">
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, var(--ucost-blue), var(--ucost-blue-light));">NS</div>
+              <div class="staff-info">
+                <h5>Mr. Nalin Sharma</h5>
+                <p data-en="Principal Project Associate" data-hi="प्रधान परियोजना सहयोगी">Principal Project Associate</p>
+              </div>
+            </div>
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, var(--saffron-accent), #FFB366);">DS</div>
+              <div class="staff-info">
+                <h5>Mr. Devendra Singh</h5>
+                <p data-en="Principal Project Associate" data-hi="प्रधान परियोजना सहयोगी">Principal Project Associate</p>
+              </div>
+            </div>
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, var(--green-accent), #22C55E);">AK</div>
+              <div class="staff-info">
+                <h5>Mr. Ankit Kandiyal</h5>
+                <p data-en="Senior Project Associate" data-hi="वरिष्ठ परियोजना सहयोगी">Senior Project Associate</p>
+              </div>
+            </div>
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, #4F46E5, #818CF8);">KR</div>
+              <div class="staff-info">
+                <h5>Mr. Kumar Roshan</h5>
+                <p data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</p>
+              </div>
+            </div>
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, #EC4899, #F472B6);">R</div>
+              <div class="staff-info">
+                <h5>Ms. Rukhsar</h5>
+                <p data-en="Project Associate" data-hi="परियोजना सहयोगी">Project Associate</p>
+              </div>
+            </div>
+            <div class="card staff-chip">
+              <div class="staff-avatar" style="background: linear-gradient(135deg, #06B6D4, #22D3EE);">SR</div>
+              <div class="staff-info">
+                <h5>Mr. Shailender Rautela</h5>
+                <p data-en="Project Assistant" data-hi="परियोजना सहायक">Project Assistant</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
