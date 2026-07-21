@@ -93,9 +93,9 @@ Also **swap the display position** of the Quick Links block and the What's New b
 
 ## 9. Contact Us
 **Main nav "Contact Us"** routes to a full Contact page with:
-- **PI:** Prof. (Dr.) Durgesh Pant, Director General, UCOST, Vigyan Sadan Block, Vigyan Dham, Dehradun – 248007 | Tel: +91-0135-2976266 | dg@ucost.in
-- **Co-PI:** Dr. Devi Prashad Uniyal, Joint Director, UCOST | Mobile: +91-9837862069 | dpuniyal.ucost@gmail.com
-- **Co-PI:** Dr. Manmohan Singh Rawat, Scientific Officer, UCOST | Tel: +91-9368399447 | manmohansinghrwt@gmail.com
+- **PI:** Prof. (Dr.) Durgesh Pant, Director General, UCOST, Vigyan Sadan Block, Vigyan Dham, Dehradun – 248007 | dg@ucost.in
+- **Co-PI:** Dr. Devi Prashad Uniyal, Joint Director, UCOST | dpuniyal.ucost@gmail.com
+- **Co-PI:** Dr. Manmohan Singh Rawat, Scientific Officer, UCOST | manmohansinghrwt@gmail.com
 - **Project Staff:** Mr. Nalin Sharma (Principal Project Associate), Mr. Devendra Singh (Principal Project Associate), Mr. Ankit Kandiyal (Senior Project Associate), Mr. Kumar Roshan (Project Associate), Ms. Rukhsar (Project Associate), Mr. Shailender Rautela (Project Assistant)
 
 **Sidebar Contact widget** (smaller, persistent) — update with the same correct address/phone/email as above (use the PI's primary line as the headline contact, others below in smaller text). Additional source folder: `C:\Users\saksh\OneDrive\Desktop\cs\contact us` — use it if it contains anything beyond the above (e.g. a confirmed map embed).
