@@ -165,8 +165,18 @@
     /* ===========================================
        CARD BASE
     =========================================== */
-    .card{background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border-color);box-shadow:var(--shadow-sm);transition:box-shadow .22s ease,border-color .22s ease,transform .22s ease;overflow:hidden}
-    .card:hover{box-shadow:0 8px 28px rgba(0,0,0,.13);border-color:var(--border-strong);transform:translateY(-4px)}
+    .card, .objective-card, .deliverable-item, .sidebar-widget, .about-card, .contact-card, .staff-chip, .portal-card, .portal-chip, .event-card, .team-card, .whats-new-item, .inst-card, .stats-panel {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card:hover, .objective-card:hover, .deliverable-item:hover, .sidebar-widget:hover, .about-card:hover, .contact-card:hover, .staff-chip:hover, .portal-card:hover, .portal-chip:hover, .event-card:hover, .team-card:hover, .whats-new-item:hover, .inst-card:hover, .stats-panel:hover {
+      box-shadow: 0 12px 32px rgba(11, 61, 110, 0.14), 0 0 20px var(--saffron-glow), 0 0 14px rgba(30, 111, 181, 0.25);
+      border-color: var(--ucost-blue-light);
+      transform: translateY(-5px);
+    }
     /* ===========================================
        GLOBAL PORTAL SEARCH
     =========================================== */
