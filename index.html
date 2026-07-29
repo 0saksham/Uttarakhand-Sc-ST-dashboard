@@ -197,12 +197,20 @@
     .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green-accent);animation:pulse 2s infinite}
     .hero-scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;opacity:0;animation:fadeUp .8s 1.2s forwards}
     .hero-scroll-hint svg{width:28px;height:28px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:2;animation:bounce 2s infinite}
-    .hero-mute-btn {
+    /* ===========================================
+       HERO CONTROLS (PLAY/PAUSE & MUTE)
+    =========================================== */
+    .hero-controls {
       position: absolute;
       bottom: 22px;
       right: 26px;
       z-index: 10;
       display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-ctrl-btn {
+      display: inline-flex;
       align-items: center;
       gap: 6px;
       background: rgba(255,255,255,0.12);
@@ -215,12 +223,13 @@
       font-size: 11px;
       font-weight: 600;
       transition: all var(--transition);
+      cursor: pointer;
     }
-    .hero-mute-btn:hover {
+    .hero-ctrl-btn:hover {
       background: rgba(255,255,255,0.25);
       border-color: rgba(255,255,255,0.35);
     }
-    .hero-mute-btn svg {
+    .hero-ctrl-btn svg {
       width: 14px;
       height: 14px;
       stroke: currentColor;
@@ -1101,19 +1110,32 @@
       <div class="hero-badge" data-en="UCOST Dehradun — Vigyan Dham" data-hi="यूकोस्ट देहरादून — विज्ञान धाम"><span class="dot"></span> UCOST Dehradun — Vigyan Dham</div>
     </div>
     
-    <!-- Mute / Unmute Button: starts muted, user toggles -->
-    <button class="hero-mute-btn" id="hero-mute-btn" onclick="toggleVideoMute()" aria-label="Toggle video mute">
-      <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-        <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
-      </svg>
-      <svg id="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-      </svg>
-      <span id="mute-label" data-en="Muted" data-hi="म्यूट">Muted</span>
-    </button>
+    <!-- Hero Controls: Play/Pause & Mute -->
+    <div class="hero-controls">
+      <button class="hero-ctrl-btn" id="hero-play-btn" onclick="toggleVideoPlay()" aria-label="Play or pause hero video">
+        <svg id="icon-playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="6" y="4" width="4" height="16" rx="1"/>
+          <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+        <svg id="icon-paused" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" style="display:none">
+          <polygon points="6,4 20,12 6,20"/>
+        </svg>
+        <span id="play-label" data-en="Pause" data-hi="रोकें">Pause</span>
+      </button>
+
+      <button class="hero-ctrl-btn" id="hero-mute-btn" onclick="toggleVideoMute()" aria-label="Toggle video mute">
+        <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <svg id="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+        <span id="mute-label" data-en="Muted" data-hi="म्यूट">Muted</span>
+      </button>
+    </div>
 
     <div class="hero-scroll-hint" aria-hidden="true">
       <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2654,6 +2676,7 @@
       if (event.data === YT.PlayerState.ENDED) {
         player.playVideo();
       }
+      updatePlayButtonState(event.data);
     }
     function onPipPlayerStateChange(event) {
       if (event.data === YT.PlayerState.ENDED && pipPlayer && typeof pipPlayer.playVideo === 'function') {
@@ -2724,8 +2747,46 @@
     }
 
     /* ===========================================
-       HERO VIDEO MUTE/UNMUTE
+       HERO VIDEO PLAY / PAUSE & MUTE
     =========================================== */
+    function updatePlayButtonState(state) {
+      const isPlaying = (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING);
+      const iconPlaying = document.getElementById('icon-playing');
+      const iconPaused = document.getElementById('icon-paused');
+      const playLabel = document.getElementById('play-label');
+
+      if (iconPlaying) iconPlaying.style.display = isPlaying ? '' : 'none';
+      if (iconPaused) iconPaused.style.display = isPlaying ? 'none' : '';
+
+      const txt = isPlaying
+        ? (APP.currentLang === 'hi' ? 'रोकें' : 'Pause')
+        : (APP.currentLang === 'hi' ? 'चलाएं' : 'Play');
+      if (playLabel) {
+        playLabel.textContent = txt;
+        playLabel.setAttribute('data-en', isPlaying ? 'Pause' : 'Play');
+        playLabel.setAttribute('data-hi', isPlaying ? 'रोकें' : 'चलाएं');
+      }
+    }
+
+    window.toggleVideoPlay = function() {
+      if (!player || typeof player.getPlayerState !== 'function') return;
+      const state = player.getPlayerState();
+      const isPlaying = (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING);
+
+      if (isPlaying) {
+        player.pauseVideo();
+        if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
+          pipPlayer.pauseVideo();
+        }
+      } else {
+        player.playVideo();
+        if (pipPlayer && typeof pipPlayer.playVideo === 'function') {
+          pipPlayer.playVideo();
+        }
+      }
+      updatePlayButtonState(!isPlaying ? YT.PlayerState.PLAYING : YT.PlayerState.PAUSED);
+    };
+
     window.toggleVideoMute = function() {
       if (!player || typeof player.isMuted !== 'function') return;
       
