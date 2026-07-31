@@ -2673,14 +2673,21 @@
     }
 
     function onPlayerStateChange(event) {
-      if (event.data === YT.PlayerState.ENDED) {
+      if (event.data === YT.PlayerState.ENDED && player && typeof player.playVideo === 'function') {
         player.playVideo();
       }
-      updatePlayButtonState(event.data);
+      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
+      if (!isPipActive) {
+        updatePlayButtonState(event.data);
+      }
     }
     function onPipPlayerStateChange(event) {
       if (event.data === YT.PlayerState.ENDED && pipPlayer && typeof pipPlayer.playVideo === 'function') {
         pipPlayer.playVideo();
+      }
+      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
+      if (isPipActive) {
+        updatePlayButtonState(event.data);
       }
     }
 
@@ -2714,6 +2721,7 @@
             }
             if (isMainReady) {
               player.pauseVideo();
+              player.mute();
             }
           } else {
             pip.classList.remove('active');
@@ -2732,6 +2740,7 @@
             }
             if (isPipReady) {
               pipPlayer.pauseVideo();
+              pipPlayer.mute();
             }
           }
         });
@@ -2742,6 +2751,9 @@
         APP.pipDismissed = true;
         if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
           pipPlayer.pauseVideo();
+        }
+        if (pipPlayer && typeof pipPlayer.mute === 'function') {
+          pipPlayer.mute();
         }
       });
     }
@@ -2769,47 +2781,71 @@
     }
 
     window.toggleVideoPlay = function() {
-      if (!player || typeof player.getPlayerState !== 'function') return;
-      const state = player.getPlayerState();
+      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
+      const activePlayer = (isPipActive && pipPlayer && typeof pipPlayer.getPlayerState === 'function') ? pipPlayer : player;
+      if (!activePlayer || typeof activePlayer.getPlayerState !== 'function') return;
+
+      const state = activePlayer.getPlayerState();
       const isPlaying = (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING);
 
       if (isPlaying) {
-        player.pauseVideo();
+        if (player && typeof player.pauseVideo === 'function') {
+          player.pauseVideo();
+          player.mute();
+        }
         if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
           pipPlayer.pauseVideo();
+          pipPlayer.mute();
         }
       } else {
-        player.playVideo();
-        if (pipPlayer && typeof pipPlayer.playVideo === 'function') {
-          pipPlayer.playVideo();
+        if (isPipActive) {
+          if (player && typeof player.pauseVideo === 'function') {
+            player.pauseVideo();
+            player.mute();
+          }
+          if (pipPlayer && typeof pipPlayer.playVideo === 'function') {
+            pipPlayer.playVideo();
+          }
+        } else {
+          if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
+            pipPlayer.pauseVideo();
+            pipPlayer.mute();
+          }
+          if (player && typeof player.playVideo === 'function') {
+            player.playVideo();
+          }
         }
       }
       updatePlayButtonState(!isPlaying ? YT.PlayerState.PLAYING : YT.PlayerState.PAUSED);
     };
 
     window.toggleVideoMute = function() {
-      if (!player || typeof player.isMuted !== 'function') return;
+      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
+      const activePlayer = (isPipActive && pipPlayer && typeof pipPlayer.isMuted === 'function') ? pipPlayer : player;
+      if (!activePlayer || typeof activePlayer.isMuted !== 'function') return;
       
-      const isMuted = player.isMuted();
+      const isCurrentlyMuted = activePlayer.isMuted();
+      const nextMuted = !isCurrentlyMuted;
+
+      if (nextMuted) {
+        if (player && typeof player.mute === 'function') player.mute();
+        if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
+      } else {
+        if (isPipActive) {
+          if (player && typeof player.mute === 'function') player.mute();
+          if (pipPlayer && typeof pipPlayer.unMute === 'function') pipPlayer.unMute();
+        } else {
+          if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
+          if (player && typeof player.unMute === 'function') player.unMute();
+        }
+      }
+      
       const iconMuted = document.getElementById('icon-muted');
       const iconSound = document.getElementById('icon-sound');
       const muteLabel = document.getElementById('mute-label');
 
-      if (isMuted) {
-        player.unMute();
-        if (pipPlayer && typeof pipPlayer.unMute === 'function') {
-          pipPlayer.unMute();
-        }
-      } else {
-        player.mute();
-        if (pipPlayer && typeof pipPlayer.mute === 'function') {
-          pipPlayer.mute();
-        }
-      }
-      
-      const nextMuted = !isMuted;
-      iconMuted.style.display = nextMuted ? '' : 'none';
-      iconSound.style.display = nextMuted ? 'none' : '';
+      if (iconMuted) iconMuted.style.display = nextMuted ? '' : 'none';
+      if (iconSound) iconSound.style.display = nextMuted ? 'none' : '';
       
       const txt = nextMuted 
         ? (APP.currentLang === 'hi' ? 'म्यूट' : 'Muted')
