@@ -2268,7 +2268,7 @@
       function scrollStep() {
         const halfHeight = track.scrollHeight / 2;
         if (halfHeight > 0 && !isHovered) {
-          pos += 0.6; // smooth 60fps scroll speed
+          pos += 0.25; // comfortable, slow reading speed (~15px/sec)
           if (pos >= halfHeight) {
             pos -= halfHeight;
           }
@@ -2284,26 +2284,28 @@
       const list = document.getElementById('whats-new-list');
       if (!list) return;
       
-      let allItems = [];
-      if (Array.isArray(APP.notesOrders)) allItems = allItems.concat(APP.notesOrders);
-      if (Array.isArray(APP.whatsNew)) allItems = allItems.concat(APP.whatsNew);
-
-      // Deduplicate items by title
-      const uniqueMap = new Map();
-      allItems.forEach(item => {
-        if (item && item.title && !uniqueMap.has(item.title)) {
-          uniqueMap.set(item.title, item);
-        }
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
+      
+      let docs = APP.notesOrders.filter(item => {
+        if (!item.date) return false;
+        const itemDate = new Date(item.date);
+        return itemDate >= oneMonthAgo;
       });
-      let docs = Array.from(uniqueMap.values());
-
+      
       if (!docs.length) {
-        list.innerHTML = '<p style="color:var(--text-secondary);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
-        return;
+        if (APP.notesOrders.length) {
+          // Fallback: sort all notes/orders by date descending and grab top latest items
+          const sortedAll = [...APP.notesOrders].sort((a, b) => new Date(b.date) - new Date(a.date));
+          docs = sortedAll.slice(0, 3);
+        } else {
+          list.innerHTML = '<p style="color:var(--text-secondary);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
+          return;
+        }
       }
       
       // Sort newest first
-      docs.sort((a, b) => new Date(b.date || '2000-01-01') - new Date(a.date || '2000-01-01'));
+      docs.sort((a, b) => new Date(b.date) - new Date(a.date));
       
       // Repeat list so total count is at least 10 items for continuous smooth scrolling
       let duplicatedDocs = [...docs];
@@ -2314,14 +2316,10 @@
       const finalDocs = duplicatedDocs.concat(duplicatedDocs);
       
       list.innerHTML = finalDocs.map(item => {
-        const pdfUrl = item.pdf 
-          ? `assets/pdfs/${encodeURIComponent(item.pdf)}` 
-          : (item.slug ? `#/whats-new/${item.slug}` : '#');
-        const isExternal = !!item.pdf;
-        const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+        const pdfUrl = `assets/pdfs/${encodeURIComponent(item.pdf)}`;
         const dateText = item.date ? new Date(item.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '';
         return `
-        <a href="${pdfUrl}" class="whats-new-item" ${targetAttr} style="text-decoration: none;">
+        <a href="${pdfUrl}" class="whats-new-item" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
           <div class="whats-new-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
           <div class="whats-new-info">
             <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-size: 0.85rem; font-weight: 600;">${item.title}</h4>
