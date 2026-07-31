@@ -2612,6 +2612,7 @@
     =========================================== */
     var player;
     var pipPlayer;
+    var isVideoMuted = true;
 
     // Load YouTube API asynchronously
     var tag = document.createElement('script');
@@ -2667,6 +2668,7 @@
 
     function onPlayerReady(event) {
       event.target.playVideo();
+      applyAudioState();
     }
     function onPipPlayerReady(event) {
       // Do not auto-play on load
@@ -2691,6 +2693,41 @@
       }
     }
 
+    function applyAudioState() {
+      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
+      if (isVideoMuted) {
+        if (player && typeof player.mute === 'function') player.mute();
+        if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
+      } else {
+        if (isPipActive) {
+          if (player && typeof player.mute === 'function') player.mute();
+          if (pipPlayer && typeof pipPlayer.unMute === 'function') pipPlayer.unMute();
+        } else {
+          if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
+          if (player && typeof player.unMute === 'function') player.unMute();
+        }
+      }
+      updateMuteButtonUI(isVideoMuted);
+    }
+
+    function updateMuteButtonUI(isMuted) {
+      const iconMuted = document.getElementById('icon-muted');
+      const iconSound = document.getElementById('icon-sound');
+      const muteLabel = document.getElementById('mute-label');
+
+      if (iconMuted) iconMuted.style.display = isMuted ? '' : 'none';
+      if (iconSound) iconSound.style.display = isMuted ? 'none' : '';
+
+      const txt = isMuted
+        ? (APP.currentLang === 'hi' ? 'म्यूट' : 'Muted')
+        : (APP.currentLang === 'hi' ? 'ध्वनि चालू' : 'Sound On');
+      if (muteLabel) {
+        muteLabel.textContent = txt;
+        muteLabel.setAttribute('data-en', isMuted ? 'Muted' : 'Sound On');
+        muteLabel.setAttribute('data-hi', isMuted ? 'म्यूट' : 'ध्वनि चालू');
+      }
+    }
+
     /* ===========================================
        HERO PiP INTERACTION
     =========================================== */
@@ -2708,12 +2745,6 @@
             pip.classList.add('active');
             if (isPipReady) {
               if (isMainReady) {
-                const isMainMuted = player.isMuted();
-                if (isMainMuted) {
-                  pipPlayer.mute();
-                } else {
-                  pipPlayer.unMute();
-                }
                 const currentTime = player.getCurrentTime();
                 pipPlayer.seekTo(currentTime, true);
               }
@@ -2721,18 +2752,12 @@
             }
             if (isMainReady) {
               player.pauseVideo();
-              player.mute();
             }
+            applyAudioState();
           } else {
             pip.classList.remove('active');
             if (isMainReady) {
               if (isPipReady) {
-                const isPipMuted = pipPlayer.isMuted();
-                if (isPipMuted) {
-                  player.mute();
-                } else {
-                  player.unMute();
-                }
                 const currentTime = pipPlayer.getCurrentTime();
                 player.seekTo(currentTime, true);
               }
@@ -2740,8 +2765,8 @@
             }
             if (isPipReady) {
               pipPlayer.pauseVideo();
-              pipPlayer.mute();
             }
+            applyAudioState();
           }
         });
       }, { threshold: 0.05 });
@@ -2752,9 +2777,7 @@
         if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
           pipPlayer.pauseVideo();
         }
-        if (pipPlayer && typeof pipPlayer.mute === 'function') {
-          pipPlayer.mute();
-        }
+        applyAudioState();
       });
     }
 
@@ -2791,17 +2814,14 @@
       if (isPlaying) {
         if (player && typeof player.pauseVideo === 'function') {
           player.pauseVideo();
-          player.mute();
         }
         if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
           pipPlayer.pauseVideo();
-          pipPlayer.mute();
         }
       } else {
         if (isPipActive) {
           if (player && typeof player.pauseVideo === 'function') {
             player.pauseVideo();
-            player.mute();
           }
           if (pipPlayer && typeof pipPlayer.playVideo === 'function') {
             pipPlayer.playVideo();
@@ -2809,52 +2829,19 @@
         } else {
           if (pipPlayer && typeof pipPlayer.pauseVideo === 'function') {
             pipPlayer.pauseVideo();
-            pipPlayer.mute();
           }
           if (player && typeof player.playVideo === 'function') {
             player.playVideo();
           }
         }
+        applyAudioState();
       }
       updatePlayButtonState(!isPlaying ? YT.PlayerState.PLAYING : YT.PlayerState.PAUSED);
     };
 
     window.toggleVideoMute = function() {
-      const isPipActive = document.getElementById('pip-container')?.classList.contains('active');
-      const activePlayer = (isPipActive && pipPlayer && typeof pipPlayer.isMuted === 'function') ? pipPlayer : player;
-      if (!activePlayer || typeof activePlayer.isMuted !== 'function') return;
-      
-      const isCurrentlyMuted = activePlayer.isMuted();
-      const nextMuted = !isCurrentlyMuted;
-
-      if (nextMuted) {
-        if (player && typeof player.mute === 'function') player.mute();
-        if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
-      } else {
-        if (isPipActive) {
-          if (player && typeof player.mute === 'function') player.mute();
-          if (pipPlayer && typeof pipPlayer.unMute === 'function') pipPlayer.unMute();
-        } else {
-          if (pipPlayer && typeof pipPlayer.mute === 'function') pipPlayer.mute();
-          if (player && typeof player.unMute === 'function') player.unMute();
-        }
-      }
-      
-      const iconMuted = document.getElementById('icon-muted');
-      const iconSound = document.getElementById('icon-sound');
-      const muteLabel = document.getElementById('mute-label');
-
-      if (iconMuted) iconMuted.style.display = nextMuted ? '' : 'none';
-      if (iconSound) iconSound.style.display = nextMuted ? 'none' : '';
-      
-      const txt = nextMuted 
-        ? (APP.currentLang === 'hi' ? 'म्यूट' : 'Muted')
-        : (APP.currentLang === 'hi' ? 'ध्वनि चालू' : 'Sound On');
-      if (muteLabel) {
-        muteLabel.textContent = txt;
-        muteLabel.setAttribute('data-en', nextMuted ? 'Muted' : 'Sound On');
-        muteLabel.setAttribute('data-hi', nextMuted ? 'म्यूट' : 'ध्वनि चालू');
-      }
+      isVideoMuted = !isVideoMuted;
+      applyAudioState();
     };
 
     /* ===========================================
