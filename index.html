@@ -1395,7 +1395,7 @@
               What's New
             </h3>
             <div class="whats-new-wrapper" id="whats-new-wrapper" style="height: 300px; overflow: hidden; position: relative; border: none; box-shadow: none;">
-              <div class="whats-new-list" id="whats-new-list" style="display: flex; flex-direction: column; gap: 0; transition: transform 0.4s ease; will-change: transform;">
+              <div class="whats-new-list" id="whats-new-list" style="display: flex; flex-direction: column; gap: 0; will-change: transform;">
                 <!-- Rendered dynamically -->
               </div>
             </div>
@@ -2246,87 +2246,82 @@
       grid.innerHTML = html;
     }
 
-    let whatsNewInterval;
+    let whatsNewAnimFrame = null;
+    let whatsNewInterval = null;
     function initWhatsNewScroll() {
       const wrapper = document.getElementById('whats-new-wrapper');
       const track = document.getElementById('whats-new-list');
       if (!track || !wrapper) return;
       
+      if (whatsNewAnimFrame) cancelAnimationFrame(whatsNewAnimFrame);
       if (whatsNewInterval) clearInterval(whatsNewInterval);
       
+      track.style.transition = 'none';
       let pos = 0;
-      track.style.transform = `translateY(0px)`;
-      
-      function scroll() {
+      let isHovered = false;
+
+      wrapper.onmouseenter = () => { isHovered = true; };
+      wrapper.onmouseleave = () => { isHovered = false; };
+      wrapper.ontouchstart = () => { isHovered = true; };
+      wrapper.ontouchend = () => { isHovered = false; };
+
+      function scrollStep() {
         const halfHeight = track.scrollHeight / 2;
-        if (halfHeight <= 0) return;
-        pos += 0.8; // scroll speed
-        if (pos >= halfHeight) {
-          pos = 0;
+        if (halfHeight > 0 && !isHovered) {
+          pos += 0.6; // smooth 60fps scroll speed
+          if (pos >= halfHeight) {
+            pos -= halfHeight;
+          }
+          track.style.transform = `translateY(-${pos}px)`;
         }
-        track.style.transform = `translateY(-${pos}px)`;
+        whatsNewAnimFrame = requestAnimationFrame(scrollStep);
       }
-      
-      function start() {
-        if (whatsNewInterval) clearInterval(whatsNewInterval);
-        whatsNewInterval = setInterval(scroll, 50);
-      }
-      
-      function stop() {
-        clearInterval(whatsNewInterval);
-      }
-      
-      setTimeout(() => {
-        const halfHeight = track.scrollHeight / 2;
-        const wrapperHeight = wrapper.offsetHeight;
-        
-        if (halfHeight > wrapperHeight) {
-          start();
-          wrapper.onmouseenter = stop;
-          wrapper.onmouseleave = start;
-        } else {
-          track.style.transform = `translateY(0px)`;
-          wrapper.onmouseenter = null;
-          wrapper.onmouseleave = null;
-        }
-      }, 500);
+
+      whatsNewAnimFrame = requestAnimationFrame(scrollStep);
     }
 
     function renderWhatsNew() {
       const list = document.getElementById('whats-new-list');
       if (!list) return;
       
-      const oneMonthAgo = new Date();
-      oneMonthAgo.setDate(oneMonthAgo.getDate() - 30);
-      
-      let docs = APP.notesOrders.filter(item => {
-        if (!item.date) return false;
-        const itemDate = new Date(item.date);
-        return itemDate >= oneMonthAgo;
-      });
-      
-      if (!docs.length) {
-        if (APP.notesOrders.length) {
-          // Fallback: sort all notes/orders by date descending and grab the single latest one
-          const sortedAll = [...APP.notesOrders].sort((a, b) => new Date(b.date) - new Date(a.date));
-          docs = [sortedAll[0]];
-        } else {
-          list.innerHTML = '<p style="color:var(--text-secondary);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
-          return;
+      let allItems = [];
+      if (Array.isArray(APP.notesOrders)) allItems = allItems.concat(APP.notesOrders);
+      if (Array.isArray(APP.whatsNew)) allItems = allItems.concat(APP.whatsNew);
+
+      // Deduplicate items by title
+      const uniqueMap = new Map();
+      allItems.forEach(item => {
+        if (item && item.title && !uniqueMap.has(item.title)) {
+          uniqueMap.set(item.title, item);
         }
+      });
+      let docs = Array.from(uniqueMap.values());
+
+      if (!docs.length) {
+        list.innerHTML = '<p style="color:var(--text-secondary);font-size:.85rem;padding:16px" data-en="No updates available." data-hi="कोई अपडेट उपलब्ध नहीं है।">No updates available.</p>';
+        return;
       }
       
       // Sort newest first
-      docs.sort((a, b) => new Date(b.date) - new Date(a.date));
+      docs.sort((a, b) => new Date(b.date || '2000-01-01') - new Date(a.date || '2000-01-01'));
       
-      // Duplicate for infinite scrolling
-      const duplicatedDocs = docs.concat(docs);
+      // Repeat list so total count is at least 10 items for continuous smooth scrolling
+      let duplicatedDocs = [...docs];
+      while (duplicatedDocs.length < 10) {
+        duplicatedDocs = duplicatedDocs.concat(docs);
+      }
+      // Double the items so second half is identical copy of first half for seamless loop
+      const finalDocs = duplicatedDocs.concat(duplicatedDocs);
       
-      list.innerHTML = duplicatedDocs.map(item => {
-        const pdfUrl = `assets/pdfs/${encodeURIComponent(item.pdf)}`;
+      list.innerHTML = finalDocs.map(item => {
+        const pdfUrl = item.pdf 
+          ? `assets/pdfs/${encodeURIComponent(item.pdf)}` 
+          : (item.slug ? `#/whats-new/${item.slug}` : '#');
+        const isExternal = !!item.pdf;
+        const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
         const dateText = item.date ? new Date(item.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '';
         return `
-        <a href="${pdfUrl}" class="whats-new-item" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <a href="${pdfUrl}" class="whats-new-item" ${targetAttr} style="text-decoration: none;">
           <div class="whats-new-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
           <div class="whats-new-info">
             <h4 style="margin: 0 0 4px 0; color: var(--text-primary); font-size: 0.85rem; font-weight: 600;">${item.title}</h4>
