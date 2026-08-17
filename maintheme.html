@@ -16,7 +16,7 @@
     =========================================== */
     :root {
       --ucost-blue: #0B3D6E;
-      --ucost-blue-mid: #144F8A;
+      --ucost-blue-mid: #0f4e8d;
       --ucost-blue-light: #1E6FB5;
       --ucost-blue-dark: #071E3A;
       --ucost-blue-deep: #050F1E;
@@ -96,7 +96,7 @@
     .ticker-content{overflow:hidden;display:flex;align-items:center;position:relative;height:100%;flex-grow:1;padding-left:16px}
     .ticker-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;flex-shrink:0;min-width:max-content}
     .ticker-track:hover{animation-play-state:paused}
-    .ticker-item{font-size:.8rem;color:#fff;font-weight:500;display:flex;align-items:center;text-decoration:none;transition:color var(--transition);flex-shrink:0;white-space:nowrap;padding-right:50px}
+    .ticker-item{font-size:.8rem;color:#eeeeee;font-weight:500;display:flex;align-items:center;text-decoration:none;transition:color var(--transition);flex-shrink:0;white-space:nowrap;padding-right:50px}
     .ticker-item a{color:#fff;text-decoration:none}
     .ticker-item a:hover{color:var(--saffron-accent);text-decoration:underline}
     .ticker-item.has-link::after{content:' ↗';font-size:.65rem;opacity:.7;margin-left:4px}
@@ -394,7 +394,7 @@
 </head>
 <body>
   <!-- Skip Link -->
-  <a class="skip-link" href="#main-content">Skip to Main Content</a>
+  <a class="skip-link" href="#main-content">Skip to Main</a>
 
   <!-- ARIA Live Region -->
   <div id="aria-live" class="aria-live" aria-live="polite" aria-atomic="true"></div>
@@ -403,7 +403,7 @@
   <div class="utility-bar">
     <div class="utility-inner">
       <div class="utility-left">
-        <span class="gov-text">Government of Uttarakhand</span>
+        <span class="gov-text">Government of India</span>
       </div>
       <div class="utility-right">
         <!-- Language selector with poster logo toggle -->
@@ -464,7 +464,7 @@
         </li>
         <li class="nav-item" role="none">
           <a class="nav-link" href="#/about" role="menuitem" aria-haspopup="true" aria-expanded="false" id="about-toggle">
-            <span data-en="About Us" data-hi="हमारे बारे में">About Us</span> <span class="arrow">▾</span>
+            <span data-en="About Us" data-hi="हमारे बारे में">About me</span> <span class="arrow">▾</span>
           </a>
            <div class="nav-dropdown" role="menu" aria-label="About Us submenu">
             <a class="dropdown-link" href="#/about/ucost" role="menuitem" data-en="UCOST" data-hi="यूकोस्ट">UCOST</a>
@@ -533,7 +533,7 @@
         <!-- Col 2 & 3: Map Location -->
         <div class="footer-col">
           <h4 data-en="UCOST Location" data-hi="यूकोस्ट स्थान">UCOST Location</h4>
-          <iframe src="https://maps.google.com/maps?q=Uttarakhand%20State%20Council%20for%20Science%20And%20Technology&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="180" style="width:100%; height:180px; border:none; border-radius: var(--radius-sm); margin-top:10px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="UCOST Location Map"></iframe>
+          <iframe src="https://maps.google.com/maps?q=Uttarakhand%20State%20Council%20for%20Science%20And%20Technology&t=k&z=15&ie=UTF8&iwloc=&output=embed&maptype=satellite" width="100%" height="180" style="width:100%; height:180px; border:none; border-radius: var(--radius-sm); margin-top:10px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="UCOST Location Map"></iframe>
           <p style="margin-top:8px; font-size:0.75rem;"><a href="https://maps.app.goo.gl/Jug9zk8YkKdKFj947" target="_blank" rel="noopener" style="color:var(--saffron-accent);">→ Get Directions</a></p>
         </div>
       </div>
